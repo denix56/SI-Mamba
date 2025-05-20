@@ -16,6 +16,47 @@ State Space Models (SSMs) have shown significant promise in Natural Language Pro
 
 
 
+
+# Preparation
+
+## Environment
+
+This codebase was tested with the following environment configurations. It may work with other versions.
+- Ubuntu 20.04
+- CUDA 11.7
+- Python 3.9
+- PyTorch 1.13.1 + cu117
+
+## Installation
+
+We recommend using Anaconda for the installation process:
+
+```shell
+# Create virtual env and install PyTorch
+$ conda create -n SSTmamba python=3.9
+$ conda activate SSTmamba
+(SSTmamba) $ pip install torch==1.13.1+cu117 torchvision==0.14.1+cu117 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/cu117
+
+# Install basic required packages
+(SSTmamba) $ pip install -r requirements.txt
+
+# Chamfer Distance & emd
+(SSTmamba) $ cd ./extensions/chamfer_dist && python setup.py install --user
+(SSTmamba) $ cd ./extensions/emd && python setup.py install --user
+
+# PointNet++
+(SSTmamba) $ pip install "git+https://github.com/erikwijmans/Pointnet2_PyTorch.git#egg=pointnet2_ops&subdirectory=pointnet2_ops_lib"
+
+# GPU kNN
+(SSTmamba) $ pip install --upgrade https://github.com/unlimblue/KNN_CUDA/releases/download/0.2/KNN_CUDA-0.2-py3-none-any.whl
+
+# Mamba
+(SSTmamba) $ pip install causal-conv1d==1.1.1
+(SSTmamba) $ pip install mamba-ssm==1.1.1
+```
+
+
+
 ## Dataset
 
 The overall directory structure should be:
@@ -91,43 +132,18 @@ Download: Please download the data from [here](https://shapenet.cs.stanford.edu/
 
 
 
-# Preparation
 
-## Environment
+## Main Results
 
-This codebase was tested with the following environment configurations. It may work with other versions.
-- Ubuntu 20.04
-- CUDA 11.7
-- Python 3.9
-- PyTorch 1.13.1 + cu117
+| Task | Dataset | Config | Acc.   | Download (ckpt/log)                                                                                                                                                                              |
+| :---- | :---- | :---- |:-------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Pre-training | ShapeNet | [pretrain.yaml](./cfgs/pretrain.yaml) | N.A.   | [ckpt](https://github.com/LMD0311/PointMamba/releases/download/ckpts-2/pretrain.pth)      |
+| Classification | ModelNet40 | [finetune_modelnet.yaml](./cfgs/finetune_modelnet.yaml) | 93.6%  | [ckpt](https://github.com/LMD0311/PointMamba/releases/download/ckpts-2/finetune_modelnet.pth)                                                                                                    |
+| Classification | ScanObjectNN | [finetune_scan_objbg.yaml](./cfgs/finetune_scan_objbg.yaml) | 94.32% | [ckpt](https://github.com/LMD0311/PointMamba/releases/download/ckpts-2/finetune_scan_objbg.pth) / [log](https://github.com/LMD0311/PointMamba/releases/download/ckpts-2/finetune_scan_objbg.log) |
+| Classification | ScanObjectNN | [finetune_scan_objonly.yaml](./cfgs/finetune_scan_objonly.yaml) | 92.60% | [ckpt](https://github.com/LMD0311/PointMamba/releases/download/ckpts-2/finetune_scan_only.pth) / [log](https://github.com/LMD0311/PointMamba/releases/download/ckpts-2/finetune_scan_only.log)   |
+| Classification | ScanObjectNN | [finetune_scan_hardest.yaml](./cfgs/finetune_scan_hardest.yaml) | 89.31% | [ckpt](https://github.com/LMD0311/PointMamba/releases/download/ckpts-2/finetune_scan_hardest.pth)                                                                                                   |
 
-## Installation
 
-We recommend using Anaconda for the installation process:
-
-```shell
-# Create virtual env and install PyTorch
-$ conda create -n SSTmamba python=3.9
-$ conda activate SSTmamba
-(SSTmamba) $ pip install torch==1.13.1+cu117 torchvision==0.14.1+cu117 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/cu117
-
-# Install basic required packages
-(SSTmamba) $ pip install -r requirements.txt
-
-# Chamfer Distance & emd
-(SSTmamba) $ cd ./extensions/chamfer_dist && python setup.py install --user
-(SSTmamba) $ cd ./extensions/emd && python setup.py install --user
-
-# PointNet++
-(SSTmamba) $ pip install "git+https://github.com/erikwijmans/Pointnet2_PyTorch.git#egg=pointnet2_ops&subdirectory=pointnet2_ops_lib"
-
-# GPU kNN
-(SSTmamba) $ pip install --upgrade https://github.com/unlimblue/KNN_CUDA/releases/download/0.2/KNN_CUDA-0.2-py3-none-any.whl
-
-# Mamba
-(SSTmamba) $ pip install causal-conv1d==1.1.1
-(SSTmamba) $ pip install mamba-ssm==1.1.1
-```
 
 # Training
 
