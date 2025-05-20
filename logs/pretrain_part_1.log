@@ -1,0 +1,1318 @@
+2024-04-15 20:25:16,139 - pretrain - INFO - Copy the Config file from cfgs/pretrain.yaml to ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/config.yaml
+2024-04-15 20:25:16,140 - pretrain - INFO - args.config : cfgs/pretrain.yaml
+2024-04-15 20:25:16,140 - pretrain - INFO - args.launcher : none
+2024-04-15 20:25:16,140 - pretrain - INFO - args.local_rank : 0
+2024-04-15 20:25:16,140 - pretrain - INFO - args.num_workers : 8
+2024-04-15 20:25:16,140 - pretrain - INFO - args.seed : 0
+2024-04-15 20:25:16,141 - pretrain - INFO - args.deterministic : False
+2024-04-15 20:25:16,141 - pretrain - INFO - args.sync_bn : False
+2024-04-15 20:25:16,141 - pretrain - INFO - args.exp_name : metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain
+2024-04-15 20:25:16,141 - pretrain - INFO - args.loss : cd1
+2024-04-15 20:25:16,141 - pretrain - INFO - args.start_ckpts : None
+2024-04-15 20:25:16,141 - pretrain - INFO - args.ckpts : None
+2024-04-15 20:25:16,141 - pretrain - INFO - args.val_freq : 1
+2024-04-15 20:25:16,141 - pretrain - INFO - args.vote : False
+2024-04-15 20:25:16,141 - pretrain - INFO - args.resume : False
+2024-04-15 20:25:16,141 - pretrain - INFO - args.test : False
+2024-04-15 20:25:16,142 - pretrain - INFO - args.finetune_model : False
+2024-04-15 20:25:16,142 - pretrain - INFO - args.scratch_model : False
+2024-04-15 20:25:16,142 - pretrain - INFO - args.mode : None
+2024-04-15 20:25:16,142 - pretrain - INFO - args.way : -1
+2024-04-15 20:25:16,142 - pretrain - INFO - args.shot : -1
+2024-04-15 20:25:16,142 - pretrain - INFO - args.fold : -1
+2024-04-15 20:25:16,142 - pretrain - INFO - args.experiment_path : ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain
+2024-04-15 20:25:16,142 - pretrain - INFO - args.tfboard_path : ./experiments_15_April/pretrain/cfgs/TFBoard/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain
+2024-04-15 20:25:16,142 - pretrain - INFO - args.log_name : pretrain
+2024-04-15 20:25:16,142 - pretrain - INFO - args.use_gpu : True
+2024-04-15 20:25:16,142 - pretrain - INFO - args.distributed : False
+2024-04-15 20:25:16,143 - pretrain - INFO - config.optimizer = edict()
+2024-04-15 20:25:16,143 - pretrain - INFO - config.optimizer.type : AdamW
+2024-04-15 20:25:16,143 - pretrain - INFO - config.optimizer.kwargs = edict()
+2024-04-15 20:25:16,143 - pretrain - INFO - config.optimizer.kwargs.lr : 0.001
+2024-04-15 20:25:16,143 - pretrain - INFO - config.optimizer.kwargs.weight_decay : 0.05
+2024-04-15 20:25:16,143 - pretrain - INFO - config.scheduler = edict()
+2024-04-15 20:25:16,143 - pretrain - INFO - config.scheduler.type : CosLR
+2024-04-15 20:25:16,143 - pretrain - INFO - config.scheduler.kwargs = edict()
+2024-04-15 20:25:16,143 - pretrain - INFO - config.scheduler.kwargs.epochs : 300
+2024-04-15 20:25:16,144 - pretrain - INFO - config.scheduler.kwargs.initial_epochs : 10
+2024-04-15 20:25:16,144 - pretrain - INFO - config.dataset = edict()
+2024-04-15 20:25:16,144 - pretrain - INFO - config.dataset.train = edict()
+2024-04-15 20:25:16,144 - pretrain - INFO - config.dataset.train._base_ = edict()
+2024-04-15 20:25:16,144 - pretrain - INFO - config.dataset.train._base_.NAME : ShapeNet
+2024-04-15 20:25:16,144 - pretrain - INFO - config.dataset.train._base_.DATA_PATH : /export/livia/datasets/datasets/public/6D_Pose_Estimation/ShapeNet-55
+2024-04-15 20:25:16,144 - pretrain - INFO - config.dataset.train._base_.N_POINTS : 1024
+2024-04-15 20:25:16,144 - pretrain - INFO - config.dataset.train._base_.PC_PATH : /export/livia/datasets/datasets/public/6D_Pose_Estimation/shapenet_pc
+2024-04-15 20:25:16,144 - pretrain - INFO - config.dataset.train.others = edict()
+2024-04-15 20:25:16,145 - pretrain - INFO - config.dataset.train.others.subset : train
+2024-04-15 20:25:16,145 - pretrain - INFO - config.dataset.train.others.npoints : 1024
+2024-04-15 20:25:16,145 - pretrain - INFO - config.dataset.train.others.bs : 128
+2024-04-15 20:25:16,145 - pretrain - INFO - config.dataset.val = edict()
+2024-04-15 20:25:16,145 - pretrain - INFO - config.dataset.val._base_ = edict()
+2024-04-15 20:25:16,145 - pretrain - INFO - config.dataset.val._base_.NAME : ShapeNet
+2024-04-15 20:25:16,145 - pretrain - INFO - config.dataset.val._base_.DATA_PATH : /export/livia/datasets/datasets/public/6D_Pose_Estimation/ShapeNet-55
+2024-04-15 20:25:16,145 - pretrain - INFO - config.dataset.val._base_.N_POINTS : 1024
+2024-04-15 20:25:16,145 - pretrain - INFO - config.dataset.val._base_.PC_PATH : /export/livia/datasets/datasets/public/6D_Pose_Estimation/shapenet_pc
+2024-04-15 20:25:16,145 - pretrain - INFO - config.dataset.val.others = edict()
+2024-04-15 20:25:16,146 - pretrain - INFO - config.dataset.val.others.subset : test
+2024-04-15 20:25:16,146 - pretrain - INFO - config.dataset.val.others.npoints : 1024
+2024-04-15 20:25:16,146 - pretrain - INFO - config.dataset.val.others.bs : 256
+2024-04-15 20:25:16,146 - pretrain - INFO - config.dataset.extra_train_svm = edict()
+2024-04-15 20:25:16,146 - pretrain - INFO - config.dataset.extra_train_svm._base_ = edict()
+2024-04-15 20:25:16,146 - pretrain - INFO - config.dataset.extra_train_svm._base_.NAME : ModelNet
+2024-04-15 20:25:16,146 - pretrain - INFO - config.dataset.extra_train_svm._base_.DATA_PATH : /export/livia/home/vision/Abahri/projects/Point-MAE/Point-MAE-org/Point-MAE/data/ModelNet/modelnet40_normal_resampled
+2024-04-15 20:25:16,146 - pretrain - INFO - config.dataset.extra_train_svm._base_.N_POINTS : 8192
+2024-04-15 20:25:16,146 - pretrain - INFO - config.dataset.extra_train_svm._base_.NUM_CATEGORY : 40
+2024-04-15 20:25:16,146 - pretrain - INFO - config.dataset.extra_train_svm._base_.USE_NORMALS : False
+2024-04-15 20:25:16,147 - pretrain - INFO - config.dataset.extra_train_svm.others = edict()
+2024-04-15 20:25:16,147 - pretrain - INFO - config.dataset.extra_train_svm.others.subset : train
+2024-04-15 20:25:16,147 - pretrain - INFO - config.dataset.extra_train_svm.others.npoints : 1024
+2024-04-15 20:25:16,147 - pretrain - INFO - config.dataset.extra_train_svm.others.bs : 256
+2024-04-15 20:25:16,147 - pretrain - INFO - config.dataset.extra_test_svm = edict()
+2024-04-15 20:25:16,147 - pretrain - INFO - config.dataset.extra_test_svm._base_ = edict()
+2024-04-15 20:25:16,147 - pretrain - INFO - config.dataset.extra_test_svm._base_.NAME : ModelNet
+2024-04-15 20:25:16,147 - pretrain - INFO - config.dataset.extra_test_svm._base_.DATA_PATH : /export/livia/home/vision/Abahri/projects/Point-MAE/Point-MAE-org/Point-MAE/data/ModelNet/modelnet40_normal_resampled
+2024-04-15 20:25:16,147 - pretrain - INFO - config.dataset.extra_test_svm._base_.N_POINTS : 8192
+2024-04-15 20:25:16,147 - pretrain - INFO - config.dataset.extra_test_svm._base_.NUM_CATEGORY : 40
+2024-04-15 20:25:16,148 - pretrain - INFO - config.dataset.extra_test_svm._base_.USE_NORMALS : False
+2024-04-15 20:25:16,148 - pretrain - INFO - config.dataset.extra_test_svm.others = edict()
+2024-04-15 20:25:16,148 - pretrain - INFO - config.dataset.extra_test_svm.others.subset : test
+2024-04-15 20:25:16,148 - pretrain - INFO - config.dataset.extra_test_svm.others.npoints : 1024
+2024-04-15 20:25:16,148 - pretrain - INFO - config.dataset.extra_test_svm.others.bs : 256
+2024-04-15 20:25:16,148 - pretrain - INFO - config.dataset.test = edict()
+2024-04-15 20:25:16,148 - pretrain - INFO - config.dataset.test._base_ = edict()
+2024-04-15 20:25:16,148 - pretrain - INFO - config.dataset.test._base_.NAME : ShapeNet
+2024-04-15 20:25:16,148 - pretrain - INFO - config.dataset.test._base_.DATA_PATH : /export/livia/datasets/datasets/public/6D_Pose_Estimation/ShapeNet-55
+2024-04-15 20:25:16,148 - pretrain - INFO - config.dataset.test._base_.N_POINTS : 1024
+2024-04-15 20:25:16,149 - pretrain - INFO - config.dataset.test._base_.PC_PATH : /export/livia/datasets/datasets/public/6D_Pose_Estimation/shapenet_pc
+2024-04-15 20:25:16,149 - pretrain - INFO - config.dataset.test.others = edict()
+2024-04-15 20:25:16,149 - pretrain - INFO - config.dataset.test.others.subset : test
+2024-04-15 20:25:16,149 - pretrain - INFO - config.dataset.test.others.npoints : 1024
+2024-04-15 20:25:16,149 - pretrain - INFO - config.dataset.test.others.bs : 128
+2024-04-15 20:25:16,149 - pretrain - INFO - config.model = edict()
+2024-04-15 20:25:16,149 - pretrain - INFO - config.model.NAME : Point_MAE_Mamba
+2024-04-15 20:25:16,149 - pretrain - INFO - config.model.group_size : 32
+2024-04-15 20:25:16,149 - pretrain - INFO - config.model.num_group : 64
+2024-04-15 20:25:16,149 - pretrain - INFO - config.model.loss : cdl2
+2024-04-15 20:25:16,150 - pretrain - INFO - config.model.transformer_config = edict()
+2024-04-15 20:25:16,150 - pretrain - INFO - config.model.transformer_config.mask_ratio : 0.6
+2024-04-15 20:25:16,150 - pretrain - INFO - config.model.transformer_config.mask_type : rand
+2024-04-15 20:25:16,150 - pretrain - INFO - config.model.transformer_config.trans_dim : 384
+2024-04-15 20:25:16,150 - pretrain - INFO - config.model.transformer_config.encoder_dims : 384
+2024-04-15 20:25:16,150 - pretrain - INFO - config.model.transformer_config.depth : 12
+2024-04-15 20:25:16,150 - pretrain - INFO - config.model.transformer_config.drop_path_rate : 0.1
+2024-04-15 20:25:16,150 - pretrain - INFO - config.model.transformer_config.num_heads : 6
+2024-04-15 20:25:16,150 - pretrain - INFO - config.model.transformer_config.decoder_depth : 4
+2024-04-15 20:25:16,150 - pretrain - INFO - config.model.transformer_config.decoder_num_heads : 6
+2024-04-15 20:25:16,150 - pretrain - INFO - config.model.transformer_config.method : k_top_eigenvectors_seperate_learnable_tokens
+2024-04-15 20:25:16,151 - pretrain - INFO - config.model.transformer_config.reverse : True
+2024-04-15 20:25:16,151 - pretrain - INFO - config.model.transformer_config.knn_graph : 20
+2024-04-15 20:25:16,151 - pretrain - INFO - config.model.transformer_config.k_top_eigenvectors : 4
+2024-04-15 20:25:16,151 - pretrain - INFO - config.model.transformer_config.smallest : True
+2024-04-15 20:25:16,151 - pretrain - INFO - config.model.rms_norm : False
+2024-04-15 20:25:16,151 - pretrain - INFO - config.model.use_cls_token : False
+2024-04-15 20:25:16,151 - pretrain - INFO - config.model.drop_path : 0.1
+2024-04-15 20:25:16,151 - pretrain - INFO - config.model.drop_out : 0.1
+2024-04-15 20:25:16,151 - pretrain - INFO - config.npoints : 1024
+2024-04-15 20:25:16,151 - pretrain - INFO - config.total_bs : 128
+2024-04-15 20:25:16,152 - pretrain - INFO - config.step_per_update : 1
+2024-04-15 20:25:16,152 - pretrain - INFO - config.max_epoch : 300
+2024-04-15 20:25:16,152 - pretrain - INFO - Distributed training: False
+2024-04-15 20:25:16,152 - pretrain - INFO - Set random seed to 0, deterministic: False
+2024-04-15 20:25:20,977 - pretrain - INFO - Using Data parallel ...
+2024-04-15 20:25:24,599 - pretrain - INFO - [Epoch 0/300][Batch 1/327] BatchTime = 3.616 (s) DataTime = 0.779 (s) Losses = ['883.3008'] lr = 0.000001
+2024-04-15 20:25:40,597 - pretrain - INFO - [Epoch 0/300][Batch 21/327] BatchTime = 0.788 (s) DataTime = 0.002 (s) Losses = ['756.1072'] lr = 0.000001
+2024-04-15 20:25:56,447 - pretrain - INFO - [Epoch 0/300][Batch 41/327] BatchTime = 0.800 (s) DataTime = 0.003 (s) Losses = ['662.9352'] lr = 0.000001
+2024-04-15 20:26:12,191 - pretrain - INFO - [Epoch 0/300][Batch 61/327] BatchTime = 0.788 (s) DataTime = 0.002 (s) Losses = ['572.5570'] lr = 0.000001
+2024-04-15 20:26:27,879 - pretrain - INFO - [Epoch 0/300][Batch 81/327] BatchTime = 0.799 (s) DataTime = 0.003 (s) Losses = ['503.7866'] lr = 0.000001
+2024-04-15 20:26:43,598 - pretrain - INFO - [Epoch 0/300][Batch 101/327] BatchTime = 0.786 (s) DataTime = 0.002 (s) Losses = ['439.0231'] lr = 0.000001
+2024-04-15 20:26:59,771 - pretrain - INFO - [Epoch 0/300][Batch 121/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['374.7860'] lr = 0.000001
+2024-04-15 20:27:15,772 - pretrain - INFO - [Epoch 0/300][Batch 141/327] BatchTime = 0.831 (s) DataTime = 0.004 (s) Losses = ['331.5704'] lr = 0.000001
+2024-04-15 20:27:31,658 - pretrain - INFO - [Epoch 0/300][Batch 161/327] BatchTime = 0.785 (s) DataTime = 0.002 (s) Losses = ['337.8550'] lr = 0.000001
+2024-04-15 20:27:47,538 - pretrain - INFO - [Epoch 0/300][Batch 181/327] BatchTime = 0.790 (s) DataTime = 0.002 (s) Losses = ['297.8631'] lr = 0.000001
+2024-04-15 20:28:03,582 - pretrain - INFO - [Epoch 0/300][Batch 201/327] BatchTime = 0.774 (s) DataTime = 0.002 (s) Losses = ['251.8513'] lr = 0.000001
+2024-04-15 20:28:19,390 - pretrain - INFO - [Epoch 0/300][Batch 221/327] BatchTime = 0.791 (s) DataTime = 0.002 (s) Losses = ['214.9499'] lr = 0.000001
+2024-04-15 20:28:35,265 - pretrain - INFO - [Epoch 0/300][Batch 241/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['205.9589'] lr = 0.000001
+2024-04-15 20:28:51,088 - pretrain - INFO - [Epoch 0/300][Batch 261/327] BatchTime = 0.784 (s) DataTime = 0.002 (s) Losses = ['203.6147'] lr = 0.000001
+2024-04-15 20:29:06,978 - pretrain - INFO - [Epoch 0/300][Batch 281/327] BatchTime = 0.767 (s) DataTime = 0.002 (s) Losses = ['172.7171'] lr = 0.000001
+2024-04-15 20:29:22,921 - pretrain - INFO - [Epoch 0/300][Batch 301/327] BatchTime = 0.788 (s) DataTime = 0.002 (s) Losses = ['152.5680'] lr = 0.000001
+2024-04-15 20:29:39,161 - pretrain - INFO - [Epoch 0/300][Batch 321/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['151.9911'] lr = 0.000001
+2024-04-15 20:29:44,038 - pretrain - INFO - [Training] EPOCH: 0 EpochTime = 263.055 (s) Losses = ['369.3165'] lr = 0.000001
+2024-04-15 20:29:44,038 - pretrain - INFO - [VALIDATION] Start validating epoch 0
+2024-04-15 20:30:41,738 - pretrain - INFO - [Validation] EPOCH: 0  acc = 0.7735
+2024-04-15 20:30:43,852 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-best.pth
+2024-04-15 20:30:45,992 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 20:30:47,801 - pretrain - INFO - [Epoch 1/300][Batch 1/327] BatchTime = 1.802 (s) DataTime = 0.926 (s) Losses = ['155.2129'] lr = 0.000001
+2024-04-15 20:31:03,874 - pretrain - INFO - [Epoch 1/300][Batch 21/327] BatchTime = 0.820 (s) DataTime = 0.002 (s) Losses = ['141.2304'] lr = 0.000001
+2024-04-15 20:31:19,499 - pretrain - INFO - [Epoch 1/300][Batch 41/327] BatchTime = 0.776 (s) DataTime = 0.002 (s) Losses = ['123.4968'] lr = 0.000001
+2024-04-15 20:31:35,243 - pretrain - INFO - [Epoch 1/300][Batch 61/327] BatchTime = 0.779 (s) DataTime = 0.002 (s) Losses = ['126.1611'] lr = 0.000001
+2024-04-15 20:31:50,863 - pretrain - INFO - [Epoch 1/300][Batch 81/327] BatchTime = 0.836 (s) DataTime = 0.002 (s) Losses = ['120.8134'] lr = 0.000001
+2024-04-15 20:32:06,496 - pretrain - INFO - [Epoch 1/300][Batch 101/327] BatchTime = 0.780 (s) DataTime = 0.002 (s) Losses = ['102.2194'] lr = 0.000001
+2024-04-15 20:32:22,233 - pretrain - INFO - [Epoch 1/300][Batch 121/327] BatchTime = 0.801 (s) DataTime = 0.002 (s) Losses = ['103.7664'] lr = 0.000001
+2024-04-15 20:32:38,180 - pretrain - INFO - [Epoch 1/300][Batch 141/327] BatchTime = 0.834 (s) DataTime = 0.002 (s) Losses = ['96.1937'] lr = 0.000001
+2024-04-15 20:32:53,923 - pretrain - INFO - [Epoch 1/300][Batch 161/327] BatchTime = 0.837 (s) DataTime = 0.002 (s) Losses = ['72.8389'] lr = 0.000001
+2024-04-15 20:33:09,674 - pretrain - INFO - [Epoch 1/300][Batch 181/327] BatchTime = 0.785 (s) DataTime = 0.002 (s) Losses = ['90.2218'] lr = 0.000001
+2024-04-15 20:33:25,345 - pretrain - INFO - [Epoch 1/300][Batch 201/327] BatchTime = 0.780 (s) DataTime = 0.002 (s) Losses = ['69.0536'] lr = 0.000001
+2024-04-15 20:33:41,149 - pretrain - INFO - [Epoch 1/300][Batch 221/327] BatchTime = 0.784 (s) DataTime = 0.002 (s) Losses = ['64.6745'] lr = 0.000001
+2024-04-15 20:33:57,025 - pretrain - INFO - [Epoch 1/300][Batch 241/327] BatchTime = 0.796 (s) DataTime = 0.002 (s) Losses = ['63.2736'] lr = 0.000001
+2024-04-15 20:34:12,866 - pretrain - INFO - [Epoch 1/300][Batch 261/327] BatchTime = 0.785 (s) DataTime = 0.002 (s) Losses = ['74.0836'] lr = 0.000001
+2024-04-15 20:34:28,584 - pretrain - INFO - [Epoch 1/300][Batch 281/327] BatchTime = 0.782 (s) DataTime = 0.002 (s) Losses = ['60.9358'] lr = 0.000001
+2024-04-15 20:34:44,437 - pretrain - INFO - [Epoch 1/300][Batch 301/327] BatchTime = 0.779 (s) DataTime = 0.002 (s) Losses = ['61.2977'] lr = 0.000001
+2024-04-15 20:35:00,345 - pretrain - INFO - [Epoch 1/300][Batch 321/327] BatchTime = 0.759 (s) DataTime = 0.002 (s) Losses = ['55.3138'] lr = 0.000001
+2024-04-15 20:35:05,118 - pretrain - INFO - [Training] EPOCH: 1 EpochTime = 259.119 (s) Losses = ['90.0086'] lr = 0.000101
+2024-04-15 20:35:05,118 - pretrain - INFO - [VALIDATION] Start validating epoch 1
+2024-04-15 20:36:03,245 - pretrain - INFO - [Validation] EPOCH: 1  acc = 0.7626
+2024-04-15 20:36:05,302 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 20:36:07,016 - pretrain - INFO - [Epoch 2/300][Batch 1/327] BatchTime = 1.712 (s) DataTime = 0.917 (s) Losses = ['56.5319'] lr = 0.000101
+2024-04-15 20:36:22,671 - pretrain - INFO - [Epoch 2/300][Batch 21/327] BatchTime = 0.784 (s) DataTime = 0.001 (s) Losses = ['9.9209'] lr = 0.000101
+2024-04-15 20:36:38,276 - pretrain - INFO - [Epoch 2/300][Batch 41/327] BatchTime = 0.774 (s) DataTime = 0.002 (s) Losses = ['7.2589'] lr = 0.000101
+2024-04-15 20:36:54,247 - pretrain - INFO - [Epoch 2/300][Batch 61/327] BatchTime = 0.783 (s) DataTime = 0.002 (s) Losses = ['7.7394'] lr = 0.000101
+2024-04-15 20:37:10,043 - pretrain - INFO - [Epoch 2/300][Batch 81/327] BatchTime = 0.784 (s) DataTime = 0.002 (s) Losses = ['8.0393'] lr = 0.000101
+2024-04-15 20:37:25,729 - pretrain - INFO - [Epoch 2/300][Batch 101/327] BatchTime = 0.778 (s) DataTime = 0.002 (s) Losses = ['6.2183'] lr = 0.000101
+2024-04-15 20:37:41,581 - pretrain - INFO - [Epoch 2/300][Batch 121/327] BatchTime = 0.779 (s) DataTime = 0.002 (s) Losses = ['6.7403'] lr = 0.000101
+2024-04-15 20:37:57,458 - pretrain - INFO - [Epoch 2/300][Batch 141/327] BatchTime = 0.789 (s) DataTime = 0.002 (s) Losses = ['5.9492'] lr = 0.000101
+2024-04-15 20:38:13,143 - pretrain - INFO - [Epoch 2/300][Batch 161/327] BatchTime = 0.793 (s) DataTime = 0.003 (s) Losses = ['6.6625'] lr = 0.000101
+2024-04-15 20:38:28,944 - pretrain - INFO - [Epoch 2/300][Batch 181/327] BatchTime = 0.856 (s) DataTime = 0.002 (s) Losses = ['5.8776'] lr = 0.000101
+2024-04-15 20:38:44,582 - pretrain - INFO - [Epoch 2/300][Batch 201/327] BatchTime = 0.790 (s) DataTime = 0.002 (s) Losses = ['5.1411'] lr = 0.000101
+2024-04-15 20:39:00,384 - pretrain - INFO - [Epoch 2/300][Batch 221/327] BatchTime = 0.789 (s) DataTime = 0.003 (s) Losses = ['5.5686'] lr = 0.000101
+2024-04-15 20:39:16,071 - pretrain - INFO - [Epoch 2/300][Batch 241/327] BatchTime = 0.788 (s) DataTime = 0.002 (s) Losses = ['6.2554'] lr = 0.000101
+2024-04-15 20:39:32,097 - pretrain - INFO - [Epoch 2/300][Batch 261/327] BatchTime = 0.791 (s) DataTime = 0.002 (s) Losses = ['5.9540'] lr = 0.000101
+2024-04-15 20:39:48,071 - pretrain - INFO - [Epoch 2/300][Batch 281/327] BatchTime = 0.789 (s) DataTime = 0.002 (s) Losses = ['5.4971'] lr = 0.000101
+2024-04-15 20:40:04,048 - pretrain - INFO - [Epoch 2/300][Batch 301/327] BatchTime = 0.824 (s) DataTime = 0.002 (s) Losses = ['6.1240'] lr = 0.000101
+2024-04-15 20:40:19,837 - pretrain - INFO - [Epoch 2/300][Batch 321/327] BatchTime = 0.784 (s) DataTime = 0.002 (s) Losses = ['5.6766'] lr = 0.000101
+2024-04-15 20:40:24,721 - pretrain - INFO - [Training] EPOCH: 2 EpochTime = 259.416 (s) Losses = ['7.3798'] lr = 0.000201
+2024-04-15 20:40:24,721 - pretrain - INFO - [VALIDATION] Start validating epoch 2
+2024-04-15 20:41:27,174 - pretrain - INFO - [Validation] EPOCH: 2  acc = 0.5276
+2024-04-15 20:41:29,313 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 20:41:31,102 - pretrain - INFO - [Epoch 3/300][Batch 1/327] BatchTime = 1.786 (s) DataTime = 0.937 (s) Losses = ['5.6509'] lr = 0.000201
+2024-04-15 20:41:47,106 - pretrain - INFO - [Epoch 3/300][Batch 21/327] BatchTime = 0.790 (s) DataTime = 0.002 (s) Losses = ['6.3754'] lr = 0.000201
+2024-04-15 20:42:03,398 - pretrain - INFO - [Epoch 3/300][Batch 41/327] BatchTime = 0.777 (s) DataTime = 0.002 (s) Losses = ['5.5720'] lr = 0.000201
+2024-04-15 20:42:19,309 - pretrain - INFO - [Epoch 3/300][Batch 61/327] BatchTime = 0.788 (s) DataTime = 0.003 (s) Losses = ['5.6520'] lr = 0.000201
+2024-04-15 20:42:35,292 - pretrain - INFO - [Epoch 3/300][Batch 81/327] BatchTime = 0.801 (s) DataTime = 0.003 (s) Losses = ['5.5328'] lr = 0.000201
+2024-04-15 20:42:51,195 - pretrain - INFO - [Epoch 3/300][Batch 101/327] BatchTime = 0.780 (s) DataTime = 0.002 (s) Losses = ['6.0690'] lr = 0.000201
+2024-04-15 20:43:06,988 - pretrain - INFO - [Epoch 3/300][Batch 121/327] BatchTime = 0.791 (s) DataTime = 0.003 (s) Losses = ['5.8482'] lr = 0.000201
+2024-04-15 20:43:23,273 - pretrain - INFO - [Epoch 3/300][Batch 141/327] BatchTime = 0.791 (s) DataTime = 0.003 (s) Losses = ['5.5228'] lr = 0.000201
+2024-04-15 20:43:39,105 - pretrain - INFO - [Epoch 3/300][Batch 161/327] BatchTime = 0.789 (s) DataTime = 0.003 (s) Losses = ['4.9717'] lr = 0.000201
+2024-04-15 20:43:55,343 - pretrain - INFO - [Epoch 3/300][Batch 181/327] BatchTime = 0.826 (s) DataTime = 0.003 (s) Losses = ['6.1268'] lr = 0.000201
+2024-04-15 20:44:11,466 - pretrain - INFO - [Epoch 3/300][Batch 201/327] BatchTime = 0.793 (s) DataTime = 0.003 (s) Losses = ['6.0344'] lr = 0.000201
+2024-04-15 20:44:27,330 - pretrain - INFO - [Epoch 3/300][Batch 221/327] BatchTime = 0.794 (s) DataTime = 0.002 (s) Losses = ['4.7476'] lr = 0.000201
+2024-04-15 20:44:43,500 - pretrain - INFO - [Epoch 3/300][Batch 241/327] BatchTime = 0.796 (s) DataTime = 0.002 (s) Losses = ['5.4666'] lr = 0.000201
+2024-04-15 20:44:59,568 - pretrain - INFO - [Epoch 3/300][Batch 261/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['5.3046'] lr = 0.000201
+2024-04-15 20:45:15,388 - pretrain - INFO - [Epoch 3/300][Batch 281/327] BatchTime = 0.791 (s) DataTime = 0.002 (s) Losses = ['5.9921'] lr = 0.000201
+2024-04-15 20:45:31,368 - pretrain - INFO - [Epoch 3/300][Batch 301/327] BatchTime = 0.805 (s) DataTime = 0.004 (s) Losses = ['5.8785'] lr = 0.000201
+2024-04-15 20:45:47,285 - pretrain - INFO - [Epoch 3/300][Batch 321/327] BatchTime = 0.791 (s) DataTime = 0.002 (s) Losses = ['4.8444'] lr = 0.000201
+2024-04-15 20:45:52,234 - pretrain - INFO - [Training] EPOCH: 3 EpochTime = 262.918 (s) Losses = ['5.6504'] lr = 0.000301
+2024-04-15 20:45:52,235 - pretrain - INFO - [VALIDATION] Start validating epoch 3
+2024-04-15 20:46:56,114 - pretrain - INFO - [Validation] EPOCH: 3  acc = 0.4623
+2024-04-15 20:46:58,196 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 20:46:59,998 - pretrain - INFO - [Epoch 4/300][Batch 1/327] BatchTime = 1.799 (s) DataTime = 1.003 (s) Losses = ['6.0416'] lr = 0.000301
+2024-04-15 20:47:15,679 - pretrain - INFO - [Epoch 4/300][Batch 21/327] BatchTime = 0.780 (s) DataTime = 0.002 (s) Losses = ['5.3029'] lr = 0.000301
+2024-04-15 20:47:31,316 - pretrain - INFO - [Epoch 4/300][Batch 41/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['6.3206'] lr = 0.000301
+2024-04-15 20:47:47,414 - pretrain - INFO - [Epoch 4/300][Batch 61/327] BatchTime = 0.786 (s) DataTime = 0.002 (s) Losses = ['5.5970'] lr = 0.000301
+2024-04-15 20:48:03,294 - pretrain - INFO - [Epoch 4/300][Batch 81/327] BatchTime = 0.787 (s) DataTime = 0.002 (s) Losses = ['5.3131'] lr = 0.000301
+2024-04-15 20:48:19,504 - pretrain - INFO - [Epoch 4/300][Batch 101/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['5.1679'] lr = 0.000301
+2024-04-15 20:48:35,625 - pretrain - INFO - [Epoch 4/300][Batch 121/327] BatchTime = 0.818 (s) DataTime = 0.002 (s) Losses = ['5.2282'] lr = 0.000301
+2024-04-15 20:48:51,687 - pretrain - INFO - [Epoch 4/300][Batch 141/327] BatchTime = 0.799 (s) DataTime = 0.003 (s) Losses = ['6.3856'] lr = 0.000301
+2024-04-15 20:49:07,710 - pretrain - INFO - [Epoch 4/300][Batch 161/327] BatchTime = 0.790 (s) DataTime = 0.002 (s) Losses = ['5.6584'] lr = 0.000301
+2024-04-15 20:49:23,718 - pretrain - INFO - [Epoch 4/300][Batch 181/327] BatchTime = 0.885 (s) DataTime = 0.002 (s) Losses = ['5.9684'] lr = 0.000301
+2024-04-15 20:49:39,808 - pretrain - INFO - [Epoch 4/300][Batch 201/327] BatchTime = 0.794 (s) DataTime = 0.002 (s) Losses = ['5.0065'] lr = 0.000301
+2024-04-15 20:49:55,881 - pretrain - INFO - [Epoch 4/300][Batch 221/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['5.1865'] lr = 0.000301
+2024-04-15 20:50:11,824 - pretrain - INFO - [Epoch 4/300][Batch 241/327] BatchTime = 0.801 (s) DataTime = 0.002 (s) Losses = ['5.7470'] lr = 0.000301
+2024-04-15 20:50:27,862 - pretrain - INFO - [Epoch 4/300][Batch 261/327] BatchTime = 0.791 (s) DataTime = 0.002 (s) Losses = ['4.9445'] lr = 0.000301
+2024-04-15 20:50:43,993 - pretrain - INFO - [Epoch 4/300][Batch 281/327] BatchTime = 0.795 (s) DataTime = 0.002 (s) Losses = ['6.0709'] lr = 0.000301
+2024-04-15 20:51:00,147 - pretrain - INFO - [Epoch 4/300][Batch 301/327] BatchTime = 0.799 (s) DataTime = 0.002 (s) Losses = ['5.5697'] lr = 0.000301
+2024-04-15 20:51:16,148 - pretrain - INFO - [Epoch 4/300][Batch 321/327] BatchTime = 0.790 (s) DataTime = 0.002 (s) Losses = ['5.7878'] lr = 0.000301
+2024-04-15 20:51:21,148 - pretrain - INFO - [Training] EPOCH: 4 EpochTime = 262.949 (s) Losses = ['5.5383'] lr = 0.000401
+2024-04-15 20:51:21,148 - pretrain - INFO - [VALIDATION] Start validating epoch 4
+2024-04-15 20:52:20,093 - pretrain - INFO - [Validation] EPOCH: 4  acc = 0.5069
+2024-04-15 20:52:22,230 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 20:52:24,021 - pretrain - INFO - [Epoch 5/300][Batch 1/327] BatchTime = 1.789 (s) DataTime = 0.963 (s) Losses = ['5.2753'] lr = 0.000401
+2024-04-15 20:52:39,879 - pretrain - INFO - [Epoch 5/300][Batch 21/327] BatchTime = 0.796 (s) DataTime = 0.003 (s) Losses = ['5.5150'] lr = 0.000401
+2024-04-15 20:52:55,930 - pretrain - INFO - [Epoch 5/300][Batch 41/327] BatchTime = 0.785 (s) DataTime = 0.002 (s) Losses = ['5.1348'] lr = 0.000401
+2024-04-15 20:53:11,791 - pretrain - INFO - [Epoch 5/300][Batch 61/327] BatchTime = 0.788 (s) DataTime = 0.002 (s) Losses = ['5.9194'] lr = 0.000401
+2024-04-15 20:53:27,705 - pretrain - INFO - [Epoch 5/300][Batch 81/327] BatchTime = 0.804 (s) DataTime = 0.002 (s) Losses = ['5.2387'] lr = 0.000401
+2024-04-15 20:53:44,062 - pretrain - INFO - [Epoch 5/300][Batch 101/327] BatchTime = 0.830 (s) DataTime = 0.002 (s) Losses = ['5.1315'] lr = 0.000401
+2024-04-15 20:54:00,724 - pretrain - INFO - [Epoch 5/300][Batch 121/327] BatchTime = 0.905 (s) DataTime = 0.002 (s) Losses = ['5.6935'] lr = 0.000401
+2024-04-15 20:54:17,115 - pretrain - INFO - [Epoch 5/300][Batch 141/327] BatchTime = 0.818 (s) DataTime = 0.002 (s) Losses = ['5.7523'] lr = 0.000401
+2024-04-15 20:54:33,311 - pretrain - INFO - [Epoch 5/300][Batch 161/327] BatchTime = 0.777 (s) DataTime = 0.002 (s) Losses = ['5.9997'] lr = 0.000401
+2024-04-15 20:54:49,848 - pretrain - INFO - [Epoch 5/300][Batch 181/327] BatchTime = 0.839 (s) DataTime = 0.002 (s) Losses = ['6.1550'] lr = 0.000401
+2024-04-15 20:55:06,227 - pretrain - INFO - [Epoch 5/300][Batch 201/327] BatchTime = 0.801 (s) DataTime = 0.003 (s) Losses = ['4.6075'] lr = 0.000401
+2024-04-15 20:55:22,575 - pretrain - INFO - [Epoch 5/300][Batch 221/327] BatchTime = 0.780 (s) DataTime = 0.002 (s) Losses = ['5.3435'] lr = 0.000401
+2024-04-15 20:55:38,855 - pretrain - INFO - [Epoch 5/300][Batch 241/327] BatchTime = 0.821 (s) DataTime = 0.002 (s) Losses = ['5.4369'] lr = 0.000401
+2024-04-15 20:55:54,974 - pretrain - INFO - [Epoch 5/300][Batch 261/327] BatchTime = 0.785 (s) DataTime = 0.002 (s) Losses = ['5.2787'] lr = 0.000401
+2024-04-15 20:56:11,260 - pretrain - INFO - [Epoch 5/300][Batch 281/327] BatchTime = 0.797 (s) DataTime = 0.002 (s) Losses = ['4.5715'] lr = 0.000401
+2024-04-15 20:56:27,638 - pretrain - INFO - [Epoch 5/300][Batch 301/327] BatchTime = 0.823 (s) DataTime = 0.002 (s) Losses = ['5.4800'] lr = 0.000401
+2024-04-15 20:56:44,216 - pretrain - INFO - [Epoch 5/300][Batch 321/327] BatchTime = 0.832 (s) DataTime = 0.002 (s) Losses = ['5.5408'] lr = 0.000401
+2024-04-15 20:56:49,260 - pretrain - INFO - [Training] EPOCH: 5 EpochTime = 267.028 (s) Losses = ['5.4466'] lr = 0.000501
+2024-04-15 20:56:49,260 - pretrain - INFO - [VALIDATION] Start validating epoch 5
+2024-04-15 20:57:55,328 - pretrain - INFO - [Validation] EPOCH: 5  acc = 0.5239
+2024-04-15 20:57:57,483 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 20:57:59,398 - pretrain - INFO - [Epoch 6/300][Batch 1/327] BatchTime = 1.913 (s) DataTime = 1.096 (s) Losses = ['5.0425'] lr = 0.000501
+2024-04-15 20:58:15,401 - pretrain - INFO - [Epoch 6/300][Batch 21/327] BatchTime = 0.803 (s) DataTime = 0.004 (s) Losses = ['5.9418'] lr = 0.000501
+2024-04-15 20:58:31,642 - pretrain - INFO - [Epoch 6/300][Batch 41/327] BatchTime = 0.835 (s) DataTime = 0.002 (s) Losses = ['4.7739'] lr = 0.000501
+2024-04-15 20:58:47,975 - pretrain - INFO - [Epoch 6/300][Batch 61/327] BatchTime = 0.799 (s) DataTime = 0.002 (s) Losses = ['5.2824'] lr = 0.000501
+2024-04-15 20:59:04,192 - pretrain - INFO - [Epoch 6/300][Batch 81/327] BatchTime = 0.799 (s) DataTime = 0.002 (s) Losses = ['5.1387'] lr = 0.000501
+2024-04-15 20:59:20,156 - pretrain - INFO - [Epoch 6/300][Batch 101/327] BatchTime = 0.776 (s) DataTime = 0.002 (s) Losses = ['5.1188'] lr = 0.000501
+2024-04-15 20:59:36,488 - pretrain - INFO - [Epoch 6/300][Batch 121/327] BatchTime = 0.789 (s) DataTime = 0.002 (s) Losses = ['5.3846'] lr = 0.000501
+2024-04-15 20:59:52,681 - pretrain - INFO - [Epoch 6/300][Batch 141/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['5.4854'] lr = 0.000501
+2024-04-15 21:00:08,606 - pretrain - INFO - [Epoch 6/300][Batch 161/327] BatchTime = 0.796 (s) DataTime = 0.002 (s) Losses = ['5.0159'] lr = 0.000501
+2024-04-15 21:00:24,848 - pretrain - INFO - [Epoch 6/300][Batch 181/327] BatchTime = 0.779 (s) DataTime = 0.002 (s) Losses = ['5.5667'] lr = 0.000501
+2024-04-15 21:00:40,979 - pretrain - INFO - [Epoch 6/300][Batch 201/327] BatchTime = 0.820 (s) DataTime = 0.002 (s) Losses = ['6.2819'] lr = 0.000501
+2024-04-15 21:00:57,057 - pretrain - INFO - [Epoch 6/300][Batch 221/327] BatchTime = 0.793 (s) DataTime = 0.003 (s) Losses = ['5.3177'] lr = 0.000501
+2024-04-15 21:01:13,077 - pretrain - INFO - [Epoch 6/300][Batch 241/327] BatchTime = 0.798 (s) DataTime = 0.003 (s) Losses = ['5.5773'] lr = 0.000501
+2024-04-15 21:01:29,468 - pretrain - INFO - [Epoch 6/300][Batch 261/327] BatchTime = 0.791 (s) DataTime = 0.002 (s) Losses = ['5.5589'] lr = 0.000501
+2024-04-15 21:01:45,599 - pretrain - INFO - [Epoch 6/300][Batch 281/327] BatchTime = 0.802 (s) DataTime = 0.002 (s) Losses = ['4.7736'] lr = 0.000501
+2024-04-15 21:02:01,623 - pretrain - INFO - [Epoch 6/300][Batch 301/327] BatchTime = 0.802 (s) DataTime = 0.002 (s) Losses = ['5.1538'] lr = 0.000501
+2024-04-15 21:02:17,649 - pretrain - INFO - [Epoch 6/300][Batch 321/327] BatchTime = 0.805 (s) DataTime = 0.002 (s) Losses = ['5.2345'] lr = 0.000501
+2024-04-15 21:02:22,672 - pretrain - INFO - [Training] EPOCH: 6 EpochTime = 265.187 (s) Losses = ['5.3824'] lr = 0.000600
+2024-04-15 21:02:22,672 - pretrain - INFO - [VALIDATION] Start validating epoch 6
+2024-04-15 21:03:22,984 - pretrain - INFO - [Validation] EPOCH: 6  acc = 0.5466
+2024-04-15 21:03:25,134 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 21:03:27,060 - pretrain - INFO - [Epoch 7/300][Batch 1/327] BatchTime = 1.924 (s) DataTime = 1.094 (s) Losses = ['5.1260'] lr = 0.000600
+2024-04-15 21:03:42,953 - pretrain - INFO - [Epoch 7/300][Batch 21/327] BatchTime = 0.788 (s) DataTime = 0.002 (s) Losses = ['5.1708'] lr = 0.000600
+2024-04-15 21:03:59,037 - pretrain - INFO - [Epoch 7/300][Batch 41/327] BatchTime = 0.772 (s) DataTime = 0.002 (s) Losses = ['5.8956'] lr = 0.000600
+2024-04-15 21:04:15,026 - pretrain - INFO - [Epoch 7/300][Batch 61/327] BatchTime = 0.854 (s) DataTime = 0.012 (s) Losses = ['5.8337'] lr = 0.000600
+2024-04-15 21:04:31,403 - pretrain - INFO - [Epoch 7/300][Batch 81/327] BatchTime = 0.807 (s) DataTime = 0.002 (s) Losses = ['5.2413'] lr = 0.000600
+2024-04-15 21:04:47,519 - pretrain - INFO - [Epoch 7/300][Batch 101/327] BatchTime = 0.801 (s) DataTime = 0.002 (s) Losses = ['5.4213'] lr = 0.000600
+2024-04-15 21:05:03,905 - pretrain - INFO - [Epoch 7/300][Batch 121/327] BatchTime = 0.844 (s) DataTime = 0.003 (s) Losses = ['5.2044'] lr = 0.000600
+2024-04-15 21:05:20,170 - pretrain - INFO - [Epoch 7/300][Batch 141/327] BatchTime = 0.802 (s) DataTime = 0.002 (s) Losses = ['5.0273'] lr = 0.000600
+2024-04-15 21:05:36,316 - pretrain - INFO - [Epoch 7/300][Batch 161/327] BatchTime = 0.789 (s) DataTime = 0.002 (s) Losses = ['5.6307'] lr = 0.000600
+2024-04-15 21:05:52,488 - pretrain - INFO - [Epoch 7/300][Batch 181/327] BatchTime = 0.811 (s) DataTime = 0.002 (s) Losses = ['5.0114'] lr = 0.000600
+2024-04-15 21:06:08,564 - pretrain - INFO - [Epoch 7/300][Batch 201/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['6.5044'] lr = 0.000600
+2024-04-15 21:06:24,956 - pretrain - INFO - [Epoch 7/300][Batch 221/327] BatchTime = 0.879 (s) DataTime = 0.002 (s) Losses = ['5.8452'] lr = 0.000600
+2024-04-15 21:06:41,235 - pretrain - INFO - [Epoch 7/300][Batch 241/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['4.9235'] lr = 0.000600
+2024-04-15 21:06:57,382 - pretrain - INFO - [Epoch 7/300][Batch 261/327] BatchTime = 0.803 (s) DataTime = 0.002 (s) Losses = ['5.3237'] lr = 0.000600
+2024-04-15 21:07:13,640 - pretrain - INFO - [Epoch 7/300][Batch 281/327] BatchTime = 0.798 (s) DataTime = 0.002 (s) Losses = ['5.2251'] lr = 0.000600
+2024-04-15 21:07:29,772 - pretrain - INFO - [Epoch 7/300][Batch 301/327] BatchTime = 0.823 (s) DataTime = 0.002 (s) Losses = ['4.6616'] lr = 0.000600
+2024-04-15 21:07:45,950 - pretrain - INFO - [Epoch 7/300][Batch 321/327] BatchTime = 0.805 (s) DataTime = 0.002 (s) Losses = ['5.4198'] lr = 0.000600
+2024-04-15 21:07:50,977 - pretrain - INFO - [Training] EPOCH: 7 EpochTime = 265.841 (s) Losses = ['5.3411'] lr = 0.000700
+2024-04-15 21:07:50,978 - pretrain - INFO - [VALIDATION] Start validating epoch 7
+2024-04-15 21:08:49,950 - pretrain - INFO - [Validation] EPOCH: 7  acc = 0.6130
+2024-04-15 21:08:52,036 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 21:08:54,058 - pretrain - INFO - [Epoch 8/300][Batch 1/327] BatchTime = 2.019 (s) DataTime = 1.171 (s) Losses = ['4.9032'] lr = 0.000700
+2024-04-15 21:09:10,186 - pretrain - INFO - [Epoch 8/300][Batch 21/327] BatchTime = 0.820 (s) DataTime = 0.002 (s) Losses = ['5.4514'] lr = 0.000700
+2024-04-15 21:09:26,165 - pretrain - INFO - [Epoch 8/300][Batch 41/327] BatchTime = 0.772 (s) DataTime = 0.002 (s) Losses = ['6.2538'] lr = 0.000700
+2024-04-15 21:09:42,243 - pretrain - INFO - [Epoch 8/300][Batch 61/327] BatchTime = 0.788 (s) DataTime = 0.002 (s) Losses = ['5.9088'] lr = 0.000700
+2024-04-15 21:09:58,160 - pretrain - INFO - [Epoch 8/300][Batch 81/327] BatchTime = 0.835 (s) DataTime = 0.002 (s) Losses = ['5.1655'] lr = 0.000700
+2024-04-15 21:10:14,376 - pretrain - INFO - [Epoch 8/300][Batch 101/327] BatchTime = 0.809 (s) DataTime = 0.002 (s) Losses = ['4.6983'] lr = 0.000700
+2024-04-15 21:10:30,688 - pretrain - INFO - [Epoch 8/300][Batch 121/327] BatchTime = 0.806 (s) DataTime = 0.003 (s) Losses = ['5.8917'] lr = 0.000700
+2024-04-15 21:10:47,016 - pretrain - INFO - [Epoch 8/300][Batch 141/327] BatchTime = 0.857 (s) DataTime = 0.002 (s) Losses = ['5.2075'] lr = 0.000700
+2024-04-15 21:11:03,304 - pretrain - INFO - [Epoch 8/300][Batch 161/327] BatchTime = 0.776 (s) DataTime = 0.002 (s) Losses = ['5.7121'] lr = 0.000700
+2024-04-15 21:11:19,351 - pretrain - INFO - [Epoch 8/300][Batch 181/327] BatchTime = 0.810 (s) DataTime = 0.002 (s) Losses = ['5.7032'] lr = 0.000700
+2024-04-15 21:11:35,533 - pretrain - INFO - [Epoch 8/300][Batch 201/327] BatchTime = 0.790 (s) DataTime = 0.002 (s) Losses = ['5.5306'] lr = 0.000700
+2024-04-15 21:11:51,570 - pretrain - INFO - [Epoch 8/300][Batch 221/327] BatchTime = 0.780 (s) DataTime = 0.002 (s) Losses = ['5.0908'] lr = 0.000700
+2024-04-15 21:12:07,532 - pretrain - INFO - [Epoch 8/300][Batch 241/327] BatchTime = 0.799 (s) DataTime = 0.002 (s) Losses = ['5.7221'] lr = 0.000700
+2024-04-15 21:12:23,578 - pretrain - INFO - [Epoch 8/300][Batch 261/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['5.3842'] lr = 0.000700
+2024-04-15 21:12:39,810 - pretrain - INFO - [Epoch 8/300][Batch 281/327] BatchTime = 0.807 (s) DataTime = 0.003 (s) Losses = ['4.5097'] lr = 0.000700
+2024-04-15 21:12:55,851 - pretrain - INFO - [Epoch 8/300][Batch 301/327] BatchTime = 0.796 (s) DataTime = 0.002 (s) Losses = ['5.1795'] lr = 0.000700
+2024-04-15 21:13:12,217 - pretrain - INFO - [Epoch 8/300][Batch 321/327] BatchTime = 0.797 (s) DataTime = 0.002 (s) Losses = ['4.8288'] lr = 0.000700
+2024-04-15 21:13:17,168 - pretrain - INFO - [Training] EPOCH: 8 EpochTime = 265.129 (s) Losses = ['5.2760'] lr = 0.000800
+2024-04-15 21:13:17,168 - pretrain - INFO - [VALIDATION] Start validating epoch 8
+2024-04-15 21:14:16,845 - pretrain - INFO - [Validation] EPOCH: 8  acc = 0.6503
+2024-04-15 21:14:18,939 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 21:14:20,750 - pretrain - INFO - [Epoch 9/300][Batch 1/327] BatchTime = 1.809 (s) DataTime = 0.965 (s) Losses = ['5.2383'] lr = 0.000800
+2024-04-15 21:14:36,655 - pretrain - INFO - [Epoch 9/300][Batch 21/327] BatchTime = 0.784 (s) DataTime = 0.002 (s) Losses = ['5.3130'] lr = 0.000800
+2024-04-15 21:14:52,556 - pretrain - INFO - [Epoch 9/300][Batch 41/327] BatchTime = 0.815 (s) DataTime = 0.002 (s) Losses = ['4.8577'] lr = 0.000800
+2024-04-15 21:15:08,126 - pretrain - INFO - [Epoch 9/300][Batch 61/327] BatchTime = 0.770 (s) DataTime = 0.002 (s) Losses = ['5.7028'] lr = 0.000800
+2024-04-15 21:15:24,009 - pretrain - INFO - [Epoch 9/300][Batch 81/327] BatchTime = 0.784 (s) DataTime = 0.002 (s) Losses = ['5.1718'] lr = 0.000800
+2024-04-15 21:15:40,690 - pretrain - INFO - [Epoch 9/300][Batch 101/327] BatchTime = 0.797 (s) DataTime = 0.002 (s) Losses = ['5.4335'] lr = 0.000800
+2024-04-15 21:15:56,838 - pretrain - INFO - [Epoch 9/300][Batch 121/327] BatchTime = 0.799 (s) DataTime = 0.002 (s) Losses = ['6.2571'] lr = 0.000800
+2024-04-15 21:16:12,814 - pretrain - INFO - [Epoch 9/300][Batch 141/327] BatchTime = 0.805 (s) DataTime = 0.002 (s) Losses = ['5.7193'] lr = 0.000800
+2024-04-15 21:16:28,653 - pretrain - INFO - [Epoch 9/300][Batch 161/327] BatchTime = 0.817 (s) DataTime = 0.002 (s) Losses = ['5.6922'] lr = 0.000800
+2024-04-15 21:16:44,589 - pretrain - INFO - [Epoch 9/300][Batch 181/327] BatchTime = 0.770 (s) DataTime = 0.002 (s) Losses = ['4.9016'] lr = 0.000800
+2024-04-15 21:17:00,609 - pretrain - INFO - [Epoch 9/300][Batch 201/327] BatchTime = 0.789 (s) DataTime = 0.002 (s) Losses = ['5.2517'] lr = 0.000800
+2024-04-15 21:17:16,559 - pretrain - INFO - [Epoch 9/300][Batch 221/327] BatchTime = 0.818 (s) DataTime = 0.003 (s) Losses = ['4.6703'] lr = 0.000800
+2024-04-15 21:17:32,739 - pretrain - INFO - [Epoch 9/300][Batch 241/327] BatchTime = 0.786 (s) DataTime = 0.003 (s) Losses = ['4.6687'] lr = 0.000800
+2024-04-15 21:17:49,072 - pretrain - INFO - [Epoch 9/300][Batch 261/327] BatchTime = 0.876 (s) DataTime = 0.002 (s) Losses = ['4.4851'] lr = 0.000800
+2024-04-15 21:18:05,277 - pretrain - INFO - [Epoch 9/300][Batch 281/327] BatchTime = 0.789 (s) DataTime = 0.002 (s) Losses = ['5.2310'] lr = 0.000800
+2024-04-15 21:18:21,441 - pretrain - INFO - [Epoch 9/300][Batch 301/327] BatchTime = 0.814 (s) DataTime = 0.002 (s) Losses = ['5.4852'] lr = 0.000800
+2024-04-15 21:18:37,338 - pretrain - INFO - [Epoch 9/300][Batch 321/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['4.5137'] lr = 0.000800
+2024-04-15 21:18:42,315 - pretrain - INFO - [Training] EPOCH: 9 EpochTime = 263.374 (s) Losses = ['5.3167'] lr = 0.000900
+2024-04-15 21:18:42,316 - pretrain - INFO - [VALIDATION] Start validating epoch 9
+2024-04-15 21:19:38,227 - pretrain - INFO - [Validation] EPOCH: 9  acc = 0.7071
+2024-04-15 21:19:40,311 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 21:19:42,180 - pretrain - INFO - [Epoch 10/300][Batch 1/327] BatchTime = 1.866 (s) DataTime = 1.038 (s) Losses = ['5.1683'] lr = 0.000900
+2024-04-15 21:19:58,273 - pretrain - INFO - [Epoch 10/300][Batch 21/327] BatchTime = 0.795 (s) DataTime = 0.004 (s) Losses = ['5.7651'] lr = 0.000900
+2024-04-15 21:20:14,325 - pretrain - INFO - [Epoch 10/300][Batch 41/327] BatchTime = 0.793 (s) DataTime = 0.003 (s) Losses = ['4.7997'] lr = 0.000900
+2024-04-15 21:20:30,504 - pretrain - INFO - [Epoch 10/300][Batch 61/327] BatchTime = 0.816 (s) DataTime = 0.002 (s) Losses = ['5.9673'] lr = 0.000900
+2024-04-15 21:20:46,671 - pretrain - INFO - [Epoch 10/300][Batch 81/327] BatchTime = 0.836 (s) DataTime = 0.002 (s) Losses = ['5.8715'] lr = 0.000900
+2024-04-15 21:21:02,716 - pretrain - INFO - [Epoch 10/300][Batch 101/327] BatchTime = 0.797 (s) DataTime = 0.003 (s) Losses = ['6.0129'] lr = 0.000900
+2024-04-15 21:21:18,796 - pretrain - INFO - [Epoch 10/300][Batch 121/327] BatchTime = 0.806 (s) DataTime = 0.002 (s) Losses = ['5.5248'] lr = 0.000900
+2024-04-15 21:21:34,693 - pretrain - INFO - [Epoch 10/300][Batch 141/327] BatchTime = 0.790 (s) DataTime = 0.002 (s) Losses = ['4.8463'] lr = 0.000900
+2024-04-15 21:21:51,226 - pretrain - INFO - [Epoch 10/300][Batch 161/327] BatchTime = 0.843 (s) DataTime = 0.002 (s) Losses = ['5.6128'] lr = 0.000900
+2024-04-15 21:22:07,450 - pretrain - INFO - [Epoch 10/300][Batch 181/327] BatchTime = 0.780 (s) DataTime = 0.002 (s) Losses = ['5.3232'] lr = 0.000900
+2024-04-15 21:22:23,665 - pretrain - INFO - [Epoch 10/300][Batch 201/327] BatchTime = 0.869 (s) DataTime = 0.003 (s) Losses = ['4.5901'] lr = 0.000900
+2024-04-15 21:22:39,853 - pretrain - INFO - [Epoch 10/300][Batch 221/327] BatchTime = 0.796 (s) DataTime = 0.002 (s) Losses = ['5.6169'] lr = 0.000900
+2024-04-15 21:22:56,265 - pretrain - INFO - [Epoch 10/300][Batch 241/327] BatchTime = 0.838 (s) DataTime = 0.002 (s) Losses = ['5.0182'] lr = 0.000900
+2024-04-15 21:23:12,662 - pretrain - INFO - [Epoch 10/300][Batch 261/327] BatchTime = 0.821 (s) DataTime = 0.003 (s) Losses = ['5.4496'] lr = 0.000900
+2024-04-15 21:23:28,589 - pretrain - INFO - [Epoch 10/300][Batch 281/327] BatchTime = 0.807 (s) DataTime = 0.003 (s) Losses = ['5.2237'] lr = 0.000900
+2024-04-15 21:23:45,359 - pretrain - INFO - [Epoch 10/300][Batch 301/327] BatchTime = 0.803 (s) DataTime = 0.002 (s) Losses = ['4.8996'] lr = 0.000900
+2024-04-15 21:24:01,727 - pretrain - INFO - [Epoch 10/300][Batch 321/327] BatchTime = 0.834 (s) DataTime = 0.002 (s) Losses = ['5.2765'] lr = 0.000900
+2024-04-15 21:24:06,729 - pretrain - INFO - [Training] EPOCH: 10 EpochTime = 266.415 (s) Losses = ['5.3528'] lr = 0.000997
+2024-04-15 21:24:06,729 - pretrain - INFO - [VALIDATION] Start validating epoch 10
+2024-04-15 21:25:03,388 - pretrain - INFO - [Validation] EPOCH: 10  acc = 0.7261
+2024-04-15 21:25:05,515 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 21:25:07,615 - pretrain - INFO - [Epoch 11/300][Batch 1/327] BatchTime = 2.097 (s) DataTime = 1.281 (s) Losses = ['4.7736'] lr = 0.000997
+2024-04-15 21:25:23,505 - pretrain - INFO - [Epoch 11/300][Batch 21/327] BatchTime = 0.786 (s) DataTime = 0.002 (s) Losses = ['5.3685'] lr = 0.000997
+2024-04-15 21:25:39,497 - pretrain - INFO - [Epoch 11/300][Batch 41/327] BatchTime = 0.800 (s) DataTime = 0.003 (s) Losses = ['5.5914'] lr = 0.000997
+2024-04-15 21:25:55,398 - pretrain - INFO - [Epoch 11/300][Batch 61/327] BatchTime = 0.810 (s) DataTime = 0.002 (s) Losses = ['5.1805'] lr = 0.000997
+2024-04-15 21:26:11,175 - pretrain - INFO - [Epoch 11/300][Batch 81/327] BatchTime = 0.775 (s) DataTime = 0.002 (s) Losses = ['4.8406'] lr = 0.000997
+2024-04-15 21:26:27,319 - pretrain - INFO - [Epoch 11/300][Batch 101/327] BatchTime = 0.790 (s) DataTime = 0.002 (s) Losses = ['5.8235'] lr = 0.000997
+2024-04-15 21:26:43,413 - pretrain - INFO - [Epoch 11/300][Batch 121/327] BatchTime = 0.805 (s) DataTime = 0.002 (s) Losses = ['5.1589'] lr = 0.000997
+2024-04-15 21:26:59,805 - pretrain - INFO - [Epoch 11/300][Batch 141/327] BatchTime = 0.882 (s) DataTime = 0.002 (s) Losses = ['5.1776'] lr = 0.000997
+2024-04-15 21:27:15,986 - pretrain - INFO - [Epoch 11/300][Batch 161/327] BatchTime = 0.775 (s) DataTime = 0.002 (s) Losses = ['5.1620'] lr = 0.000997
+2024-04-15 21:27:31,981 - pretrain - INFO - [Epoch 11/300][Batch 181/327] BatchTime = 0.795 (s) DataTime = 0.002 (s) Losses = ['4.8071'] lr = 0.000997
+2024-04-15 21:27:48,191 - pretrain - INFO - [Epoch 11/300][Batch 201/327] BatchTime = 0.821 (s) DataTime = 0.003 (s) Losses = ['5.3816'] lr = 0.000997
+2024-04-15 21:28:04,260 - pretrain - INFO - [Epoch 11/300][Batch 221/327] BatchTime = 0.851 (s) DataTime = 0.002 (s) Losses = ['5.1804'] lr = 0.000997
+2024-04-15 21:28:20,662 - pretrain - INFO - [Epoch 11/300][Batch 241/327] BatchTime = 0.819 (s) DataTime = 0.003 (s) Losses = ['5.3873'] lr = 0.000997
+2024-04-15 21:28:36,779 - pretrain - INFO - [Epoch 11/300][Batch 261/327] BatchTime = 0.847 (s) DataTime = 0.003 (s) Losses = ['4.6126'] lr = 0.000997
+2024-04-15 21:28:52,791 - pretrain - INFO - [Epoch 11/300][Batch 281/327] BatchTime = 0.779 (s) DataTime = 0.002 (s) Losses = ['6.2785'] lr = 0.000997
+2024-04-15 21:29:08,758 - pretrain - INFO - [Epoch 11/300][Batch 301/327] BatchTime = 0.802 (s) DataTime = 0.002 (s) Losses = ['5.5357'] lr = 0.000997
+2024-04-15 21:29:25,087 - pretrain - INFO - [Epoch 11/300][Batch 321/327] BatchTime = 0.816 (s) DataTime = 0.002 (s) Losses = ['4.5264'] lr = 0.000997
+2024-04-15 21:29:30,005 - pretrain - INFO - [Training] EPOCH: 11 EpochTime = 264.487 (s) Losses = ['5.2522'] lr = 0.000997
+2024-04-15 21:29:30,005 - pretrain - INFO - [VALIDATION] Start validating epoch 11
+2024-04-15 21:30:25,771 - pretrain - INFO - [Validation] EPOCH: 11  acc = 0.7447
+2024-04-15 21:30:27,845 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 21:30:29,633 - pretrain - INFO - [Epoch 12/300][Batch 1/327] BatchTime = 1.785 (s) DataTime = 0.930 (s) Losses = ['4.9908'] lr = 0.000997
+2024-04-15 21:30:45,948 - pretrain - INFO - [Epoch 12/300][Batch 21/327] BatchTime = 0.811 (s) DataTime = 0.002 (s) Losses = ['5.3545'] lr = 0.000997
+2024-04-15 21:31:02,022 - pretrain - INFO - [Epoch 12/300][Batch 41/327] BatchTime = 0.782 (s) DataTime = 0.002 (s) Losses = ['5.0248'] lr = 0.000997
+2024-04-15 21:31:18,233 - pretrain - INFO - [Epoch 12/300][Batch 61/327] BatchTime = 0.777 (s) DataTime = 0.002 (s) Losses = ['5.4585'] lr = 0.000997
+2024-04-15 21:31:34,631 - pretrain - INFO - [Epoch 12/300][Batch 81/327] BatchTime = 0.882 (s) DataTime = 0.002 (s) Losses = ['4.7534'] lr = 0.000997
+2024-04-15 21:31:50,685 - pretrain - INFO - [Epoch 12/300][Batch 101/327] BatchTime = 0.818 (s) DataTime = 0.002 (s) Losses = ['4.9907'] lr = 0.000997
+2024-04-15 21:32:06,831 - pretrain - INFO - [Epoch 12/300][Batch 121/327] BatchTime = 0.790 (s) DataTime = 0.002 (s) Losses = ['5.1175'] lr = 0.000997
+2024-04-15 21:32:23,016 - pretrain - INFO - [Epoch 12/300][Batch 141/327] BatchTime = 0.805 (s) DataTime = 0.002 (s) Losses = ['5.1060'] lr = 0.000997
+2024-04-15 21:32:39,253 - pretrain - INFO - [Epoch 12/300][Batch 161/327] BatchTime = 0.909 (s) DataTime = 0.002 (s) Losses = ['4.8443'] lr = 0.000997
+2024-04-15 21:32:55,893 - pretrain - INFO - [Epoch 12/300][Batch 181/327] BatchTime = 0.791 (s) DataTime = 0.002 (s) Losses = ['5.1791'] lr = 0.000997
+2024-04-15 21:33:11,956 - pretrain - INFO - [Epoch 12/300][Batch 201/327] BatchTime = 0.801 (s) DataTime = 0.002 (s) Losses = ['5.0100'] lr = 0.000997
+2024-04-15 21:33:28,183 - pretrain - INFO - [Epoch 12/300][Batch 221/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['4.5827'] lr = 0.000997
+2024-04-15 21:33:44,260 - pretrain - INFO - [Epoch 12/300][Batch 241/327] BatchTime = 0.817 (s) DataTime = 0.002 (s) Losses = ['5.2436'] lr = 0.000997
+2024-04-15 21:34:00,360 - pretrain - INFO - [Epoch 12/300][Batch 261/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['5.3327'] lr = 0.000997
+2024-04-15 21:34:16,937 - pretrain - INFO - [Epoch 12/300][Batch 281/327] BatchTime = 0.838 (s) DataTime = 0.002 (s) Losses = ['4.8769'] lr = 0.000997
+2024-04-15 21:34:33,068 - pretrain - INFO - [Epoch 12/300][Batch 301/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['4.9288'] lr = 0.000997
+2024-04-15 21:34:49,045 - pretrain - INFO - [Epoch 12/300][Batch 321/327] BatchTime = 0.822 (s) DataTime = 0.002 (s) Losses = ['4.8414'] lr = 0.000997
+2024-04-15 21:34:53,967 - pretrain - INFO - [Training] EPOCH: 12 EpochTime = 266.119 (s) Losses = ['4.9130'] lr = 0.000996
+2024-04-15 21:34:53,968 - pretrain - INFO - [VALIDATION] Start validating epoch 12
+2024-04-15 21:35:49,296 - pretrain - INFO - [Validation] EPOCH: 12  acc = 0.7666
+2024-04-15 21:35:51,367 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 21:35:53,653 - pretrain - INFO - [Epoch 13/300][Batch 1/327] BatchTime = 2.284 (s) DataTime = 1.385 (s) Losses = ['4.5445'] lr = 0.000996
+2024-04-15 21:36:10,128 - pretrain - INFO - [Epoch 13/300][Batch 21/327] BatchTime = 0.798 (s) DataTime = 0.002 (s) Losses = ['4.2262'] lr = 0.000996
+2024-04-15 21:36:26,223 - pretrain - INFO - [Epoch 13/300][Batch 41/327] BatchTime = 0.791 (s) DataTime = 0.002 (s) Losses = ['5.0703'] lr = 0.000996
+2024-04-15 21:36:42,150 - pretrain - INFO - [Epoch 13/300][Batch 61/327] BatchTime = 0.795 (s) DataTime = 0.002 (s) Losses = ['4.8434'] lr = 0.000996
+2024-04-15 21:36:58,153 - pretrain - INFO - [Epoch 13/300][Batch 81/327] BatchTime = 0.876 (s) DataTime = 0.003 (s) Losses = ['4.8000'] lr = 0.000996
+2024-04-15 21:37:14,570 - pretrain - INFO - [Epoch 13/300][Batch 101/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['4.4718'] lr = 0.000996
+2024-04-15 21:37:30,604 - pretrain - INFO - [Epoch 13/300][Batch 121/327] BatchTime = 0.836 (s) DataTime = 0.002 (s) Losses = ['4.5466'] lr = 0.000996
+2024-04-15 21:37:46,723 - pretrain - INFO - [Epoch 13/300][Batch 141/327] BatchTime = 0.799 (s) DataTime = 0.002 (s) Losses = ['4.9519'] lr = 0.000996
+2024-04-15 21:38:03,047 - pretrain - INFO - [Epoch 13/300][Batch 161/327] BatchTime = 0.776 (s) DataTime = 0.002 (s) Losses = ['4.6442'] lr = 0.000996
+2024-04-15 21:38:18,849 - pretrain - INFO - [Epoch 13/300][Batch 181/327] BatchTime = 0.791 (s) DataTime = 0.002 (s) Losses = ['4.8748'] lr = 0.000996
+2024-04-15 21:38:34,842 - pretrain - INFO - [Epoch 13/300][Batch 201/327] BatchTime = 0.810 (s) DataTime = 0.002 (s) Losses = ['4.7140'] lr = 0.000996
+2024-04-15 21:38:51,159 - pretrain - INFO - [Epoch 13/300][Batch 221/327] BatchTime = 0.840 (s) DataTime = 0.004 (s) Losses = ['5.1688'] lr = 0.000996
+2024-04-15 21:39:07,399 - pretrain - INFO - [Epoch 13/300][Batch 241/327] BatchTime = 0.820 (s) DataTime = 0.002 (s) Losses = ['4.6328'] lr = 0.000996
+2024-04-15 21:39:23,475 - pretrain - INFO - [Epoch 13/300][Batch 261/327] BatchTime = 0.814 (s) DataTime = 0.002 (s) Losses = ['4.5784'] lr = 0.000996
+2024-04-15 21:39:39,459 - pretrain - INFO - [Epoch 13/300][Batch 281/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['4.3864'] lr = 0.000996
+2024-04-15 21:39:55,618 - pretrain - INFO - [Epoch 13/300][Batch 301/327] BatchTime = 0.848 (s) DataTime = 0.002 (s) Losses = ['4.5356'] lr = 0.000996
+2024-04-15 21:40:11,722 - pretrain - INFO - [Epoch 13/300][Batch 321/327] BatchTime = 0.794 (s) DataTime = 0.002 (s) Losses = ['4.4591'] lr = 0.000996
+2024-04-15 21:40:16,772 - pretrain - INFO - [Training] EPOCH: 13 EpochTime = 265.403 (s) Losses = ['4.7772'] lr = 0.000995
+2024-04-15 21:40:16,775 - pretrain - INFO - [VALIDATION] Start validating epoch 13
+2024-04-15 21:41:13,248 - pretrain - INFO - [Validation] EPOCH: 13  acc = 0.7909
+2024-04-15 21:41:15,335 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-best.pth
+2024-04-15 21:41:17,445 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 21:41:19,366 - pretrain - INFO - [Epoch 14/300][Batch 1/327] BatchTime = 1.918 (s) DataTime = 1.079 (s) Losses = ['4.6939'] lr = 0.000995
+2024-04-15 21:41:35,529 - pretrain - INFO - [Epoch 14/300][Batch 21/327] BatchTime = 0.785 (s) DataTime = 0.003 (s) Losses = ['4.5600'] lr = 0.000995
+2024-04-15 21:41:51,679 - pretrain - INFO - [Epoch 14/300][Batch 41/327] BatchTime = 0.794 (s) DataTime = 0.002 (s) Losses = ['4.8364'] lr = 0.000995
+2024-04-15 21:42:08,005 - pretrain - INFO - [Epoch 14/300][Batch 61/327] BatchTime = 0.814 (s) DataTime = 0.002 (s) Losses = ['4.6037'] lr = 0.000995
+2024-04-15 21:42:23,961 - pretrain - INFO - [Epoch 14/300][Batch 81/327] BatchTime = 0.789 (s) DataTime = 0.002 (s) Losses = ['4.4684'] lr = 0.000995
+2024-04-15 21:42:40,305 - pretrain - INFO - [Epoch 14/300][Batch 101/327] BatchTime = 0.772 (s) DataTime = 0.002 (s) Losses = ['5.2200'] lr = 0.000995
+2024-04-15 21:42:56,212 - pretrain - INFO - [Epoch 14/300][Batch 121/327] BatchTime = 0.880 (s) DataTime = 0.002 (s) Losses = ['4.7114'] lr = 0.000995
+2024-04-15 21:43:12,326 - pretrain - INFO - [Epoch 14/300][Batch 141/327] BatchTime = 0.772 (s) DataTime = 0.002 (s) Losses = ['4.9032'] lr = 0.000995
+2024-04-15 21:43:28,533 - pretrain - INFO - [Epoch 14/300][Batch 161/327] BatchTime = 0.800 (s) DataTime = 0.002 (s) Losses = ['4.5195'] lr = 0.000995
+2024-04-15 21:43:44,781 - pretrain - INFO - [Epoch 14/300][Batch 181/327] BatchTime = 0.844 (s) DataTime = 0.002 (s) Losses = ['4.5758'] lr = 0.000995
+2024-04-15 21:44:01,142 - pretrain - INFO - [Epoch 14/300][Batch 201/327] BatchTime = 0.806 (s) DataTime = 0.002 (s) Losses = ['5.8567'] lr = 0.000995
+2024-04-15 21:44:17,603 - pretrain - INFO - [Epoch 14/300][Batch 221/327] BatchTime = 0.800 (s) DataTime = 0.002 (s) Losses = ['4.5432'] lr = 0.000995
+2024-04-15 21:44:33,869 - pretrain - INFO - [Epoch 14/300][Batch 241/327] BatchTime = 0.805 (s) DataTime = 0.004 (s) Losses = ['5.1603'] lr = 0.000995
+2024-04-15 21:44:50,200 - pretrain - INFO - [Epoch 14/300][Batch 261/327] BatchTime = 0.798 (s) DataTime = 0.002 (s) Losses = ['4.6900'] lr = 0.000995
+2024-04-15 21:45:06,281 - pretrain - INFO - [Epoch 14/300][Batch 281/327] BatchTime = 0.799 (s) DataTime = 0.002 (s) Losses = ['4.6416'] lr = 0.000995
+2024-04-15 21:45:22,381 - pretrain - INFO - [Epoch 14/300][Batch 301/327] BatchTime = 0.790 (s) DataTime = 0.002 (s) Losses = ['5.0592'] lr = 0.000995
+2024-04-15 21:45:38,625 - pretrain - INFO - [Epoch 14/300][Batch 321/327] BatchTime = 0.842 (s) DataTime = 0.005 (s) Losses = ['4.3367'] lr = 0.000995
+2024-04-15 21:45:43,954 - pretrain - INFO - [Training] EPOCH: 14 EpochTime = 266.505 (s) Losses = ['4.6959'] lr = 0.000995
+2024-04-15 21:45:43,954 - pretrain - INFO - [VALIDATION] Start validating epoch 14
+2024-04-15 21:46:38,104 - pretrain - INFO - [Validation] EPOCH: 14  acc = 0.7970
+2024-04-15 21:46:40,119 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-best.pth
+2024-04-15 21:46:42,260 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 21:46:44,131 - pretrain - INFO - [Epoch 15/300][Batch 1/327] BatchTime = 1.867 (s) DataTime = 1.013 (s) Losses = ['4.8327'] lr = 0.000995
+2024-04-15 21:47:00,054 - pretrain - INFO - [Epoch 15/300][Batch 21/327] BatchTime = 0.796 (s) DataTime = 0.002 (s) Losses = ['4.2590'] lr = 0.000995
+2024-04-15 21:47:15,863 - pretrain - INFO - [Epoch 15/300][Batch 41/327] BatchTime = 0.799 (s) DataTime = 0.002 (s) Losses = ['4.8019'] lr = 0.000995
+2024-04-15 21:47:31,782 - pretrain - INFO - [Epoch 15/300][Batch 61/327] BatchTime = 0.794 (s) DataTime = 0.002 (s) Losses = ['4.6888'] lr = 0.000995
+2024-04-15 21:47:47,475 - pretrain - INFO - [Epoch 15/300][Batch 81/327] BatchTime = 0.800 (s) DataTime = 0.008 (s) Losses = ['4.6103'] lr = 0.000995
+2024-04-15 21:48:03,602 - pretrain - INFO - [Epoch 15/300][Batch 101/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['4.2548'] lr = 0.000995
+2024-04-15 21:48:19,663 - pretrain - INFO - [Epoch 15/300][Batch 121/327] BatchTime = 0.834 (s) DataTime = 0.002 (s) Losses = ['4.4562'] lr = 0.000995
+2024-04-15 21:48:35,670 - pretrain - INFO - [Epoch 15/300][Batch 141/327] BatchTime = 0.811 (s) DataTime = 0.003 (s) Losses = ['4.4385'] lr = 0.000995
+2024-04-15 21:48:52,064 - pretrain - INFO - [Epoch 15/300][Batch 161/327] BatchTime = 0.795 (s) DataTime = 0.002 (s) Losses = ['4.2850'] lr = 0.000995
+2024-04-15 21:49:07,905 - pretrain - INFO - [Epoch 15/300][Batch 181/327] BatchTime = 0.791 (s) DataTime = 0.002 (s) Losses = ['4.5657'] lr = 0.000995
+2024-04-15 21:49:24,074 - pretrain - INFO - [Epoch 15/300][Batch 201/327] BatchTime = 0.798 (s) DataTime = 0.003 (s) Losses = ['4.5536'] lr = 0.000995
+2024-04-15 21:49:40,034 - pretrain - INFO - [Epoch 15/300][Batch 221/327] BatchTime = 0.816 (s) DataTime = 0.003 (s) Losses = ['4.4163'] lr = 0.000995
+2024-04-15 21:49:56,244 - pretrain - INFO - [Epoch 15/300][Batch 241/327] BatchTime = 0.815 (s) DataTime = 0.002 (s) Losses = ['4.6436'] lr = 0.000995
+2024-04-15 21:50:12,398 - pretrain - INFO - [Epoch 15/300][Batch 261/327] BatchTime = 0.801 (s) DataTime = 0.002 (s) Losses = ['4.3615'] lr = 0.000995
+2024-04-15 21:50:28,514 - pretrain - INFO - [Epoch 15/300][Batch 281/327] BatchTime = 0.790 (s) DataTime = 0.002 (s) Losses = ['3.9831'] lr = 0.000995
+2024-04-15 21:50:44,547 - pretrain - INFO - [Epoch 15/300][Batch 301/327] BatchTime = 0.833 (s) DataTime = 0.004 (s) Losses = ['4.3502'] lr = 0.000995
+2024-04-15 21:51:00,514 - pretrain - INFO - [Epoch 15/300][Batch 321/327] BatchTime = 0.791 (s) DataTime = 0.002 (s) Losses = ['5.1102'] lr = 0.000995
+2024-04-15 21:51:05,464 - pretrain - INFO - [Training] EPOCH: 15 EpochTime = 263.200 (s) Losses = ['4.5630'] lr = 0.000994
+2024-04-15 21:51:05,464 - pretrain - INFO - [VALIDATION] Start validating epoch 15
+2024-04-15 21:51:58,964 - pretrain - INFO - [Validation] EPOCH: 15  acc = 0.8015
+2024-04-15 21:52:01,123 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-best.pth
+2024-04-15 21:52:03,226 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 21:52:05,125 - pretrain - INFO - [Epoch 16/300][Batch 1/327] BatchTime = 1.895 (s) DataTime = 1.084 (s) Losses = ['4.4501'] lr = 0.000994
+2024-04-15 21:52:21,325 - pretrain - INFO - [Epoch 16/300][Batch 21/327] BatchTime = 0.790 (s) DataTime = 0.002 (s) Losses = ['4.7253'] lr = 0.000994
+2024-04-15 21:52:37,656 - pretrain - INFO - [Epoch 16/300][Batch 41/327] BatchTime = 0.849 (s) DataTime = 0.002 (s) Losses = ['4.6156'] lr = 0.000994
+2024-04-15 21:52:53,693 - pretrain - INFO - [Epoch 16/300][Batch 61/327] BatchTime = 0.812 (s) DataTime = 0.003 (s) Losses = ['4.6626'] lr = 0.000994
+2024-04-15 21:53:09,933 - pretrain - INFO - [Epoch 16/300][Batch 81/327] BatchTime = 0.807 (s) DataTime = 0.003 (s) Losses = ['4.5064'] lr = 0.000994
+2024-04-15 21:53:25,963 - pretrain - INFO - [Epoch 16/300][Batch 101/327] BatchTime = 0.816 (s) DataTime = 0.002 (s) Losses = ['3.9848'] lr = 0.000994
+2024-04-15 21:53:41,952 - pretrain - INFO - [Epoch 16/300][Batch 121/327] BatchTime = 0.809 (s) DataTime = 0.002 (s) Losses = ['3.9569'] lr = 0.000994
+2024-04-15 21:53:58,142 - pretrain - INFO - [Epoch 16/300][Batch 141/327] BatchTime = 0.796 (s) DataTime = 0.002 (s) Losses = ['4.4938'] lr = 0.000994
+2024-04-15 21:54:14,191 - pretrain - INFO - [Epoch 16/300][Batch 161/327] BatchTime = 0.806 (s) DataTime = 0.002 (s) Losses = ['3.8081'] lr = 0.000994
+2024-04-15 21:54:30,681 - pretrain - INFO - [Epoch 16/300][Batch 181/327] BatchTime = 0.818 (s) DataTime = 0.002 (s) Losses = ['4.3374'] lr = 0.000994
+2024-04-15 21:54:46,776 - pretrain - INFO - [Epoch 16/300][Batch 201/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['4.6865'] lr = 0.000994
+2024-04-15 21:55:03,187 - pretrain - INFO - [Epoch 16/300][Batch 221/327] BatchTime = 0.866 (s) DataTime = 0.002 (s) Losses = ['4.5142'] lr = 0.000994
+2024-04-15 21:55:19,267 - pretrain - INFO - [Epoch 16/300][Batch 241/327] BatchTime = 0.777 (s) DataTime = 0.002 (s) Losses = ['4.1371'] lr = 0.000994
+2024-04-15 21:55:35,411 - pretrain - INFO - [Epoch 16/300][Batch 261/327] BatchTime = 0.853 (s) DataTime = 0.002 (s) Losses = ['4.1196'] lr = 0.000994
+2024-04-15 21:55:51,679 - pretrain - INFO - [Epoch 16/300][Batch 281/327] BatchTime = 0.818 (s) DataTime = 0.007 (s) Losses = ['4.7367'] lr = 0.000994
+2024-04-15 21:56:07,794 - pretrain - INFO - [Epoch 16/300][Batch 301/327] BatchTime = 0.809 (s) DataTime = 0.003 (s) Losses = ['4.4403'] lr = 0.000994
+2024-04-15 21:56:24,054 - pretrain - INFO - [Epoch 16/300][Batch 321/327] BatchTime = 0.790 (s) DataTime = 0.002 (s) Losses = ['4.8137'] lr = 0.000994
+2024-04-15 21:56:29,004 - pretrain - INFO - [Training] EPOCH: 16 EpochTime = 265.775 (s) Losses = ['4.4144'] lr = 0.000993
+2024-04-15 21:56:29,004 - pretrain - INFO - [VALIDATION] Start validating epoch 16
+2024-04-15 21:57:20,480 - pretrain - INFO - [Validation] EPOCH: 16  acc = 0.8100
+2024-04-15 21:57:22,534 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-best.pth
+2024-04-15 21:57:24,611 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 21:57:26,400 - pretrain - INFO - [Epoch 17/300][Batch 1/327] BatchTime = 1.786 (s) DataTime = 0.945 (s) Losses = ['4.5277'] lr = 0.000993
+2024-04-15 21:57:42,214 - pretrain - INFO - [Epoch 17/300][Batch 21/327] BatchTime = 0.786 (s) DataTime = 0.001 (s) Losses = ['4.3375'] lr = 0.000993
+2024-04-15 21:57:58,347 - pretrain - INFO - [Epoch 17/300][Batch 41/327] BatchTime = 0.799 (s) DataTime = 0.002 (s) Losses = ['4.1223'] lr = 0.000993
+2024-04-15 21:58:14,789 - pretrain - INFO - [Epoch 17/300][Batch 61/327] BatchTime = 0.817 (s) DataTime = 0.003 (s) Losses = ['4.3441'] lr = 0.000993
+2024-04-15 21:58:30,885 - pretrain - INFO - [Epoch 17/300][Batch 81/327] BatchTime = 0.808 (s) DataTime = 0.002 (s) Losses = ['4.6348'] lr = 0.000993
+2024-04-15 21:58:46,961 - pretrain - INFO - [Epoch 17/300][Batch 101/327] BatchTime = 0.818 (s) DataTime = 0.002 (s) Losses = ['3.5732'] lr = 0.000993
+2024-04-15 21:59:03,154 - pretrain - INFO - [Epoch 17/300][Batch 121/327] BatchTime = 0.797 (s) DataTime = 0.002 (s) Losses = ['4.0675'] lr = 0.000993
+2024-04-15 21:59:19,413 - pretrain - INFO - [Epoch 17/300][Batch 141/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['4.1050'] lr = 0.000993
+2024-04-15 21:59:35,472 - pretrain - INFO - [Epoch 17/300][Batch 161/327] BatchTime = 0.803 (s) DataTime = 0.002 (s) Losses = ['4.6030'] lr = 0.000993
+2024-04-15 21:59:52,004 - pretrain - INFO - [Epoch 17/300][Batch 181/327] BatchTime = 0.793 (s) DataTime = 0.003 (s) Losses = ['4.3001'] lr = 0.000993
+2024-04-15 22:00:08,289 - pretrain - INFO - [Epoch 17/300][Batch 201/327] BatchTime = 0.861 (s) DataTime = 0.003 (s) Losses = ['4.5367'] lr = 0.000993
+2024-04-15 22:00:24,373 - pretrain - INFO - [Epoch 17/300][Batch 221/327] BatchTime = 0.802 (s) DataTime = 0.002 (s) Losses = ['4.0608'] lr = 0.000993
+2024-04-15 22:00:40,362 - pretrain - INFO - [Epoch 17/300][Batch 241/327] BatchTime = 0.775 (s) DataTime = 0.002 (s) Losses = ['4.2862'] lr = 0.000993
+2024-04-15 22:00:56,510 - pretrain - INFO - [Epoch 17/300][Batch 261/327] BatchTime = 0.813 (s) DataTime = 0.002 (s) Losses = ['4.5350'] lr = 0.000993
+2024-04-15 22:01:12,657 - pretrain - INFO - [Epoch 17/300][Batch 281/327] BatchTime = 0.831 (s) DataTime = 0.002 (s) Losses = ['4.4671'] lr = 0.000993
+2024-04-15 22:01:28,740 - pretrain - INFO - [Epoch 17/300][Batch 301/327] BatchTime = 0.795 (s) DataTime = 0.002 (s) Losses = ['4.6172'] lr = 0.000993
+2024-04-15 22:01:45,126 - pretrain - INFO - [Epoch 17/300][Batch 321/327] BatchTime = 0.898 (s) DataTime = 0.002 (s) Losses = ['4.1022'] lr = 0.000993
+2024-04-15 22:01:50,069 - pretrain - INFO - [Training] EPOCH: 17 EpochTime = 265.456 (s) Losses = ['4.3195'] lr = 0.000992
+2024-04-15 22:01:50,070 - pretrain - INFO - [VALIDATION] Start validating epoch 17
+2024-04-15 22:02:42,695 - pretrain - INFO - [Validation] EPOCH: 17  acc = 0.8205
+2024-04-15 22:02:44,775 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-best.pth
+2024-04-15 22:02:46,944 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 22:02:48,828 - pretrain - INFO - [Epoch 18/300][Batch 1/327] BatchTime = 1.881 (s) DataTime = 1.041 (s) Losses = ['4.3041'] lr = 0.000992
+2024-04-15 22:03:04,586 - pretrain - INFO - [Epoch 18/300][Batch 21/327] BatchTime = 0.790 (s) DataTime = 0.002 (s) Losses = ['4.6415'] lr = 0.000992
+2024-04-15 22:03:20,409 - pretrain - INFO - [Epoch 18/300][Batch 41/327] BatchTime = 0.786 (s) DataTime = 0.002 (s) Losses = ['4.3488'] lr = 0.000992
+2024-04-15 22:03:36,158 - pretrain - INFO - [Epoch 18/300][Batch 61/327] BatchTime = 0.791 (s) DataTime = 0.002 (s) Losses = ['4.1867'] lr = 0.000992
+2024-04-15 22:03:52,045 - pretrain - INFO - [Epoch 18/300][Batch 81/327] BatchTime = 0.807 (s) DataTime = 0.002 (s) Losses = ['4.7857'] lr = 0.000992
+2024-04-15 22:04:08,293 - pretrain - INFO - [Epoch 18/300][Batch 101/327] BatchTime = 0.782 (s) DataTime = 0.002 (s) Losses = ['4.2581'] lr = 0.000992
+2024-04-15 22:04:24,323 - pretrain - INFO - [Epoch 18/300][Batch 121/327] BatchTime = 0.784 (s) DataTime = 0.002 (s) Losses = ['4.5743'] lr = 0.000992
+2024-04-15 22:04:41,164 - pretrain - INFO - [Epoch 18/300][Batch 141/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['4.1927'] lr = 0.000992
+2024-04-15 22:04:57,167 - pretrain - INFO - [Epoch 18/300][Batch 161/327] BatchTime = 0.798 (s) DataTime = 0.002 (s) Losses = ['4.1883'] lr = 0.000992
+2024-04-15 22:05:13,135 - pretrain - INFO - [Epoch 18/300][Batch 181/327] BatchTime = 0.820 (s) DataTime = 0.002 (s) Losses = ['4.3694'] lr = 0.000992
+2024-04-15 22:05:29,021 - pretrain - INFO - [Epoch 18/300][Batch 201/327] BatchTime = 0.823 (s) DataTime = 0.002 (s) Losses = ['4.0601'] lr = 0.000992
+2024-04-15 22:05:44,956 - pretrain - INFO - [Epoch 18/300][Batch 221/327] BatchTime = 0.784 (s) DataTime = 0.002 (s) Losses = ['4.3165'] lr = 0.000992
+2024-04-15 22:06:00,930 - pretrain - INFO - [Epoch 18/300][Batch 241/327] BatchTime = 0.857 (s) DataTime = 0.002 (s) Losses = ['4.0956'] lr = 0.000992
+2024-04-15 22:06:17,537 - pretrain - INFO - [Epoch 18/300][Batch 261/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['4.1588'] lr = 0.000992
+2024-04-15 22:06:33,624 - pretrain - INFO - [Epoch 18/300][Batch 281/327] BatchTime = 0.787 (s) DataTime = 0.002 (s) Losses = ['4.2703'] lr = 0.000992
+2024-04-15 22:06:49,833 - pretrain - INFO - [Epoch 18/300][Batch 301/327] BatchTime = 0.784 (s) DataTime = 0.002 (s) Losses = ['4.3363'] lr = 0.000992
+2024-04-15 22:07:06,131 - pretrain - INFO - [Epoch 18/300][Batch 321/327] BatchTime = 0.823 (s) DataTime = 0.002 (s) Losses = ['4.3079'] lr = 0.000992
+2024-04-15 22:07:11,197 - pretrain - INFO - [Training] EPOCH: 18 EpochTime = 264.250 (s) Losses = ['4.2012'] lr = 0.000991
+2024-04-15 22:07:11,198 - pretrain - INFO - [VALIDATION] Start validating epoch 18
+2024-04-15 22:08:02,569 - pretrain - INFO - [Validation] EPOCH: 18  acc = 0.8298
+2024-04-15 22:08:04,581 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-best.pth
+2024-04-15 22:08:06,699 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 22:08:08,511 - pretrain - INFO - [Epoch 19/300][Batch 1/327] BatchTime = 1.809 (s) DataTime = 0.963 (s) Losses = ['4.0867'] lr = 0.000991
+2024-04-15 22:08:24,528 - pretrain - INFO - [Epoch 19/300][Batch 21/327] BatchTime = 0.793 (s) DataTime = 0.004 (s) Losses = ['4.4983'] lr = 0.000991
+2024-04-15 22:08:40,337 - pretrain - INFO - [Epoch 19/300][Batch 41/327] BatchTime = 0.806 (s) DataTime = 0.002 (s) Losses = ['4.3770'] lr = 0.000991
+2024-04-15 22:08:56,289 - pretrain - INFO - [Epoch 19/300][Batch 61/327] BatchTime = 0.786 (s) DataTime = 0.002 (s) Losses = ['4.6248'] lr = 0.000991
+2024-04-15 22:09:12,728 - pretrain - INFO - [Epoch 19/300][Batch 81/327] BatchTime = 0.821 (s) DataTime = 0.002 (s) Losses = ['4.6658'] lr = 0.000991
+2024-04-15 22:09:29,128 - pretrain - INFO - [Epoch 19/300][Batch 101/327] BatchTime = 0.875 (s) DataTime = 0.002 (s) Losses = ['4.2392'] lr = 0.000991
+2024-04-15 22:09:45,415 - pretrain - INFO - [Epoch 19/300][Batch 121/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['4.4102'] lr = 0.000991
+2024-04-15 22:10:01,354 - pretrain - INFO - [Epoch 19/300][Batch 141/327] BatchTime = 0.797 (s) DataTime = 0.003 (s) Losses = ['4.2589'] lr = 0.000991
+2024-04-15 22:10:17,406 - pretrain - INFO - [Epoch 19/300][Batch 161/327] BatchTime = 0.791 (s) DataTime = 0.002 (s) Losses = ['4.3579'] lr = 0.000991
+2024-04-15 22:10:33,386 - pretrain - INFO - [Epoch 19/300][Batch 181/327] BatchTime = 0.802 (s) DataTime = 0.003 (s) Losses = ['3.8870'] lr = 0.000991
+2024-04-15 22:10:49,693 - pretrain - INFO - [Epoch 19/300][Batch 201/327] BatchTime = 0.800 (s) DataTime = 0.002 (s) Losses = ['4.0983'] lr = 0.000991
+2024-04-15 22:11:05,739 - pretrain - INFO - [Epoch 19/300][Batch 221/327] BatchTime = 0.800 (s) DataTime = 0.002 (s) Losses = ['4.1601'] lr = 0.000991
+2024-04-15 22:11:21,803 - pretrain - INFO - [Epoch 19/300][Batch 241/327] BatchTime = 0.796 (s) DataTime = 0.002 (s) Losses = ['3.9152'] lr = 0.000991
+2024-04-15 22:11:37,852 - pretrain - INFO - [Epoch 19/300][Batch 261/327] BatchTime = 0.805 (s) DataTime = 0.003 (s) Losses = ['3.4406'] lr = 0.000991
+2024-04-15 22:11:53,939 - pretrain - INFO - [Epoch 19/300][Batch 281/327] BatchTime = 0.812 (s) DataTime = 0.002 (s) Losses = ['4.3518'] lr = 0.000991
+2024-04-15 22:12:10,629 - pretrain - INFO - [Epoch 19/300][Batch 301/327] BatchTime = 0.801 (s) DataTime = 0.002 (s) Losses = ['4.1541'] lr = 0.000991
+2024-04-15 22:12:27,075 - pretrain - INFO - [Epoch 19/300][Batch 321/327] BatchTime = 0.791 (s) DataTime = 0.002 (s) Losses = ['4.8160'] lr = 0.000991
+2024-04-15 22:12:32,050 - pretrain - INFO - [Training] EPOCH: 19 EpochTime = 265.347 (s) Losses = ['4.1072'] lr = 0.000990
+2024-04-15 22:12:32,051 - pretrain - INFO - [VALIDATION] Start validating epoch 19
+2024-04-15 22:13:23,546 - pretrain - INFO - [Validation] EPOCH: 19  acc = 0.8432
+2024-04-15 22:13:25,745 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-best.pth
+2024-04-15 22:13:27,830 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 22:13:29,758 - pretrain - INFO - [Epoch 20/300][Batch 1/327] BatchTime = 1.923 (s) DataTime = 1.107 (s) Losses = ['3.5265'] lr = 0.000990
+2024-04-15 22:13:45,596 - pretrain - INFO - [Epoch 20/300][Batch 21/327] BatchTime = 0.810 (s) DataTime = 0.003 (s) Losses = ['3.7642'] lr = 0.000990
+2024-04-15 22:14:01,607 - pretrain - INFO - [Epoch 20/300][Batch 41/327] BatchTime = 0.775 (s) DataTime = 0.002 (s) Losses = ['4.5085'] lr = 0.000990
+2024-04-15 22:14:17,752 - pretrain - INFO - [Epoch 20/300][Batch 61/327] BatchTime = 0.803 (s) DataTime = 0.002 (s) Losses = ['3.7798'] lr = 0.000990
+2024-04-15 22:14:33,590 - pretrain - INFO - [Epoch 20/300][Batch 81/327] BatchTime = 0.794 (s) DataTime = 0.002 (s) Losses = ['4.6880'] lr = 0.000990
+2024-04-15 22:14:49,841 - pretrain - INFO - [Epoch 20/300][Batch 101/327] BatchTime = 0.807 (s) DataTime = 0.002 (s) Losses = ['3.7438'] lr = 0.000990
+2024-04-15 22:15:05,910 - pretrain - INFO - [Epoch 20/300][Batch 121/327] BatchTime = 0.790 (s) DataTime = 0.002 (s) Losses = ['3.8017'] lr = 0.000990
+2024-04-15 22:15:21,997 - pretrain - INFO - [Epoch 20/300][Batch 141/327] BatchTime = 0.796 (s) DataTime = 0.002 (s) Losses = ['3.9640'] lr = 0.000990
+2024-04-15 22:15:38,634 - pretrain - INFO - [Epoch 20/300][Batch 161/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['4.3828'] lr = 0.000990
+2024-04-15 22:15:54,637 - pretrain - INFO - [Epoch 20/300][Batch 181/327] BatchTime = 0.791 (s) DataTime = 0.002 (s) Losses = ['4.3606'] lr = 0.000990
+2024-04-15 22:16:10,641 - pretrain - INFO - [Epoch 20/300][Batch 201/327] BatchTime = 0.794 (s) DataTime = 0.002 (s) Losses = ['4.5357'] lr = 0.000990
+2024-04-15 22:16:26,658 - pretrain - INFO - [Epoch 20/300][Batch 221/327] BatchTime = 0.796 (s) DataTime = 0.002 (s) Losses = ['4.7206'] lr = 0.000990
+2024-04-15 22:16:42,685 - pretrain - INFO - [Epoch 20/300][Batch 241/327] BatchTime = 0.794 (s) DataTime = 0.003 (s) Losses = ['4.0920'] lr = 0.000990
+2024-04-15 22:16:58,872 - pretrain - INFO - [Epoch 20/300][Batch 261/327] BatchTime = 0.799 (s) DataTime = 0.002 (s) Losses = ['3.9151'] lr = 0.000990
+2024-04-15 22:17:14,851 - pretrain - INFO - [Epoch 20/300][Batch 281/327] BatchTime = 0.796 (s) DataTime = 0.002 (s) Losses = ['4.0009'] lr = 0.000990
+2024-04-15 22:17:31,430 - pretrain - INFO - [Epoch 20/300][Batch 301/327] BatchTime = 0.801 (s) DataTime = 0.002 (s) Losses = ['4.0631'] lr = 0.000990
+2024-04-15 22:17:47,616 - pretrain - INFO - [Epoch 20/300][Batch 321/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['3.9563'] lr = 0.000990
+2024-04-15 22:17:52,521 - pretrain - INFO - [Training] EPOCH: 20 EpochTime = 264.685 (s) Losses = ['3.9814'] lr = 0.000989
+2024-04-15 22:17:52,521 - pretrain - INFO - [VALIDATION] Start validating epoch 20
+2024-04-15 22:18:44,959 - pretrain - INFO - [Validation] EPOCH: 20  acc = 0.8566
+2024-04-15 22:18:47,081 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-best.pth
+2024-04-15 22:18:49,252 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 22:18:51,062 - pretrain - INFO - [Epoch 21/300][Batch 1/327] BatchTime = 1.807 (s) DataTime = 0.998 (s) Losses = ['4.2071'] lr = 0.000989
+2024-04-15 22:19:06,796 - pretrain - INFO - [Epoch 21/300][Batch 21/327] BatchTime = 0.786 (s) DataTime = 0.002 (s) Losses = ['3.3656'] lr = 0.000989
+2024-04-15 22:19:22,743 - pretrain - INFO - [Epoch 21/300][Batch 41/327] BatchTime = 0.773 (s) DataTime = 0.002 (s) Losses = ['3.5045'] lr = 0.000989
+2024-04-15 22:19:38,947 - pretrain - INFO - [Epoch 21/300][Batch 61/327] BatchTime = 0.807 (s) DataTime = 0.002 (s) Losses = ['3.7528'] lr = 0.000989
+2024-04-15 22:19:55,149 - pretrain - INFO - [Epoch 21/300][Batch 81/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['3.6129'] lr = 0.000989
+2024-04-15 22:20:11,097 - pretrain - INFO - [Epoch 21/300][Batch 101/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['3.9392'] lr = 0.000989
+2024-04-15 22:20:27,212 - pretrain - INFO - [Epoch 21/300][Batch 121/327] BatchTime = 0.825 (s) DataTime = 0.003 (s) Losses = ['3.4809'] lr = 0.000989
+2024-04-15 22:20:43,648 - pretrain - INFO - [Epoch 21/300][Batch 141/327] BatchTime = 0.800 (s) DataTime = 0.002 (s) Losses = ['4.2851'] lr = 0.000989
+2024-04-15 22:20:59,740 - pretrain - INFO - [Epoch 21/300][Batch 161/327] BatchTime = 0.797 (s) DataTime = 0.002 (s) Losses = ['4.0558'] lr = 0.000989
+2024-04-15 22:21:15,770 - pretrain - INFO - [Epoch 21/300][Batch 181/327] BatchTime = 0.790 (s) DataTime = 0.002 (s) Losses = ['3.5178'] lr = 0.000989
+2024-04-15 22:21:32,032 - pretrain - INFO - [Epoch 21/300][Batch 201/327] BatchTime = 0.864 (s) DataTime = 0.002 (s) Losses = ['3.9771'] lr = 0.000989
+2024-04-15 22:21:48,286 - pretrain - INFO - [Epoch 21/300][Batch 221/327] BatchTime = 0.817 (s) DataTime = 0.002 (s) Losses = ['3.6286'] lr = 0.000989
+2024-04-15 22:22:04,498 - pretrain - INFO - [Epoch 21/300][Batch 241/327] BatchTime = 0.967 (s) DataTime = 0.016 (s) Losses = ['3.5937'] lr = 0.000989
+2024-04-15 22:22:20,749 - pretrain - INFO - [Epoch 21/300][Batch 261/327] BatchTime = 0.791 (s) DataTime = 0.002 (s) Losses = ['3.7061'] lr = 0.000989
+2024-04-15 22:22:36,848 - pretrain - INFO - [Epoch 21/300][Batch 281/327] BatchTime = 0.807 (s) DataTime = 0.002 (s) Losses = ['3.9827'] lr = 0.000989
+2024-04-15 22:22:53,083 - pretrain - INFO - [Epoch 21/300][Batch 301/327] BatchTime = 0.827 (s) DataTime = 0.002 (s) Losses = ['4.0462'] lr = 0.000989
+2024-04-15 22:23:09,202 - pretrain - INFO - [Epoch 21/300][Batch 321/327] BatchTime = 0.790 (s) DataTime = 0.002 (s) Losses = ['3.6028'] lr = 0.000989
+2024-04-15 22:23:14,232 - pretrain - INFO - [Training] EPOCH: 21 EpochTime = 264.977 (s) Losses = ['3.8296'] lr = 0.000988
+2024-04-15 22:23:14,233 - pretrain - INFO - [VALIDATION] Start validating epoch 21
+2024-04-15 22:24:04,659 - pretrain - INFO - [Validation] EPOCH: 21  acc = 0.8659
+2024-04-15 22:24:06,885 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-best.pth
+2024-04-15 22:24:09,074 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 22:24:10,999 - pretrain - INFO - [Epoch 22/300][Batch 1/327] BatchTime = 1.922 (s) DataTime = 1.085 (s) Losses = ['3.6719'] lr = 0.000988
+2024-04-15 22:24:26,988 - pretrain - INFO - [Epoch 22/300][Batch 21/327] BatchTime = 0.840 (s) DataTime = 0.001 (s) Losses = ['3.8404'] lr = 0.000988
+2024-04-15 22:24:42,932 - pretrain - INFO - [Epoch 22/300][Batch 41/327] BatchTime = 0.788 (s) DataTime = 0.002 (s) Losses = ['3.8867'] lr = 0.000988
+2024-04-15 22:24:58,959 - pretrain - INFO - [Epoch 22/300][Batch 61/327] BatchTime = 0.818 (s) DataTime = 0.002 (s) Losses = ['3.9073'] lr = 0.000988
+2024-04-15 22:25:14,914 - pretrain - INFO - [Epoch 22/300][Batch 81/327] BatchTime = 0.776 (s) DataTime = 0.002 (s) Losses = ['3.1027'] lr = 0.000988
+2024-04-15 22:25:30,941 - pretrain - INFO - [Epoch 22/300][Batch 101/327] BatchTime = 0.843 (s) DataTime = 0.003 (s) Losses = ['3.4517'] lr = 0.000988
+2024-04-15 22:25:47,007 - pretrain - INFO - [Epoch 22/300][Batch 121/327] BatchTime = 0.790 (s) DataTime = 0.002 (s) Losses = ['3.5425'] lr = 0.000988
+2024-04-15 22:26:03,169 - pretrain - INFO - [Epoch 22/300][Batch 141/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['3.2050'] lr = 0.000988
+2024-04-15 22:26:19,450 - pretrain - INFO - [Epoch 22/300][Batch 161/327] BatchTime = 0.801 (s) DataTime = 0.002 (s) Losses = ['3.4091'] lr = 0.000988
+2024-04-15 22:26:35,507 - pretrain - INFO - [Epoch 22/300][Batch 181/327] BatchTime = 0.816 (s) DataTime = 0.002 (s) Losses = ['3.6473'] lr = 0.000988
+2024-04-15 22:26:51,642 - pretrain - INFO - [Epoch 22/300][Batch 201/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['3.8335'] lr = 0.000988
+2024-04-15 22:27:07,858 - pretrain - INFO - [Epoch 22/300][Batch 221/327] BatchTime = 0.801 (s) DataTime = 0.002 (s) Losses = ['4.1827'] lr = 0.000988
+2024-04-15 22:27:24,085 - pretrain - INFO - [Epoch 22/300][Batch 241/327] BatchTime = 0.803 (s) DataTime = 0.002 (s) Losses = ['3.9504'] lr = 0.000988
+2024-04-15 22:27:40,262 - pretrain - INFO - [Epoch 22/300][Batch 261/327] BatchTime = 0.801 (s) DataTime = 0.003 (s) Losses = ['3.3326'] lr = 0.000988
+2024-04-15 22:27:56,343 - pretrain - INFO - [Epoch 22/300][Batch 281/327] BatchTime = 0.798 (s) DataTime = 0.003 (s) Losses = ['3.5139'] lr = 0.000988
+2024-04-15 22:28:12,850 - pretrain - INFO - [Epoch 22/300][Batch 301/327] BatchTime = 0.824 (s) DataTime = 0.002 (s) Losses = ['3.1549'] lr = 0.000988
+2024-04-15 22:28:28,736 - pretrain - INFO - [Epoch 22/300][Batch 321/327] BatchTime = 0.802 (s) DataTime = 0.002 (s) Losses = ['3.6011'] lr = 0.000988
+2024-04-15 22:28:33,704 - pretrain - INFO - [Training] EPOCH: 22 EpochTime = 264.627 (s) Losses = ['3.7176'] lr = 0.000987
+2024-04-15 22:28:33,704 - pretrain - INFO - [VALIDATION] Start validating epoch 22
+2024-04-15 22:29:25,359 - pretrain - INFO - [Validation] EPOCH: 22  acc = 0.8703
+2024-04-15 22:29:27,440 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-best.pth
+2024-04-15 22:29:29,563 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 22:29:31,496 - pretrain - INFO - [Epoch 23/300][Batch 1/327] BatchTime = 1.930 (s) DataTime = 1.117 (s) Losses = ['3.3294'] lr = 0.000987
+2024-04-15 22:29:47,593 - pretrain - INFO - [Epoch 23/300][Batch 21/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['3.8951'] lr = 0.000987
+2024-04-15 22:30:03,586 - pretrain - INFO - [Epoch 23/300][Batch 41/327] BatchTime = 0.799 (s) DataTime = 0.002 (s) Losses = ['3.2910'] lr = 0.000987
+2024-04-15 22:30:19,848 - pretrain - INFO - [Epoch 23/300][Batch 61/327] BatchTime = 0.795 (s) DataTime = 0.002 (s) Losses = ['3.6437'] lr = 0.000987
+2024-04-15 22:30:35,978 - pretrain - INFO - [Epoch 23/300][Batch 81/327] BatchTime = 0.800 (s) DataTime = 0.002 (s) Losses = ['3.4101'] lr = 0.000987
+2024-04-15 22:30:52,269 - pretrain - INFO - [Epoch 23/300][Batch 101/327] BatchTime = 0.794 (s) DataTime = 0.002 (s) Losses = ['3.4578'] lr = 0.000987
+2024-04-15 22:31:08,165 - pretrain - INFO - [Epoch 23/300][Batch 121/327] BatchTime = 0.796 (s) DataTime = 0.002 (s) Losses = ['3.8044'] lr = 0.000987
+2024-04-15 22:31:24,373 - pretrain - INFO - [Epoch 23/300][Batch 141/327] BatchTime = 0.788 (s) DataTime = 0.002 (s) Losses = ['3.4431'] lr = 0.000987
+2024-04-15 22:31:40,381 - pretrain - INFO - [Epoch 23/300][Batch 161/327] BatchTime = 0.825 (s) DataTime = 0.002 (s) Losses = ['4.3384'] lr = 0.000987
+2024-04-15 22:31:56,625 - pretrain - INFO - [Epoch 23/300][Batch 181/327] BatchTime = 0.803 (s) DataTime = 0.002 (s) Losses = ['3.5135'] lr = 0.000987
+2024-04-15 22:32:12,676 - pretrain - INFO - [Epoch 23/300][Batch 201/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['3.6549'] lr = 0.000987
+2024-04-15 22:32:29,152 - pretrain - INFO - [Epoch 23/300][Batch 221/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['3.7911'] lr = 0.000987
+2024-04-15 22:32:45,246 - pretrain - INFO - [Epoch 23/300][Batch 241/327] BatchTime = 0.796 (s) DataTime = 0.002 (s) Losses = ['3.9625'] lr = 0.000987
+2024-04-15 22:33:01,605 - pretrain - INFO - [Epoch 23/300][Batch 261/327] BatchTime = 0.797 (s) DataTime = 0.003 (s) Losses = ['3.5504'] lr = 0.000987
+2024-04-15 22:33:17,928 - pretrain - INFO - [Epoch 23/300][Batch 281/327] BatchTime = 0.847 (s) DataTime = 0.003 (s) Losses = ['3.6610'] lr = 0.000987
+2024-04-15 22:33:34,140 - pretrain - INFO - [Epoch 23/300][Batch 301/327] BatchTime = 0.797 (s) DataTime = 0.002 (s) Losses = ['3.7987'] lr = 0.000987
+2024-04-15 22:33:50,313 - pretrain - INFO - [Epoch 23/300][Batch 321/327] BatchTime = 0.833 (s) DataTime = 0.002 (s) Losses = ['3.2881'] lr = 0.000987
+2024-04-15 22:33:55,471 - pretrain - INFO - [Training] EPOCH: 23 EpochTime = 265.905 (s) Losses = ['3.6369'] lr = 0.000986
+2024-04-15 22:33:55,472 - pretrain - INFO - [VALIDATION] Start validating epoch 23
+2024-04-15 22:34:45,627 - pretrain - INFO - [Validation] EPOCH: 23  acc = 0.8740
+2024-04-15 22:34:47,630 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-best.pth
+2024-04-15 22:34:49,747 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 22:34:51,583 - pretrain - INFO - [Epoch 24/300][Batch 1/327] BatchTime = 1.833 (s) DataTime = 1.001 (s) Losses = ['3.6341'] lr = 0.000986
+2024-04-15 22:35:07,979 - pretrain - INFO - [Epoch 24/300][Batch 21/327] BatchTime = 0.832 (s) DataTime = 0.002 (s) Losses = ['3.6425'] lr = 0.000986
+2024-04-15 22:35:24,120 - pretrain - INFO - [Epoch 24/300][Batch 41/327] BatchTime = 0.786 (s) DataTime = 0.002 (s) Losses = ['3.2405'] lr = 0.000986
+2024-04-15 22:35:40,176 - pretrain - INFO - [Epoch 24/300][Batch 61/327] BatchTime = 0.816 (s) DataTime = 0.002 (s) Losses = ['3.9837'] lr = 0.000986
+2024-04-15 22:35:56,121 - pretrain - INFO - [Epoch 24/300][Batch 81/327] BatchTime = 0.789 (s) DataTime = 0.002 (s) Losses = ['3.3660'] lr = 0.000986
+2024-04-15 22:36:12,189 - pretrain - INFO - [Epoch 24/300][Batch 101/327] BatchTime = 0.795 (s) DataTime = 0.002 (s) Losses = ['3.5011'] lr = 0.000986
+2024-04-15 22:36:29,265 - pretrain - INFO - [Epoch 24/300][Batch 121/327] BatchTime = 0.846 (s) DataTime = 0.004 (s) Losses = ['3.5496'] lr = 0.000986
+2024-04-15 22:36:45,306 - pretrain - INFO - [Epoch 24/300][Batch 141/327] BatchTime = 0.800 (s) DataTime = 0.002 (s) Losses = ['3.1324'] lr = 0.000986
+2024-04-15 22:37:01,369 - pretrain - INFO - [Epoch 24/300][Batch 161/327] BatchTime = 0.795 (s) DataTime = 0.002 (s) Losses = ['3.3175'] lr = 0.000986
+2024-04-15 22:37:17,458 - pretrain - INFO - [Epoch 24/300][Batch 181/327] BatchTime = 0.808 (s) DataTime = 0.002 (s) Losses = ['2.9133'] lr = 0.000986
+2024-04-15 22:37:33,423 - pretrain - INFO - [Epoch 24/300][Batch 201/327] BatchTime = 0.799 (s) DataTime = 0.002 (s) Losses = ['3.3402'] lr = 0.000986
+2024-04-15 22:37:49,506 - pretrain - INFO - [Epoch 24/300][Batch 221/327] BatchTime = 0.773 (s) DataTime = 0.002 (s) Losses = ['3.0951'] lr = 0.000986
+2024-04-15 22:38:06,623 - pretrain - INFO - [Epoch 24/300][Batch 241/327] BatchTime = 0.808 (s) DataTime = 0.002 (s) Losses = ['4.2505'] lr = 0.000986
+2024-04-15 22:38:22,688 - pretrain - INFO - [Epoch 24/300][Batch 261/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['4.1113'] lr = 0.000986
+2024-04-15 22:38:38,840 - pretrain - INFO - [Epoch 24/300][Batch 281/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['3.2148'] lr = 0.000986
+2024-04-15 22:38:55,014 - pretrain - INFO - [Epoch 24/300][Batch 301/327] BatchTime = 0.797 (s) DataTime = 0.002 (s) Losses = ['3.8608'] lr = 0.000986
+2024-04-15 22:39:11,196 - pretrain - INFO - [Epoch 24/300][Batch 321/327] BatchTime = 0.810 (s) DataTime = 0.002 (s) Losses = ['3.7411'] lr = 0.000986
+2024-04-15 22:39:16,344 - pretrain - INFO - [Training] EPOCH: 24 EpochTime = 266.594 (s) Losses = ['3.5292'] lr = 0.000984
+2024-04-15 22:39:16,344 - pretrain - INFO - [VALIDATION] Start validating epoch 24
+2024-04-15 22:40:05,737 - pretrain - INFO - [Validation] EPOCH: 24  acc = 0.8772
+2024-04-15 22:40:07,805 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-best.pth
+2024-04-15 22:40:09,921 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 22:40:11,726 - pretrain - INFO - [Epoch 25/300][Batch 1/327] BatchTime = 1.804 (s) DataTime = 0.971 (s) Losses = ['3.4841'] lr = 0.000984
+2024-04-15 22:40:27,693 - pretrain - INFO - [Epoch 25/300][Batch 21/327] BatchTime = 0.878 (s) DataTime = 0.001 (s) Losses = ['3.1448'] lr = 0.000984
+2024-04-15 22:40:43,701 - pretrain - INFO - [Epoch 25/300][Batch 41/327] BatchTime = 0.828 (s) DataTime = 0.002 (s) Losses = ['3.3295'] lr = 0.000984
+2024-04-15 22:40:59,937 - pretrain - INFO - [Epoch 25/300][Batch 61/327] BatchTime = 0.795 (s) DataTime = 0.002 (s) Losses = ['3.6505'] lr = 0.000984
+2024-04-15 22:41:16,252 - pretrain - INFO - [Epoch 25/300][Batch 81/327] BatchTime = 0.794 (s) DataTime = 0.002 (s) Losses = ['3.6320'] lr = 0.000984
+2024-04-15 22:41:32,271 - pretrain - INFO - [Epoch 25/300][Batch 101/327] BatchTime = 0.802 (s) DataTime = 0.002 (s) Losses = ['3.3257'] lr = 0.000984
+2024-04-15 22:41:48,496 - pretrain - INFO - [Epoch 25/300][Batch 121/327] BatchTime = 0.795 (s) DataTime = 0.002 (s) Losses = ['3.8966'] lr = 0.000984
+2024-04-15 22:42:04,690 - pretrain - INFO - [Epoch 25/300][Batch 141/327] BatchTime = 0.795 (s) DataTime = 0.002 (s) Losses = ['3.1624'] lr = 0.000984
+2024-04-15 22:42:20,746 - pretrain - INFO - [Epoch 25/300][Batch 161/327] BatchTime = 0.800 (s) DataTime = 0.002 (s) Losses = ['3.6015'] lr = 0.000984
+2024-04-15 22:42:36,873 - pretrain - INFO - [Epoch 25/300][Batch 181/327] BatchTime = 0.799 (s) DataTime = 0.002 (s) Losses = ['3.4651'] lr = 0.000984
+2024-04-15 22:42:52,890 - pretrain - INFO - [Epoch 25/300][Batch 201/327] BatchTime = 0.794 (s) DataTime = 0.002 (s) Losses = ['3.1269'] lr = 0.000984
+2024-04-15 22:43:09,056 - pretrain - INFO - [Epoch 25/300][Batch 221/327] BatchTime = 0.850 (s) DataTime = 0.003 (s) Losses = ['3.3434'] lr = 0.000984
+2024-04-15 22:43:25,305 - pretrain - INFO - [Epoch 25/300][Batch 241/327] BatchTime = 0.823 (s) DataTime = 0.002 (s) Losses = ['3.3171'] lr = 0.000984
+2024-04-15 22:43:41,705 - pretrain - INFO - [Epoch 25/300][Batch 261/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['3.3664'] lr = 0.000984
+2024-04-15 22:43:57,864 - pretrain - INFO - [Epoch 25/300][Batch 281/327] BatchTime = 0.817 (s) DataTime = 0.003 (s) Losses = ['3.6548'] lr = 0.000984
+2024-04-15 22:44:14,583 - pretrain - INFO - [Epoch 25/300][Batch 301/327] BatchTime = 0.802 (s) DataTime = 0.002 (s) Losses = ['3.3828'] lr = 0.000984
+2024-04-15 22:44:30,625 - pretrain - INFO - [Epoch 25/300][Batch 321/327] BatchTime = 0.823 (s) DataTime = 0.002 (s) Losses = ['3.7915'] lr = 0.000984
+2024-04-15 22:44:35,681 - pretrain - INFO - [Training] EPOCH: 25 EpochTime = 265.758 (s) Losses = ['3.4409'] lr = 0.000983
+2024-04-15 22:44:35,681 - pretrain - INFO - [VALIDATION] Start validating epoch 25
+2024-04-15 22:45:28,243 - pretrain - INFO - [Validation] EPOCH: 25  acc = 0.8861
+2024-04-15 22:45:30,312 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-best.pth
+2024-04-15 22:45:32,401 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 22:45:34,202 - pretrain - INFO - [Epoch 26/300][Batch 1/327] BatchTime = 1.799 (s) DataTime = 0.962 (s) Losses = ['3.3090'] lr = 0.000983
+2024-04-15 22:45:50,367 - pretrain - INFO - [Epoch 26/300][Batch 21/327] BatchTime = 0.868 (s) DataTime = 0.002 (s) Losses = ['3.5635'] lr = 0.000983
+2024-04-15 22:46:06,393 - pretrain - INFO - [Epoch 26/300][Batch 41/327] BatchTime = 0.811 (s) DataTime = 0.002 (s) Losses = ['3.4088'] lr = 0.000983
+2024-04-15 22:46:22,524 - pretrain - INFO - [Epoch 26/300][Batch 61/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['3.5625'] lr = 0.000983
+2024-04-15 22:46:38,884 - pretrain - INFO - [Epoch 26/300][Batch 81/327] BatchTime = 0.851 (s) DataTime = 0.002 (s) Losses = ['3.3096'] lr = 0.000983
+2024-04-15 22:46:54,761 - pretrain - INFO - [Epoch 26/300][Batch 101/327] BatchTime = 0.801 (s) DataTime = 0.002 (s) Losses = ['3.0459'] lr = 0.000983
+2024-04-15 22:47:10,788 - pretrain - INFO - [Epoch 26/300][Batch 121/327] BatchTime = 0.800 (s) DataTime = 0.002 (s) Losses = ['3.3379'] lr = 0.000983
+2024-04-15 22:47:26,913 - pretrain - INFO - [Epoch 26/300][Batch 141/327] BatchTime = 0.834 (s) DataTime = 0.002 (s) Losses = ['3.3561'] lr = 0.000983
+2024-04-15 22:47:43,417 - pretrain - INFO - [Epoch 26/300][Batch 161/327] BatchTime = 0.816 (s) DataTime = 0.002 (s) Losses = ['3.1245'] lr = 0.000983
+2024-04-15 22:47:59,453 - pretrain - INFO - [Epoch 26/300][Batch 181/327] BatchTime = 0.785 (s) DataTime = 0.004 (s) Losses = ['3.2200'] lr = 0.000983
+2024-04-15 22:48:15,178 - pretrain - INFO - [Epoch 26/300][Batch 201/327] BatchTime = 0.781 (s) DataTime = 0.002 (s) Losses = ['3.0321'] lr = 0.000983
+2024-04-15 22:48:31,293 - pretrain - INFO - [Epoch 26/300][Batch 221/327] BatchTime = 0.842 (s) DataTime = 0.003 (s) Losses = ['3.5168'] lr = 0.000983
+2024-04-15 22:48:47,521 - pretrain - INFO - [Epoch 26/300][Batch 241/327] BatchTime = 0.783 (s) DataTime = 0.002 (s) Losses = ['3.1316'] lr = 0.000983
+2024-04-15 22:49:03,498 - pretrain - INFO - [Epoch 26/300][Batch 261/327] BatchTime = 0.798 (s) DataTime = 0.002 (s) Losses = ['3.3241'] lr = 0.000983
+2024-04-15 22:49:19,814 - pretrain - INFO - [Epoch 26/300][Batch 281/327] BatchTime = 0.834 (s) DataTime = 0.002 (s) Losses = ['3.1812'] lr = 0.000983
+2024-04-15 22:49:35,982 - pretrain - INFO - [Epoch 26/300][Batch 301/327] BatchTime = 0.796 (s) DataTime = 0.002 (s) Losses = ['3.2903'] lr = 0.000983
+2024-04-15 22:49:52,328 - pretrain - INFO - [Epoch 26/300][Batch 321/327] BatchTime = 0.771 (s) DataTime = 0.002 (s) Losses = ['3.0069'] lr = 0.000983
+2024-04-15 22:49:57,364 - pretrain - INFO - [Training] EPOCH: 26 EpochTime = 264.960 (s) Losses = ['3.3494'] lr = 0.000982
+2024-04-15 22:49:57,364 - pretrain - INFO - [VALIDATION] Start validating epoch 26
+2024-04-15 22:50:48,202 - pretrain - INFO - [Validation] EPOCH: 26  acc = 0.8817
+2024-04-15 22:50:50,214 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 22:50:52,169 - pretrain - INFO - [Epoch 27/300][Batch 1/327] BatchTime = 1.952 (s) DataTime = 1.134 (s) Losses = ['3.5313'] lr = 0.000982
+2024-04-15 22:51:08,323 - pretrain - INFO - [Epoch 27/300][Batch 21/327] BatchTime = 0.799 (s) DataTime = 0.002 (s) Losses = ['3.2665'] lr = 0.000982
+2024-04-15 22:51:24,849 - pretrain - INFO - [Epoch 27/300][Batch 41/327] BatchTime = 0.787 (s) DataTime = 0.002 (s) Losses = ['3.2669'] lr = 0.000982
+2024-04-15 22:51:41,183 - pretrain - INFO - [Epoch 27/300][Batch 61/327] BatchTime = 0.786 (s) DataTime = 0.002 (s) Losses = ['3.0610'] lr = 0.000982
+2024-04-15 22:51:57,160 - pretrain - INFO - [Epoch 27/300][Batch 81/327] BatchTime = 0.769 (s) DataTime = 0.002 (s) Losses = ['3.3574'] lr = 0.000982
+2024-04-15 22:52:13,091 - pretrain - INFO - [Epoch 27/300][Batch 101/327] BatchTime = 0.790 (s) DataTime = 0.002 (s) Losses = ['3.4637'] lr = 0.000982
+2024-04-15 22:52:29,472 - pretrain - INFO - [Epoch 27/300][Batch 121/327] BatchTime = 0.803 (s) DataTime = 0.002 (s) Losses = ['3.3518'] lr = 0.000982
+2024-04-15 22:52:45,615 - pretrain - INFO - [Epoch 27/300][Batch 141/327] BatchTime = 0.825 (s) DataTime = 0.002 (s) Losses = ['3.0843'] lr = 0.000982
+2024-04-15 22:53:01,882 - pretrain - INFO - [Epoch 27/300][Batch 161/327] BatchTime = 0.798 (s) DataTime = 0.002 (s) Losses = ['2.8086'] lr = 0.000982
+2024-04-15 22:53:18,329 - pretrain - INFO - [Epoch 27/300][Batch 181/327] BatchTime = 0.856 (s) DataTime = 0.002 (s) Losses = ['3.1871'] lr = 0.000982
+2024-04-15 22:53:34,719 - pretrain - INFO - [Epoch 27/300][Batch 201/327] BatchTime = 0.795 (s) DataTime = 0.002 (s) Losses = ['3.5313'] lr = 0.000982
+2024-04-15 22:53:50,925 - pretrain - INFO - [Epoch 27/300][Batch 221/327] BatchTime = 0.827 (s) DataTime = 0.003 (s) Losses = ['3.5901'] lr = 0.000982
+2024-04-15 22:54:06,993 - pretrain - INFO - [Epoch 27/300][Batch 241/327] BatchTime = 0.790 (s) DataTime = 0.002 (s) Losses = ['2.9996'] lr = 0.000982
+2024-04-15 22:54:23,295 - pretrain - INFO - [Epoch 27/300][Batch 261/327] BatchTime = 0.846 (s) DataTime = 0.002 (s) Losses = ['3.4495'] lr = 0.000982
+2024-04-15 22:54:39,617 - pretrain - INFO - [Epoch 27/300][Batch 281/327] BatchTime = 0.783 (s) DataTime = 0.002 (s) Losses = ['3.1944'] lr = 0.000982
+2024-04-15 22:54:55,781 - pretrain - INFO - [Epoch 27/300][Batch 301/327] BatchTime = 0.817 (s) DataTime = 0.002 (s) Losses = ['2.7333'] lr = 0.000982
+2024-04-15 22:55:12,058 - pretrain - INFO - [Epoch 27/300][Batch 321/327] BatchTime = 0.796 (s) DataTime = 0.002 (s) Losses = ['3.8681'] lr = 0.000982
+2024-04-15 22:55:17,124 - pretrain - INFO - [Training] EPOCH: 27 EpochTime = 266.907 (s) Losses = ['3.2830'] lr = 0.000980
+2024-04-15 22:55:17,124 - pretrain - INFO - [VALIDATION] Start validating epoch 27
+2024-04-15 22:56:09,335 - pretrain - INFO - [Validation] EPOCH: 27  acc = 0.8801
+2024-04-15 22:56:11,460 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 22:56:13,287 - pretrain - INFO - [Epoch 28/300][Batch 1/327] BatchTime = 1.826 (s) DataTime = 0.983 (s) Losses = ['3.4746'] lr = 0.000980
+2024-04-15 22:56:29,334 - pretrain - INFO - [Epoch 28/300][Batch 21/327] BatchTime = 0.890 (s) DataTime = 0.003 (s) Losses = ['2.6998'] lr = 0.000980
+2024-04-15 22:56:45,425 - pretrain - INFO - [Epoch 28/300][Batch 41/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['3.0729'] lr = 0.000980
+2024-04-15 22:57:01,323 - pretrain - INFO - [Epoch 28/300][Batch 61/327] BatchTime = 0.786 (s) DataTime = 0.002 (s) Losses = ['3.4345'] lr = 0.000980
+2024-04-15 22:57:17,445 - pretrain - INFO - [Epoch 28/300][Batch 81/327] BatchTime = 0.805 (s) DataTime = 0.004 (s) Losses = ['3.6323'] lr = 0.000980
+2024-04-15 22:57:33,445 - pretrain - INFO - [Epoch 28/300][Batch 101/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['3.1596'] lr = 0.000980
+2024-04-15 22:57:49,475 - pretrain - INFO - [Epoch 28/300][Batch 121/327] BatchTime = 0.837 (s) DataTime = 0.002 (s) Losses = ['2.6680'] lr = 0.000980
+2024-04-15 22:58:05,679 - pretrain - INFO - [Epoch 28/300][Batch 141/327] BatchTime = 0.790 (s) DataTime = 0.002 (s) Losses = ['2.9654'] lr = 0.000980
+2024-04-15 22:58:22,129 - pretrain - INFO - [Epoch 28/300][Batch 161/327] BatchTime = 0.888 (s) DataTime = 0.002 (s) Losses = ['3.1668'] lr = 0.000980
+2024-04-15 22:58:38,325 - pretrain - INFO - [Epoch 28/300][Batch 181/327] BatchTime = 0.787 (s) DataTime = 0.002 (s) Losses = ['3.1042'] lr = 0.000980
+2024-04-15 22:58:54,616 - pretrain - INFO - [Epoch 28/300][Batch 201/327] BatchTime = 0.885 (s) DataTime = 0.002 (s) Losses = ['2.9873'] lr = 0.000980
+2024-04-15 22:59:10,683 - pretrain - INFO - [Epoch 28/300][Batch 221/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['3.1884'] lr = 0.000980
+2024-04-15 22:59:26,747 - pretrain - INFO - [Epoch 28/300][Batch 241/327] BatchTime = 0.787 (s) DataTime = 0.002 (s) Losses = ['3.0705'] lr = 0.000980
+2024-04-15 22:59:42,733 - pretrain - INFO - [Epoch 28/300][Batch 261/327] BatchTime = 0.828 (s) DataTime = 0.002 (s) Losses = ['3.2481'] lr = 0.000980
+2024-04-15 22:59:59,746 - pretrain - INFO - [Epoch 28/300][Batch 281/327] BatchTime = 0.832 (s) DataTime = 0.002 (s) Losses = ['3.4008'] lr = 0.000980
+2024-04-15 23:00:16,108 - pretrain - INFO - [Epoch 28/300][Batch 301/327] BatchTime = 0.798 (s) DataTime = 0.002 (s) Losses = ['3.4033'] lr = 0.000980
+2024-04-15 23:00:32,113 - pretrain - INFO - [Epoch 28/300][Batch 321/327] BatchTime = 0.795 (s) DataTime = 0.002 (s) Losses = ['3.2287'] lr = 0.000980
+2024-04-15 23:00:37,106 - pretrain - INFO - [Training] EPOCH: 28 EpochTime = 265.644 (s) Losses = ['3.2243'] lr = 0.000979
+2024-04-15 23:00:37,106 - pretrain - INFO - [VALIDATION] Start validating epoch 28
+2024-04-15 23:01:28,450 - pretrain - INFO - [Validation] EPOCH: 28  acc = 0.8906
+2024-04-15 23:01:30,747 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-best.pth
+2024-04-15 23:01:32,921 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 23:01:34,729 - pretrain - INFO - [Epoch 29/300][Batch 1/327] BatchTime = 1.806 (s) DataTime = 0.997 (s) Losses = ['2.7426'] lr = 0.000979
+2024-04-15 23:01:50,766 - pretrain - INFO - [Epoch 29/300][Batch 21/327] BatchTime = 0.807 (s) DataTime = 0.002 (s) Losses = ['3.2525'] lr = 0.000979
+2024-04-15 23:02:06,695 - pretrain - INFO - [Epoch 29/300][Batch 41/327] BatchTime = 0.785 (s) DataTime = 0.002 (s) Losses = ['3.5096'] lr = 0.000979
+2024-04-15 23:02:22,536 - pretrain - INFO - [Epoch 29/300][Batch 61/327] BatchTime = 0.794 (s) DataTime = 0.002 (s) Losses = ['2.8440'] lr = 0.000979
+2024-04-15 23:02:39,260 - pretrain - INFO - [Epoch 29/300][Batch 81/327] BatchTime = 0.800 (s) DataTime = 0.003 (s) Losses = ['3.0029'] lr = 0.000979
+2024-04-15 23:02:55,384 - pretrain - INFO - [Epoch 29/300][Batch 101/327] BatchTime = 0.774 (s) DataTime = 0.002 (s) Losses = ['3.1136'] lr = 0.000979
+2024-04-15 23:03:11,384 - pretrain - INFO - [Epoch 29/300][Batch 121/327] BatchTime = 0.793 (s) DataTime = 0.003 (s) Losses = ['3.3336'] lr = 0.000979
+2024-04-15 23:03:27,481 - pretrain - INFO - [Epoch 29/300][Batch 141/327] BatchTime = 0.779 (s) DataTime = 0.002 (s) Losses = ['3.2588'] lr = 0.000979
+2024-04-15 23:03:43,588 - pretrain - INFO - [Epoch 29/300][Batch 161/327] BatchTime = 0.888 (s) DataTime = 0.002 (s) Losses = ['3.2110'] lr = 0.000979
+2024-04-15 23:03:59,824 - pretrain - INFO - [Epoch 29/300][Batch 181/327] BatchTime = 0.848 (s) DataTime = 0.003 (s) Losses = ['3.4051'] lr = 0.000979
+2024-04-15 23:04:16,316 - pretrain - INFO - [Epoch 29/300][Batch 201/327] BatchTime = 0.844 (s) DataTime = 0.003 (s) Losses = ['2.9403'] lr = 0.000979
+2024-04-15 23:04:32,364 - pretrain - INFO - [Epoch 29/300][Batch 221/327] BatchTime = 0.801 (s) DataTime = 0.002 (s) Losses = ['3.0833'] lr = 0.000979
+2024-04-15 23:04:48,325 - pretrain - INFO - [Epoch 29/300][Batch 241/327] BatchTime = 0.791 (s) DataTime = 0.002 (s) Losses = ['2.9753'] lr = 0.000979
+2024-04-15 23:05:05,598 - pretrain - INFO - [Epoch 29/300][Batch 261/327] BatchTime = 0.791 (s) DataTime = 0.002 (s) Losses = ['3.2595'] lr = 0.000979
+2024-04-15 23:05:22,061 - pretrain - INFO - [Epoch 29/300][Batch 281/327] BatchTime = 0.794 (s) DataTime = 0.002 (s) Losses = ['2.8797'] lr = 0.000979
+2024-04-15 23:05:38,133 - pretrain - INFO - [Epoch 29/300][Batch 301/327] BatchTime = 0.805 (s) DataTime = 0.003 (s) Losses = ['3.1942'] lr = 0.000979
+2024-04-15 23:05:54,498 - pretrain - INFO - [Epoch 29/300][Batch 321/327] BatchTime = 0.794 (s) DataTime = 0.002 (s) Losses = ['3.1575'] lr = 0.000979
+2024-04-15 23:05:59,461 - pretrain - INFO - [Training] EPOCH: 29 EpochTime = 266.537 (s) Losses = ['3.1375'] lr = 0.000977
+2024-04-15 23:05:59,461 - pretrain - INFO - [VALIDATION] Start validating epoch 29
+2024-04-15 23:06:51,737 - pretrain - INFO - [Validation] EPOCH: 29  acc = 0.8837
+2024-04-15 23:06:53,887 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 23:06:55,772 - pretrain - INFO - [Epoch 30/300][Batch 1/327] BatchTime = 1.883 (s) DataTime = 1.056 (s) Losses = ['3.2098'] lr = 0.000977
+2024-04-15 23:07:11,914 - pretrain - INFO - [Epoch 30/300][Batch 21/327] BatchTime = 0.813 (s) DataTime = 0.003 (s) Losses = ['2.9740'] lr = 0.000977
+2024-04-15 23:07:27,923 - pretrain - INFO - [Epoch 30/300][Batch 41/327] BatchTime = 0.798 (s) DataTime = 0.002 (s) Losses = ['2.9810'] lr = 0.000977
+2024-04-15 23:07:44,385 - pretrain - INFO - [Epoch 30/300][Batch 61/327] BatchTime = 0.855 (s) DataTime = 0.002 (s) Losses = ['3.2554'] lr = 0.000977
+2024-04-15 23:08:00,657 - pretrain - INFO - [Epoch 30/300][Batch 81/327] BatchTime = 0.802 (s) DataTime = 0.002 (s) Losses = ['3.4130'] lr = 0.000977
+2024-04-15 23:08:16,687 - pretrain - INFO - [Epoch 30/300][Batch 101/327] BatchTime = 0.800 (s) DataTime = 0.002 (s) Losses = ['3.0453'] lr = 0.000977
+2024-04-15 23:08:33,592 - pretrain - INFO - [Epoch 30/300][Batch 121/327] BatchTime = 0.847 (s) DataTime = 0.002 (s) Losses = ['2.8577'] lr = 0.000977
+2024-04-15 23:08:49,967 - pretrain - INFO - [Epoch 30/300][Batch 141/327] BatchTime = 0.790 (s) DataTime = 0.002 (s) Losses = ['2.9088'] lr = 0.000977
+2024-04-15 23:09:06,159 - pretrain - INFO - [Epoch 30/300][Batch 161/327] BatchTime = 0.840 (s) DataTime = 0.012 (s) Losses = ['3.3994'] lr = 0.000977
+2024-04-15 23:09:22,228 - pretrain - INFO - [Epoch 30/300][Batch 181/327] BatchTime = 0.809 (s) DataTime = 0.002 (s) Losses = ['3.0085'] lr = 0.000977
+2024-04-15 23:09:38,204 - pretrain - INFO - [Epoch 30/300][Batch 201/327] BatchTime = 0.814 (s) DataTime = 0.002 (s) Losses = ['2.9989'] lr = 0.000977
+2024-04-15 23:09:54,724 - pretrain - INFO - [Epoch 30/300][Batch 221/327] BatchTime = 0.791 (s) DataTime = 0.002 (s) Losses = ['3.1309'] lr = 0.000977
+2024-04-15 23:10:10,898 - pretrain - INFO - [Epoch 30/300][Batch 241/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['3.2145'] lr = 0.000977
+2024-04-15 23:10:27,019 - pretrain - INFO - [Epoch 30/300][Batch 261/327] BatchTime = 0.818 (s) DataTime = 0.002 (s) Losses = ['2.6902'] lr = 0.000977
+2024-04-15 23:10:43,308 - pretrain - INFO - [Epoch 30/300][Batch 281/327] BatchTime = 0.828 (s) DataTime = 0.002 (s) Losses = ['2.9457'] lr = 0.000977
+2024-04-15 23:10:59,268 - pretrain - INFO - [Epoch 30/300][Batch 301/327] BatchTime = 0.794 (s) DataTime = 0.002 (s) Losses = ['3.0129'] lr = 0.000977
+2024-04-15 23:11:15,156 - pretrain - INFO - [Epoch 30/300][Batch 321/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['3.3097'] lr = 0.000977
+2024-04-15 23:11:20,108 - pretrain - INFO - [Training] EPOCH: 30 EpochTime = 266.218 (s) Losses = ['3.0504'] lr = 0.000976
+2024-04-15 23:11:20,108 - pretrain - INFO - [VALIDATION] Start validating epoch 30
+2024-04-15 23:12:10,064 - pretrain - INFO - [Validation] EPOCH: 30  acc = 0.8837
+2024-04-15 23:12:12,112 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 23:12:14,081 - pretrain - INFO - [Epoch 31/300][Batch 1/327] BatchTime = 1.966 (s) DataTime = 1.119 (s) Losses = ['3.3768'] lr = 0.000976
+2024-04-15 23:12:30,101 - pretrain - INFO - [Epoch 31/300][Batch 21/327] BatchTime = 0.795 (s) DataTime = 0.002 (s) Losses = ['2.9331'] lr = 0.000976
+2024-04-15 23:12:46,237 - pretrain - INFO - [Epoch 31/300][Batch 41/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['2.9615'] lr = 0.000976
+2024-04-15 23:13:02,123 - pretrain - INFO - [Epoch 31/300][Batch 61/327] BatchTime = 0.787 (s) DataTime = 0.002 (s) Losses = ['2.8479'] lr = 0.000976
+2024-04-15 23:13:18,438 - pretrain - INFO - [Epoch 31/300][Batch 81/327] BatchTime = 0.824 (s) DataTime = 0.002 (s) Losses = ['2.6657'] lr = 0.000976
+2024-04-15 23:13:34,692 - pretrain - INFO - [Epoch 31/300][Batch 101/327] BatchTime = 0.775 (s) DataTime = 0.002 (s) Losses = ['3.1280'] lr = 0.000976
+2024-04-15 23:13:50,728 - pretrain - INFO - [Epoch 31/300][Batch 121/327] BatchTime = 0.794 (s) DataTime = 0.002 (s) Losses = ['3.0068'] lr = 0.000976
+2024-04-15 23:14:06,882 - pretrain - INFO - [Epoch 31/300][Batch 141/327] BatchTime = 0.800 (s) DataTime = 0.004 (s) Losses = ['3.3050'] lr = 0.000976
+2024-04-15 23:14:22,848 - pretrain - INFO - [Epoch 31/300][Batch 161/327] BatchTime = 0.794 (s) DataTime = 0.002 (s) Losses = ['3.3857'] lr = 0.000976
+2024-04-15 23:14:38,939 - pretrain - INFO - [Epoch 31/300][Batch 181/327] BatchTime = 0.795 (s) DataTime = 0.002 (s) Losses = ['2.8498'] lr = 0.000976
+2024-04-15 23:14:55,331 - pretrain - INFO - [Epoch 31/300][Batch 201/327] BatchTime = 0.838 (s) DataTime = 0.002 (s) Losses = ['3.0046'] lr = 0.000976
+2024-04-15 23:15:11,622 - pretrain - INFO - [Epoch 31/300][Batch 221/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['2.7662'] lr = 0.000976
+2024-04-15 23:15:27,750 - pretrain - INFO - [Epoch 31/300][Batch 241/327] BatchTime = 0.795 (s) DataTime = 0.002 (s) Losses = ['3.0604'] lr = 0.000976
+2024-04-15 23:15:43,706 - pretrain - INFO - [Epoch 31/300][Batch 261/327] BatchTime = 0.807 (s) DataTime = 0.002 (s) Losses = ['3.0781'] lr = 0.000976
+2024-04-15 23:15:59,749 - pretrain - INFO - [Epoch 31/300][Batch 281/327] BatchTime = 0.822 (s) DataTime = 0.002 (s) Losses = ['2.7410'] lr = 0.000976
+2024-04-15 23:16:16,265 - pretrain - INFO - [Epoch 31/300][Batch 301/327] BatchTime = 0.811 (s) DataTime = 0.002 (s) Losses = ['2.5145'] lr = 0.000976
+2024-04-15 23:16:32,565 - pretrain - INFO - [Epoch 31/300][Batch 321/327] BatchTime = 0.796 (s) DataTime = 0.002 (s) Losses = ['3.0254'] lr = 0.000976
+2024-04-15 23:16:37,566 - pretrain - INFO - [Training] EPOCH: 31 EpochTime = 265.451 (s) Losses = ['2.9888'] lr = 0.000974
+2024-04-15 23:16:37,566 - pretrain - INFO - [VALIDATION] Start validating epoch 31
+2024-04-15 23:17:27,422 - pretrain - INFO - [Validation] EPOCH: 31  acc = 0.8975
+2024-04-15 23:17:29,651 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-best.pth
+2024-04-15 23:17:31,814 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 23:17:33,716 - pretrain - INFO - [Epoch 32/300][Batch 1/327] BatchTime = 1.899 (s) DataTime = 1.083 (s) Losses = ['3.0604'] lr = 0.000974
+2024-04-15 23:17:49,888 - pretrain - INFO - [Epoch 32/300][Batch 21/327] BatchTime = 0.795 (s) DataTime = 0.002 (s) Losses = ['3.0844'] lr = 0.000974
+2024-04-15 23:18:05,925 - pretrain - INFO - [Epoch 32/300][Batch 41/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['2.7642'] lr = 0.000974
+2024-04-15 23:18:21,898 - pretrain - INFO - [Epoch 32/300][Batch 61/327] BatchTime = 0.785 (s) DataTime = 0.002 (s) Losses = ['3.1593'] lr = 0.000974
+2024-04-15 23:18:38,569 - pretrain - INFO - [Epoch 32/300][Batch 81/327] BatchTime = 0.819 (s) DataTime = 0.003 (s) Losses = ['3.1286'] lr = 0.000974
+2024-04-15 23:18:54,780 - pretrain - INFO - [Epoch 32/300][Batch 101/327] BatchTime = 0.802 (s) DataTime = 0.002 (s) Losses = ['2.4708'] lr = 0.000974
+2024-04-15 23:19:11,075 - pretrain - INFO - [Epoch 32/300][Batch 121/327] BatchTime = 0.794 (s) DataTime = 0.002 (s) Losses = ['2.7524'] lr = 0.000974
+2024-04-15 23:19:27,101 - pretrain - INFO - [Epoch 32/300][Batch 141/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['3.2072'] lr = 0.000974
+2024-04-15 23:19:43,424 - pretrain - INFO - [Epoch 32/300][Batch 161/327] BatchTime = 0.872 (s) DataTime = 0.002 (s) Losses = ['3.1725'] lr = 0.000974
+2024-04-15 23:19:59,720 - pretrain - INFO - [Epoch 32/300][Batch 181/327] BatchTime = 0.796 (s) DataTime = 0.002 (s) Losses = ['2.9118'] lr = 0.000974
+2024-04-15 23:20:15,886 - pretrain - INFO - [Epoch 32/300][Batch 201/327] BatchTime = 0.795 (s) DataTime = 0.002 (s) Losses = ['2.9539'] lr = 0.000974
+2024-04-15 23:20:32,293 - pretrain - INFO - [Epoch 32/300][Batch 221/327] BatchTime = 0.827 (s) DataTime = 0.002 (s) Losses = ['2.5456'] lr = 0.000974
+2024-04-15 23:20:48,571 - pretrain - INFO - [Epoch 32/300][Batch 241/327] BatchTime = 0.831 (s) DataTime = 0.002 (s) Losses = ['3.1789'] lr = 0.000974
+2024-04-15 23:21:04,834 - pretrain - INFO - [Epoch 32/300][Batch 261/327] BatchTime = 0.800 (s) DataTime = 0.002 (s) Losses = ['2.9905'] lr = 0.000974
+2024-04-15 23:21:21,027 - pretrain - INFO - [Epoch 32/300][Batch 281/327] BatchTime = 0.837 (s) DataTime = 0.002 (s) Losses = ['3.1045'] lr = 0.000974
+2024-04-15 23:21:37,013 - pretrain - INFO - [Epoch 32/300][Batch 301/327] BatchTime = 0.794 (s) DataTime = 0.002 (s) Losses = ['2.9396'] lr = 0.000974
+2024-04-15 23:21:54,237 - pretrain - INFO - [Epoch 32/300][Batch 321/327] BatchTime = 0.789 (s) DataTime = 0.002 (s) Losses = ['2.7445'] lr = 0.000974
+2024-04-15 23:21:59,239 - pretrain - INFO - [Training] EPOCH: 32 EpochTime = 267.422 (s) Losses = ['2.9400'] lr = 0.000972
+2024-04-15 23:21:59,239 - pretrain - INFO - [VALIDATION] Start validating epoch 32
+2024-04-15 23:22:49,876 - pretrain - INFO - [Validation] EPOCH: 32  acc = 0.8874
+2024-04-15 23:22:51,949 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 23:22:54,017 - pretrain - INFO - [Epoch 33/300][Batch 1/327] BatchTime = 2.067 (s) DataTime = 1.177 (s) Losses = ['3.4256'] lr = 0.000972
+2024-04-15 23:23:10,442 - pretrain - INFO - [Epoch 33/300][Batch 21/327] BatchTime = 0.811 (s) DataTime = 0.002 (s) Losses = ['2.8530'] lr = 0.000972
+2024-04-15 23:23:26,490 - pretrain - INFO - [Epoch 33/300][Batch 41/327] BatchTime = 0.799 (s) DataTime = 0.002 (s) Losses = ['3.0743'] lr = 0.000972
+2024-04-15 23:23:42,710 - pretrain - INFO - [Epoch 33/300][Batch 61/327] BatchTime = 0.836 (s) DataTime = 0.004 (s) Losses = ['3.0915'] lr = 0.000972
+2024-04-15 23:23:58,974 - pretrain - INFO - [Epoch 33/300][Batch 81/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['3.2666'] lr = 0.000972
+2024-04-15 23:24:15,232 - pretrain - INFO - [Epoch 33/300][Batch 101/327] BatchTime = 0.803 (s) DataTime = 0.002 (s) Losses = ['3.1713'] lr = 0.000972
+2024-04-15 23:24:31,228 - pretrain - INFO - [Epoch 33/300][Batch 121/327] BatchTime = 0.800 (s) DataTime = 0.004 (s) Losses = ['3.0968'] lr = 0.000972
+2024-04-15 23:24:47,464 - pretrain - INFO - [Epoch 33/300][Batch 141/327] BatchTime = 0.829 (s) DataTime = 0.002 (s) Losses = ['2.7122'] lr = 0.000972
+2024-04-15 23:25:03,637 - pretrain - INFO - [Epoch 33/300][Batch 161/327] BatchTime = 0.810 (s) DataTime = 0.002 (s) Losses = ['2.7193'] lr = 0.000972
+2024-04-15 23:25:19,688 - pretrain - INFO - [Epoch 33/300][Batch 181/327] BatchTime = 0.804 (s) DataTime = 0.002 (s) Losses = ['2.6556'] lr = 0.000972
+2024-04-15 23:25:35,811 - pretrain - INFO - [Epoch 33/300][Batch 201/327] BatchTime = 0.791 (s) DataTime = 0.002 (s) Losses = ['2.5921'] lr = 0.000972
+2024-04-15 23:25:52,230 - pretrain - INFO - [Epoch 33/300][Batch 221/327] BatchTime = 0.784 (s) DataTime = 0.002 (s) Losses = ['2.9314'] lr = 0.000972
+2024-04-15 23:26:08,248 - pretrain - INFO - [Epoch 33/300][Batch 241/327] BatchTime = 0.823 (s) DataTime = 0.003 (s) Losses = ['2.5654'] lr = 0.000972
+2024-04-15 23:26:24,765 - pretrain - INFO - [Epoch 33/300][Batch 261/327] BatchTime = 0.824 (s) DataTime = 0.002 (s) Losses = ['2.6622'] lr = 0.000972
+2024-04-15 23:26:41,189 - pretrain - INFO - [Epoch 33/300][Batch 281/327] BatchTime = 0.825 (s) DataTime = 0.002 (s) Losses = ['2.6474'] lr = 0.000972
+2024-04-15 23:26:57,423 - pretrain - INFO - [Epoch 33/300][Batch 301/327] BatchTime = 0.794 (s) DataTime = 0.002 (s) Losses = ['2.8711'] lr = 0.000972
+2024-04-15 23:27:13,412 - pretrain - INFO - [Epoch 33/300][Batch 321/327] BatchTime = 0.777 (s) DataTime = 0.002 (s) Losses = ['2.8335'] lr = 0.000972
+2024-04-15 23:27:18,407 - pretrain - INFO - [Training] EPOCH: 33 EpochTime = 266.456 (s) Losses = ['2.9484'] lr = 0.000970
+2024-04-15 23:27:18,408 - pretrain - INFO - [VALIDATION] Start validating epoch 33
+2024-04-15 23:28:10,234 - pretrain - INFO - [Validation] EPOCH: 33  acc = 0.8942
+2024-04-15 23:28:12,248 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 23:28:14,206 - pretrain - INFO - [Epoch 34/300][Batch 1/327] BatchTime = 1.956 (s) DataTime = 1.077 (s) Losses = ['2.9080'] lr = 0.000970
+2024-04-15 23:28:30,252 - pretrain - INFO - [Epoch 34/300][Batch 21/327] BatchTime = 0.800 (s) DataTime = 0.002 (s) Losses = ['2.7254'] lr = 0.000970
+2024-04-15 23:28:46,401 - pretrain - INFO - [Epoch 34/300][Batch 41/327] BatchTime = 0.916 (s) DataTime = 0.003 (s) Losses = ['2.4161'] lr = 0.000970
+2024-04-15 23:29:02,679 - pretrain - INFO - [Epoch 34/300][Batch 61/327] BatchTime = 0.828 (s) DataTime = 0.003 (s) Losses = ['2.5380'] lr = 0.000970
+2024-04-15 23:29:18,630 - pretrain - INFO - [Epoch 34/300][Batch 81/327] BatchTime = 0.840 (s) DataTime = 0.002 (s) Losses = ['2.7898'] lr = 0.000970
+2024-04-15 23:29:34,755 - pretrain - INFO - [Epoch 34/300][Batch 101/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['3.0745'] lr = 0.000970
+2024-04-15 23:29:50,877 - pretrain - INFO - [Epoch 34/300][Batch 121/327] BatchTime = 0.795 (s) DataTime = 0.003 (s) Losses = ['2.6180'] lr = 0.000970
+2024-04-15 23:30:07,056 - pretrain - INFO - [Epoch 34/300][Batch 141/327] BatchTime = 0.796 (s) DataTime = 0.002 (s) Losses = ['2.6785'] lr = 0.000970
+2024-04-15 23:30:23,388 - pretrain - INFO - [Epoch 34/300][Batch 161/327] BatchTime = 0.778 (s) DataTime = 0.002 (s) Losses = ['2.7895'] lr = 0.000970
+2024-04-15 23:30:39,783 - pretrain - INFO - [Epoch 34/300][Batch 181/327] BatchTime = 0.829 (s) DataTime = 0.002 (s) Losses = ['2.8908'] lr = 0.000970
+2024-04-15 23:30:55,892 - pretrain - INFO - [Epoch 34/300][Batch 201/327] BatchTime = 0.838 (s) DataTime = 0.003 (s) Losses = ['3.0440'] lr = 0.000970
+2024-04-15 23:31:11,776 - pretrain - INFO - [Epoch 34/300][Batch 221/327] BatchTime = 0.803 (s) DataTime = 0.002 (s) Losses = ['2.7837'] lr = 0.000970
+2024-04-15 23:31:28,431 - pretrain - INFO - [Epoch 34/300][Batch 241/327] BatchTime = 0.839 (s) DataTime = 0.003 (s) Losses = ['3.0458'] lr = 0.000970
+2024-04-15 23:31:44,544 - pretrain - INFO - [Epoch 34/300][Batch 261/327] BatchTime = 0.777 (s) DataTime = 0.002 (s) Losses = ['2.8562'] lr = 0.000970
+2024-04-15 23:32:00,782 - pretrain - INFO - [Epoch 34/300][Batch 281/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['2.8992'] lr = 0.000970
+2024-04-15 23:32:17,147 - pretrain - INFO - [Epoch 34/300][Batch 301/327] BatchTime = 0.791 (s) DataTime = 0.002 (s) Losses = ['3.1010'] lr = 0.000970
+2024-04-15 23:32:33,200 - pretrain - INFO - [Epoch 34/300][Batch 321/327] BatchTime = 0.814 (s) DataTime = 0.002 (s) Losses = ['2.6761'] lr = 0.000970
+2024-04-15 23:32:38,318 - pretrain - INFO - [Training] EPOCH: 34 EpochTime = 266.068 (s) Losses = ['2.7909'] lr = 0.000969
+2024-04-15 23:32:38,319 - pretrain - INFO - [VALIDATION] Start validating epoch 34
+2024-04-15 23:33:28,986 - pretrain - INFO - [Validation] EPOCH: 34  acc = 0.8963
+2024-04-15 23:33:31,082 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 23:33:32,905 - pretrain - INFO - [Epoch 35/300][Batch 1/327] BatchTime = 1.821 (s) DataTime = 1.002 (s) Losses = ['2.8801'] lr = 0.000969
+2024-04-15 23:33:48,736 - pretrain - INFO - [Epoch 35/300][Batch 21/327] BatchTime = 0.780 (s) DataTime = 0.001 (s) Losses = ['2.8658'] lr = 0.000969
+2024-04-15 23:34:04,943 - pretrain - INFO - [Epoch 35/300][Batch 41/327] BatchTime = 0.796 (s) DataTime = 0.002 (s) Losses = ['3.1431'] lr = 0.000969
+2024-04-15 23:34:21,039 - pretrain - INFO - [Epoch 35/300][Batch 61/327] BatchTime = 0.781 (s) DataTime = 0.002 (s) Losses = ['2.9315'] lr = 0.000969
+2024-04-15 23:34:37,029 - pretrain - INFO - [Epoch 35/300][Batch 81/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['2.9076'] lr = 0.000969
+2024-04-15 23:34:53,271 - pretrain - INFO - [Epoch 35/300][Batch 101/327] BatchTime = 0.788 (s) DataTime = 0.002 (s) Losses = ['2.8298'] lr = 0.000969
+2024-04-15 23:35:09,428 - pretrain - INFO - [Epoch 35/300][Batch 121/327] BatchTime = 0.814 (s) DataTime = 0.002 (s) Losses = ['2.7912'] lr = 0.000969
+2024-04-15 23:35:26,080 - pretrain - INFO - [Epoch 35/300][Batch 141/327] BatchTime = 0.854 (s) DataTime = 0.002 (s) Losses = ['2.6131'] lr = 0.000969
+2024-04-15 23:35:42,454 - pretrain - INFO - [Epoch 35/300][Batch 161/327] BatchTime = 0.819 (s) DataTime = 0.002 (s) Losses = ['2.7188'] lr = 0.000969
+2024-04-15 23:35:58,507 - pretrain - INFO - [Epoch 35/300][Batch 181/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['2.9796'] lr = 0.000969
+2024-04-15 23:36:14,636 - pretrain - INFO - [Epoch 35/300][Batch 201/327] BatchTime = 0.840 (s) DataTime = 0.002 (s) Losses = ['2.8292'] lr = 0.000969
+2024-04-15 23:36:30,894 - pretrain - INFO - [Epoch 35/300][Batch 221/327] BatchTime = 0.794 (s) DataTime = 0.002 (s) Losses = ['2.8239'] lr = 0.000969
+2024-04-15 23:36:47,157 - pretrain - INFO - [Epoch 35/300][Batch 241/327] BatchTime = 0.829 (s) DataTime = 0.002 (s) Losses = ['2.5590'] lr = 0.000969
+2024-04-15 23:37:04,070 - pretrain - INFO - [Epoch 35/300][Batch 261/327] BatchTime = 0.846 (s) DataTime = 0.002 (s) Losses = ['2.4369'] lr = 0.000969
+2024-04-15 23:37:20,118 - pretrain - INFO - [Epoch 35/300][Batch 281/327] BatchTime = 0.812 (s) DataTime = 0.002 (s) Losses = ['2.6208'] lr = 0.000969
+2024-04-15 23:37:36,360 - pretrain - INFO - [Epoch 35/300][Batch 301/327] BatchTime = 0.809 (s) DataTime = 0.003 (s) Losses = ['2.8130'] lr = 0.000969
+2024-04-15 23:37:53,102 - pretrain - INFO - [Epoch 35/300][Batch 321/327] BatchTime = 0.784 (s) DataTime = 0.002 (s) Losses = ['2.9343'] lr = 0.000969
+2024-04-15 23:37:58,197 - pretrain - INFO - [Training] EPOCH: 35 EpochTime = 267.113 (s) Losses = ['2.7467'] lr = 0.000967
+2024-04-15 23:37:58,198 - pretrain - INFO - [VALIDATION] Start validating epoch 35
+2024-04-15 23:38:50,490 - pretrain - INFO - [Validation] EPOCH: 35  acc = 0.9003
+2024-04-15 23:38:52,530 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-best.pth
+2024-04-15 23:38:54,677 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 23:38:56,729 - pretrain - INFO - [Epoch 36/300][Batch 1/327] BatchTime = 2.050 (s) DataTime = 1.234 (s) Losses = ['2.6747'] lr = 0.000967
+2024-04-15 23:39:12,698 - pretrain - INFO - [Epoch 36/300][Batch 21/327] BatchTime = 0.816 (s) DataTime = 0.002 (s) Losses = ['2.7257'] lr = 0.000967
+2024-04-15 23:39:28,959 - pretrain - INFO - [Epoch 36/300][Batch 41/327] BatchTime = 0.806 (s) DataTime = 0.002 (s) Losses = ['2.7360'] lr = 0.000967
+2024-04-15 23:39:45,348 - pretrain - INFO - [Epoch 36/300][Batch 61/327] BatchTime = 0.944 (s) DataTime = 0.002 (s) Losses = ['2.9214'] lr = 0.000967
+2024-04-15 23:40:01,340 - pretrain - INFO - [Epoch 36/300][Batch 81/327] BatchTime = 0.810 (s) DataTime = 0.002 (s) Losses = ['2.4840'] lr = 0.000967
+2024-04-15 23:40:17,926 - pretrain - INFO - [Epoch 36/300][Batch 101/327] BatchTime = 0.932 (s) DataTime = 0.002 (s) Losses = ['2.5804'] lr = 0.000967
+2024-04-15 23:40:34,039 - pretrain - INFO - [Epoch 36/300][Batch 121/327] BatchTime = 0.817 (s) DataTime = 0.002 (s) Losses = ['2.7167'] lr = 0.000967
+2024-04-15 23:40:50,091 - pretrain - INFO - [Epoch 36/300][Batch 141/327] BatchTime = 0.774 (s) DataTime = 0.002 (s) Losses = ['2.6924'] lr = 0.000967
+2024-04-15 23:41:06,394 - pretrain - INFO - [Epoch 36/300][Batch 161/327] BatchTime = 0.803 (s) DataTime = 0.003 (s) Losses = ['2.8498'] lr = 0.000967
+2024-04-15 23:41:22,455 - pretrain - INFO - [Epoch 36/300][Batch 181/327] BatchTime = 0.791 (s) DataTime = 0.002 (s) Losses = ['2.5565'] lr = 0.000967
+2024-04-15 23:41:38,891 - pretrain - INFO - [Epoch 36/300][Batch 201/327] BatchTime = 0.878 (s) DataTime = 0.002 (s) Losses = ['2.7400'] lr = 0.000967
+2024-04-15 23:41:54,789 - pretrain - INFO - [Epoch 36/300][Batch 221/327] BatchTime = 0.791 (s) DataTime = 0.002 (s) Losses = ['2.5378'] lr = 0.000967
+2024-04-15 23:42:10,788 - pretrain - INFO - [Epoch 36/300][Batch 241/327] BatchTime = 0.833 (s) DataTime = 0.002 (s) Losses = ['2.4722'] lr = 0.000967
+2024-04-15 23:42:27,110 - pretrain - INFO - [Epoch 36/300][Batch 261/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['2.9253'] lr = 0.000967
+2024-04-15 23:42:43,327 - pretrain - INFO - [Epoch 36/300][Batch 281/327] BatchTime = 0.800 (s) DataTime = 0.002 (s) Losses = ['2.7978'] lr = 0.000967
+2024-04-15 23:42:59,769 - pretrain - INFO - [Epoch 36/300][Batch 301/327] BatchTime = 0.801 (s) DataTime = 0.002 (s) Losses = ['2.6728'] lr = 0.000967
+2024-04-15 23:43:15,983 - pretrain - INFO - [Epoch 36/300][Batch 321/327] BatchTime = 0.803 (s) DataTime = 0.002 (s) Losses = ['2.9385'] lr = 0.000967
+2024-04-15 23:43:21,017 - pretrain - INFO - [Training] EPOCH: 36 EpochTime = 266.337 (s) Losses = ['2.6694'] lr = 0.000965
+2024-04-15 23:43:21,018 - pretrain - INFO - [VALIDATION] Start validating epoch 36
+2024-04-15 23:44:13,198 - pretrain - INFO - [Validation] EPOCH: 36  acc = 0.8971
+2024-04-15 23:44:15,243 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 23:44:17,218 - pretrain - INFO - [Epoch 37/300][Batch 1/327] BatchTime = 1.973 (s) DataTime = 1.125 (s) Losses = ['2.7312'] lr = 0.000965
+2024-04-15 23:44:33,453 - pretrain - INFO - [Epoch 37/300][Batch 21/327] BatchTime = 0.786 (s) DataTime = 0.002 (s) Losses = ['2.6370'] lr = 0.000965
+2024-04-15 23:44:49,429 - pretrain - INFO - [Epoch 37/300][Batch 41/327] BatchTime = 0.778 (s) DataTime = 0.002 (s) Losses = ['2.7723'] lr = 0.000965
+2024-04-15 23:45:05,604 - pretrain - INFO - [Epoch 37/300][Batch 61/327] BatchTime = 0.790 (s) DataTime = 0.003 (s) Losses = ['2.3922'] lr = 0.000965
+2024-04-15 23:45:21,638 - pretrain - INFO - [Epoch 37/300][Batch 81/327] BatchTime = 0.810 (s) DataTime = 0.004 (s) Losses = ['2.9201'] lr = 0.000965
+2024-04-15 23:45:37,887 - pretrain - INFO - [Epoch 37/300][Batch 101/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['2.7195'] lr = 0.000965
+2024-04-15 23:45:54,172 - pretrain - INFO - [Epoch 37/300][Batch 121/327] BatchTime = 0.798 (s) DataTime = 0.002 (s) Losses = ['2.4377'] lr = 0.000965
+2024-04-15 23:46:10,215 - pretrain - INFO - [Epoch 37/300][Batch 141/327] BatchTime = 0.801 (s) DataTime = 0.002 (s) Losses = ['2.6489'] lr = 0.000965
+2024-04-15 23:46:26,679 - pretrain - INFO - [Epoch 37/300][Batch 161/327] BatchTime = 0.789 (s) DataTime = 0.002 (s) Losses = ['2.8386'] lr = 0.000965
+2024-04-15 23:46:43,022 - pretrain - INFO - [Epoch 37/300][Batch 181/327] BatchTime = 0.823 (s) DataTime = 0.002 (s) Losses = ['2.7565'] lr = 0.000965
+2024-04-15 23:46:59,026 - pretrain - INFO - [Epoch 37/300][Batch 201/327] BatchTime = 0.837 (s) DataTime = 0.003 (s) Losses = ['2.6292'] lr = 0.000965
+2024-04-15 23:47:15,605 - pretrain - INFO - [Epoch 37/300][Batch 221/327] BatchTime = 0.799 (s) DataTime = 0.002 (s) Losses = ['2.6211'] lr = 0.000965
+2024-04-15 23:47:31,643 - pretrain - INFO - [Epoch 37/300][Batch 241/327] BatchTime = 0.790 (s) DataTime = 0.002 (s) Losses = ['2.6010'] lr = 0.000965
+2024-04-15 23:47:48,296 - pretrain - INFO - [Epoch 37/300][Batch 261/327] BatchTime = 0.871 (s) DataTime = 0.002 (s) Losses = ['2.2689'] lr = 0.000965
+2024-04-15 23:48:04,728 - pretrain - INFO - [Epoch 37/300][Batch 281/327] BatchTime = 0.790 (s) DataTime = 0.002 (s) Losses = ['2.7395'] lr = 0.000965
+2024-04-15 23:48:20,797 - pretrain - INFO - [Epoch 37/300][Batch 301/327] BatchTime = 0.789 (s) DataTime = 0.002 (s) Losses = ['2.7580'] lr = 0.000965
+2024-04-15 23:48:36,868 - pretrain - INFO - [Epoch 37/300][Batch 321/327] BatchTime = 0.786 (s) DataTime = 0.002 (s) Losses = ['2.9262'] lr = 0.000965
+2024-04-15 23:48:41,893 - pretrain - INFO - [Training] EPOCH: 37 EpochTime = 266.647 (s) Losses = ['2.6437'] lr = 0.000963
+2024-04-15 23:48:41,894 - pretrain - INFO - [VALIDATION] Start validating epoch 37
+2024-04-15 23:49:34,010 - pretrain - INFO - [Validation] EPOCH: 37  acc = 0.8999
+2024-04-15 23:49:36,161 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 23:49:38,100 - pretrain - INFO - [Epoch 38/300][Batch 1/327] BatchTime = 1.937 (s) DataTime = 1.116 (s) Losses = ['2.2406'] lr = 0.000963
+2024-04-15 23:49:53,939 - pretrain - INFO - [Epoch 38/300][Batch 21/327] BatchTime = 0.792 (s) DataTime = 0.001 (s) Losses = ['2.4231'] lr = 0.000963
+2024-04-15 23:50:10,062 - pretrain - INFO - [Epoch 38/300][Batch 41/327] BatchTime = 0.822 (s) DataTime = 0.002 (s) Losses = ['2.6648'] lr = 0.000963
+2024-04-15 23:50:26,352 - pretrain - INFO - [Epoch 38/300][Batch 61/327] BatchTime = 0.844 (s) DataTime = 0.002 (s) Losses = ['2.4817'] lr = 0.000963
+2024-04-15 23:50:42,407 - pretrain - INFO - [Epoch 38/300][Batch 81/327] BatchTime = 0.787 (s) DataTime = 0.002 (s) Losses = ['3.0421'] lr = 0.000963
+2024-04-15 23:50:58,683 - pretrain - INFO - [Epoch 38/300][Batch 101/327] BatchTime = 0.790 (s) DataTime = 0.002 (s) Losses = ['2.6003'] lr = 0.000963
+2024-04-15 23:51:14,434 - pretrain - INFO - [Epoch 38/300][Batch 121/327] BatchTime = 0.790 (s) DataTime = 0.002 (s) Losses = ['2.4046'] lr = 0.000963
+2024-04-15 23:51:31,182 - pretrain - INFO - [Epoch 38/300][Batch 141/327] BatchTime = 0.800 (s) DataTime = 0.003 (s) Losses = ['2.3482'] lr = 0.000963
+2024-04-15 23:51:47,348 - pretrain - INFO - [Epoch 38/300][Batch 161/327] BatchTime = 0.828 (s) DataTime = 0.002 (s) Losses = ['2.7825'] lr = 0.000963
+2024-04-15 23:52:03,482 - pretrain - INFO - [Epoch 38/300][Batch 181/327] BatchTime = 0.806 (s) DataTime = 0.002 (s) Losses = ['2.4763'] lr = 0.000963
+2024-04-15 23:52:21,141 - pretrain - INFO - [Epoch 38/300][Batch 201/327] BatchTime = 0.844 (s) DataTime = 0.003 (s) Losses = ['2.5768'] lr = 0.000963
+2024-04-15 23:52:37,177 - pretrain - INFO - [Epoch 38/300][Batch 221/327] BatchTime = 0.802 (s) DataTime = 0.002 (s) Losses = ['2.3821'] lr = 0.000963
+2024-04-15 23:52:53,738 - pretrain - INFO - [Epoch 38/300][Batch 241/327] BatchTime = 0.813 (s) DataTime = 0.002 (s) Losses = ['2.6094'] lr = 0.000963
+2024-04-15 23:53:09,931 - pretrain - INFO - [Epoch 38/300][Batch 261/327] BatchTime = 0.816 (s) DataTime = 0.002 (s) Losses = ['2.7556'] lr = 0.000963
+2024-04-15 23:53:26,493 - pretrain - INFO - [Epoch 38/300][Batch 281/327] BatchTime = 0.856 (s) DataTime = 0.002 (s) Losses = ['2.6567'] lr = 0.000963
+2024-04-15 23:53:42,943 - pretrain - INFO - [Epoch 38/300][Batch 301/327] BatchTime = 0.808 (s) DataTime = 0.002 (s) Losses = ['2.2982'] lr = 0.000963
+2024-04-15 23:53:59,348 - pretrain - INFO - [Epoch 38/300][Batch 321/327] BatchTime = 0.871 (s) DataTime = 0.002 (s) Losses = ['2.7513'] lr = 0.000963
+2024-04-15 23:54:04,608 - pretrain - INFO - [Training] EPOCH: 38 EpochTime = 268.445 (s) Losses = ['2.5977'] lr = 0.000961
+2024-04-15 23:54:04,609 - pretrain - INFO - [VALIDATION] Start validating epoch 38
+2024-04-15 23:54:55,746 - pretrain - INFO - [Validation] EPOCH: 38  acc = 0.8930
+2024-04-15 23:54:57,896 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-15 23:54:59,749 - pretrain - INFO - [Epoch 39/300][Batch 1/327] BatchTime = 1.851 (s) DataTime = 1.020 (s) Losses = ['2.1300'] lr = 0.000961
+2024-04-15 23:55:15,707 - pretrain - INFO - [Epoch 39/300][Batch 21/327] BatchTime = 0.847 (s) DataTime = 0.004 (s) Losses = ['2.5838'] lr = 0.000961
+2024-04-15 23:55:32,109 - pretrain - INFO - [Epoch 39/300][Batch 41/327] BatchTime = 0.889 (s) DataTime = 0.002 (s) Losses = ['2.5507'] lr = 0.000961
+2024-04-15 23:55:48,204 - pretrain - INFO - [Epoch 39/300][Batch 61/327] BatchTime = 0.805 (s) DataTime = 0.003 (s) Losses = ['2.2627'] lr = 0.000961
+2024-04-15 23:56:04,606 - pretrain - INFO - [Epoch 39/300][Batch 81/327] BatchTime = 0.803 (s) DataTime = 0.002 (s) Losses = ['2.5821'] lr = 0.000961
+2024-04-15 23:56:20,568 - pretrain - INFO - [Epoch 39/300][Batch 101/327] BatchTime = 0.829 (s) DataTime = 0.002 (s) Losses = ['2.7562'] lr = 0.000961
+2024-04-15 23:56:37,592 - pretrain - INFO - [Epoch 39/300][Batch 121/327] BatchTime = 0.803 (s) DataTime = 0.002 (s) Losses = ['2.5679'] lr = 0.000961
+2024-04-15 23:56:53,966 - pretrain - INFO - [Epoch 39/300][Batch 141/327] BatchTime = 0.877 (s) DataTime = 0.003 (s) Losses = ['2.7558'] lr = 0.000961
+2024-04-15 23:57:09,975 - pretrain - INFO - [Epoch 39/300][Batch 161/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['2.4405'] lr = 0.000961
+2024-04-15 23:57:26,205 - pretrain - INFO - [Epoch 39/300][Batch 181/327] BatchTime = 0.796 (s) DataTime = 0.002 (s) Losses = ['2.5326'] lr = 0.000961
+2024-04-15 23:57:42,486 - pretrain - INFO - [Epoch 39/300][Batch 201/327] BatchTime = 0.854 (s) DataTime = 0.002 (s) Losses = ['2.3789'] lr = 0.000961
+2024-04-15 23:57:58,918 - pretrain - INFO - [Epoch 39/300][Batch 221/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['2.8504'] lr = 0.000961
+2024-04-15 23:58:15,145 - pretrain - INFO - [Epoch 39/300][Batch 241/327] BatchTime = 0.800 (s) DataTime = 0.002 (s) Losses = ['3.0055'] lr = 0.000961
+2024-04-15 23:58:31,334 - pretrain - INFO - [Epoch 39/300][Batch 261/327] BatchTime = 0.831 (s) DataTime = 0.003 (s) Losses = ['2.4219'] lr = 0.000961
+2024-04-15 23:58:48,081 - pretrain - INFO - [Epoch 39/300][Batch 281/327] BatchTime = 0.790 (s) DataTime = 0.002 (s) Losses = ['2.7889'] lr = 0.000961
+2024-04-15 23:59:04,355 - pretrain - INFO - [Epoch 39/300][Batch 301/327] BatchTime = 0.838 (s) DataTime = 0.002 (s) Losses = ['2.4600'] lr = 0.000961
+2024-04-15 23:59:20,754 - pretrain - INFO - [Epoch 39/300][Batch 321/327] BatchTime = 0.812 (s) DataTime = 0.002 (s) Losses = ['2.6601'] lr = 0.000961
+2024-04-15 23:59:25,672 - pretrain - INFO - [Training] EPOCH: 39 EpochTime = 267.773 (s) Losses = ['2.5497'] lr = 0.000959
+2024-04-15 23:59:25,673 - pretrain - INFO - [VALIDATION] Start validating epoch 39
+2024-04-16 00:00:18,131 - pretrain - INFO - [Validation] EPOCH: 39  acc = 0.8991
+2024-04-16 00:00:20,208 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-16 00:00:22,079 - pretrain - INFO - [Epoch 40/300][Batch 1/327] BatchTime = 1.869 (s) DataTime = 1.021 (s) Losses = ['2.6703'] lr = 0.000959
+2024-04-16 00:00:38,843 - pretrain - INFO - [Epoch 40/300][Batch 21/327] BatchTime = 0.805 (s) DataTime = 0.003 (s) Losses = ['2.6387'] lr = 0.000959
+2024-04-16 00:00:54,768 - pretrain - INFO - [Epoch 40/300][Batch 41/327] BatchTime = 0.809 (s) DataTime = 0.002 (s) Losses = ['2.3328'] lr = 0.000959
+2024-04-16 00:01:11,093 - pretrain - INFO - [Epoch 40/300][Batch 61/327] BatchTime = 0.795 (s) DataTime = 0.002 (s) Losses = ['2.7448'] lr = 0.000959
+2024-04-16 00:01:27,350 - pretrain - INFO - [Epoch 40/300][Batch 81/327] BatchTime = 0.852 (s) DataTime = 0.003 (s) Losses = ['2.3949'] lr = 0.000959
+2024-04-16 00:01:43,978 - pretrain - INFO - [Epoch 40/300][Batch 101/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['2.4924'] lr = 0.000959
+2024-04-16 00:02:00,317 - pretrain - INFO - [Epoch 40/300][Batch 121/327] BatchTime = 0.879 (s) DataTime = 0.002 (s) Losses = ['2.2751'] lr = 0.000959
+2024-04-16 00:02:16,454 - pretrain - INFO - [Epoch 40/300][Batch 141/327] BatchTime = 0.767 (s) DataTime = 0.002 (s) Losses = ['2.5042'] lr = 0.000959
+2024-04-16 00:02:33,157 - pretrain - INFO - [Epoch 40/300][Batch 161/327] BatchTime = 0.874 (s) DataTime = 0.002 (s) Losses = ['2.3866'] lr = 0.000959
+2024-04-16 00:02:49,480 - pretrain - INFO - [Epoch 40/300][Batch 181/327] BatchTime = 0.844 (s) DataTime = 0.003 (s) Losses = ['2.6336'] lr = 0.000959
+2024-04-16 00:03:05,623 - pretrain - INFO - [Epoch 40/300][Batch 201/327] BatchTime = 0.829 (s) DataTime = 0.002 (s) Losses = ['2.6920'] lr = 0.000959
+2024-04-16 00:03:21,837 - pretrain - INFO - [Epoch 40/300][Batch 221/327] BatchTime = 0.828 (s) DataTime = 0.002 (s) Losses = ['2.4995'] lr = 0.000959
+2024-04-16 00:03:38,060 - pretrain - INFO - [Epoch 40/300][Batch 241/327] BatchTime = 0.804 (s) DataTime = 0.002 (s) Losses = ['2.4033'] lr = 0.000959
+2024-04-16 00:03:54,390 - pretrain - INFO - [Epoch 40/300][Batch 261/327] BatchTime = 0.856 (s) DataTime = 0.002 (s) Losses = ['2.5138'] lr = 0.000959
+2024-04-16 00:04:11,679 - pretrain - INFO - [Epoch 40/300][Batch 281/327] BatchTime = 0.925 (s) DataTime = 0.002 (s) Losses = ['2.5891'] lr = 0.000959
+2024-04-16 00:04:27,962 - pretrain - INFO - [Epoch 40/300][Batch 301/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['2.5717'] lr = 0.000959
+2024-04-16 00:04:44,201 - pretrain - INFO - [Epoch 40/300][Batch 321/327] BatchTime = 0.862 (s) DataTime = 0.002 (s) Losses = ['2.5164'] lr = 0.000959
+2024-04-16 00:04:49,673 - pretrain - INFO - [Training] EPOCH: 40 EpochTime = 269.463 (s) Losses = ['2.5260'] lr = 0.000957
+2024-04-16 00:04:49,674 - pretrain - INFO - [VALIDATION] Start validating epoch 40
+2024-04-16 00:05:41,836 - pretrain - INFO - [Validation] EPOCH: 40  acc = 0.8995
+2024-04-16 00:05:43,905 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-16 00:05:45,691 - pretrain - INFO - [Epoch 41/300][Batch 1/327] BatchTime = 1.784 (s) DataTime = 0.960 (s) Losses = ['2.5425'] lr = 0.000957
+2024-04-16 00:06:01,684 - pretrain - INFO - [Epoch 41/300][Batch 21/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['2.3121'] lr = 0.000957
+2024-04-16 00:06:18,356 - pretrain - INFO - [Epoch 41/300][Batch 41/327] BatchTime = 0.840 (s) DataTime = 0.002 (s) Losses = ['2.4118'] lr = 0.000957
+2024-04-16 00:06:34,286 - pretrain - INFO - [Epoch 41/300][Batch 61/327] BatchTime = 0.830 (s) DataTime = 0.002 (s) Losses = ['2.6403'] lr = 0.000957
+2024-04-16 00:06:50,602 - pretrain - INFO - [Epoch 41/300][Batch 81/327] BatchTime = 0.798 (s) DataTime = 0.002 (s) Losses = ['2.5969'] lr = 0.000957
+2024-04-16 00:07:06,812 - pretrain - INFO - [Epoch 41/300][Batch 101/327] BatchTime = 0.782 (s) DataTime = 0.003 (s) Losses = ['2.3495'] lr = 0.000957
+2024-04-16 00:07:22,966 - pretrain - INFO - [Epoch 41/300][Batch 121/327] BatchTime = 0.799 (s) DataTime = 0.002 (s) Losses = ['2.4052'] lr = 0.000957
+2024-04-16 00:07:38,925 - pretrain - INFO - [Epoch 41/300][Batch 141/327] BatchTime = 0.818 (s) DataTime = 0.003 (s) Losses = ['2.2144'] lr = 0.000957
+2024-04-16 00:07:55,163 - pretrain - INFO - [Epoch 41/300][Batch 161/327] BatchTime = 0.863 (s) DataTime = 0.002 (s) Losses = ['2.2585'] lr = 0.000957
+2024-04-16 00:08:11,489 - pretrain - INFO - [Epoch 41/300][Batch 181/327] BatchTime = 0.784 (s) DataTime = 0.002 (s) Losses = ['2.8812'] lr = 0.000957
+2024-04-16 00:08:27,681 - pretrain - INFO - [Epoch 41/300][Batch 201/327] BatchTime = 0.855 (s) DataTime = 0.003 (s) Losses = ['2.7335'] lr = 0.000957
+2024-04-16 00:08:44,433 - pretrain - INFO - [Epoch 41/300][Batch 221/327] BatchTime = 0.803 (s) DataTime = 0.002 (s) Losses = ['2.8298'] lr = 0.000957
+2024-04-16 00:09:00,427 - pretrain - INFO - [Epoch 41/300][Batch 241/327] BatchTime = 0.794 (s) DataTime = 0.002 (s) Losses = ['2.9844'] lr = 0.000957
+2024-04-16 00:09:16,486 - pretrain - INFO - [Epoch 41/300][Batch 261/327] BatchTime = 0.775 (s) DataTime = 0.002 (s) Losses = ['2.6925'] lr = 0.000957
+2024-04-16 00:09:32,613 - pretrain - INFO - [Epoch 41/300][Batch 281/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['2.4901'] lr = 0.000957
+2024-04-16 00:09:49,214 - pretrain - INFO - [Epoch 41/300][Batch 301/327] BatchTime = 0.827 (s) DataTime = 0.003 (s) Losses = ['2.3779'] lr = 0.000957
+2024-04-16 00:10:05,528 - pretrain - INFO - [Epoch 41/300][Batch 321/327] BatchTime = 0.794 (s) DataTime = 0.002 (s) Losses = ['2.3175'] lr = 0.000957
+2024-04-16 00:10:10,689 - pretrain - INFO - [Training] EPOCH: 41 EpochTime = 266.782 (s) Losses = ['2.4807'] lr = 0.000955
+2024-04-16 00:10:10,689 - pretrain - INFO - [VALIDATION] Start validating epoch 41
+2024-04-16 00:11:05,005 - pretrain - INFO - [Validation] EPOCH: 41  acc = 0.8938
+2024-04-16 00:11:07,087 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-16 00:11:09,090 - pretrain - INFO - [Epoch 42/300][Batch 1/327] BatchTime = 2.001 (s) DataTime = 1.102 (s) Losses = ['2.3861'] lr = 0.000955
+2024-04-16 00:11:25,497 - pretrain - INFO - [Epoch 42/300][Batch 21/327] BatchTime = 0.855 (s) DataTime = 0.002 (s) Losses = ['2.3772'] lr = 0.000955
+2024-04-16 00:11:41,738 - pretrain - INFO - [Epoch 42/300][Batch 41/327] BatchTime = 0.806 (s) DataTime = 0.003 (s) Losses = ['2.6910'] lr = 0.000955
+2024-04-16 00:11:57,807 - pretrain - INFO - [Epoch 42/300][Batch 61/327] BatchTime = 0.826 (s) DataTime = 0.003 (s) Losses = ['2.5825'] lr = 0.000955
+2024-04-16 00:12:14,481 - pretrain - INFO - [Epoch 42/300][Batch 81/327] BatchTime = 0.788 (s) DataTime = 0.002 (s) Losses = ['2.4404'] lr = 0.000955
+2024-04-16 00:12:30,741 - pretrain - INFO - [Epoch 42/300][Batch 101/327] BatchTime = 0.776 (s) DataTime = 0.002 (s) Losses = ['2.5431'] lr = 0.000955
+2024-04-16 00:12:47,132 - pretrain - INFO - [Epoch 42/300][Batch 121/327] BatchTime = 0.792 (s) DataTime = 0.003 (s) Losses = ['2.4265'] lr = 0.000955
+2024-04-16 00:13:03,285 - pretrain - INFO - [Epoch 42/300][Batch 141/327] BatchTime = 0.790 (s) DataTime = 0.002 (s) Losses = ['2.4358'] lr = 0.000955
+2024-04-16 00:13:19,392 - pretrain - INFO - [Epoch 42/300][Batch 161/327] BatchTime = 0.836 (s) DataTime = 0.002 (s) Losses = ['2.2414'] lr = 0.000955
+2024-04-16 00:13:35,545 - pretrain - INFO - [Epoch 42/300][Batch 181/327] BatchTime = 0.836 (s) DataTime = 0.002 (s) Losses = ['2.3448'] lr = 0.000955
+2024-04-16 00:13:52,112 - pretrain - INFO - [Epoch 42/300][Batch 201/327] BatchTime = 0.791 (s) DataTime = 0.002 (s) Losses = ['2.4304'] lr = 0.000955
+2024-04-16 00:14:08,191 - pretrain - INFO - [Epoch 42/300][Batch 221/327] BatchTime = 0.821 (s) DataTime = 0.002 (s) Losses = ['2.5877'] lr = 0.000955
+2024-04-16 00:14:24,535 - pretrain - INFO - [Epoch 42/300][Batch 241/327] BatchTime = 0.872 (s) DataTime = 0.002 (s) Losses = ['2.7470'] lr = 0.000955
+2024-04-16 00:14:40,615 - pretrain - INFO - [Epoch 42/300][Batch 261/327] BatchTime = 0.807 (s) DataTime = 0.002 (s) Losses = ['2.6393'] lr = 0.000955
+2024-04-16 00:14:57,142 - pretrain - INFO - [Epoch 42/300][Batch 281/327] BatchTime = 0.791 (s) DataTime = 0.002 (s) Losses = ['2.3367'] lr = 0.000955
+2024-04-16 00:15:13,438 - pretrain - INFO - [Epoch 42/300][Batch 301/327] BatchTime = 0.868 (s) DataTime = 0.002 (s) Losses = ['2.3922'] lr = 0.000955
+2024-04-16 00:15:29,630 - pretrain - INFO - [Epoch 42/300][Batch 321/327] BatchTime = 0.787 (s) DataTime = 0.002 (s) Losses = ['2.6824'] lr = 0.000955
+2024-04-16 00:15:34,616 - pretrain - INFO - [Training] EPOCH: 42 EpochTime = 267.527 (s) Losses = ['2.4563'] lr = 0.000952
+2024-04-16 00:15:34,617 - pretrain - INFO - [VALIDATION] Start validating epoch 42
+2024-04-16 00:16:26,175 - pretrain - INFO - [Validation] EPOCH: 42  acc = 0.9015
+2024-04-16 00:16:28,278 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-best.pth
+2024-04-16 00:16:30,346 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-16 00:16:32,188 - pretrain - INFO - [Epoch 43/300][Batch 1/327] BatchTime = 1.839 (s) DataTime = 1.014 (s) Losses = ['2.1424'] lr = 0.000952
+2024-04-16 00:16:48,718 - pretrain - INFO - [Epoch 43/300][Batch 21/327] BatchTime = 0.846 (s) DataTime = 0.001 (s) Losses = ['2.1211'] lr = 0.000952
+2024-04-16 00:17:05,054 - pretrain - INFO - [Epoch 43/300][Batch 41/327] BatchTime = 0.796 (s) DataTime = 0.002 (s) Losses = ['2.2372'] lr = 0.000952
+2024-04-16 00:17:21,228 - pretrain - INFO - [Epoch 43/300][Batch 61/327] BatchTime = 0.791 (s) DataTime = 0.002 (s) Losses = ['2.6723'] lr = 0.000952
+2024-04-16 00:17:37,242 - pretrain - INFO - [Epoch 43/300][Batch 81/327] BatchTime = 0.797 (s) DataTime = 0.003 (s) Losses = ['2.3883'] lr = 0.000952
+2024-04-16 00:17:53,624 - pretrain - INFO - [Epoch 43/300][Batch 101/327] BatchTime = 0.858 (s) DataTime = 0.002 (s) Losses = ['2.2499'] lr = 0.000952
+2024-04-16 00:18:09,731 - pretrain - INFO - [Epoch 43/300][Batch 121/327] BatchTime = 0.789 (s) DataTime = 0.002 (s) Losses = ['2.2385'] lr = 0.000952
+2024-04-16 00:18:26,289 - pretrain - INFO - [Epoch 43/300][Batch 141/327] BatchTime = 0.847 (s) DataTime = 0.002 (s) Losses = ['2.3951'] lr = 0.000952
+2024-04-16 00:18:42,585 - pretrain - INFO - [Epoch 43/300][Batch 161/327] BatchTime = 0.797 (s) DataTime = 0.003 (s) Losses = ['2.3771'] lr = 0.000952
+2024-04-16 00:18:58,823 - pretrain - INFO - [Epoch 43/300][Batch 181/327] BatchTime = 0.794 (s) DataTime = 0.002 (s) Losses = ['2.3684'] lr = 0.000952
+2024-04-16 00:19:15,372 - pretrain - INFO - [Epoch 43/300][Batch 201/327] BatchTime = 0.852 (s) DataTime = 0.002 (s) Losses = ['2.2178'] lr = 0.000952
+2024-04-16 00:19:31,876 - pretrain - INFO - [Epoch 43/300][Batch 221/327] BatchTime = 0.805 (s) DataTime = 0.002 (s) Losses = ['2.1921'] lr = 0.000952
+2024-04-16 00:19:48,541 - pretrain - INFO - [Epoch 43/300][Batch 241/327] BatchTime = 0.814 (s) DataTime = 0.003 (s) Losses = ['2.4508'] lr = 0.000952
+2024-04-16 00:20:04,462 - pretrain - INFO - [Epoch 43/300][Batch 261/327] BatchTime = 0.809 (s) DataTime = 0.002 (s) Losses = ['2.4545'] lr = 0.000952
+2024-04-16 00:20:20,885 - pretrain - INFO - [Epoch 43/300][Batch 281/327] BatchTime = 0.815 (s) DataTime = 0.002 (s) Losses = ['2.5787'] lr = 0.000952
+2024-04-16 00:20:36,931 - pretrain - INFO - [Epoch 43/300][Batch 301/327] BatchTime = 0.818 (s) DataTime = 0.002 (s) Losses = ['2.1877'] lr = 0.000952
+2024-04-16 00:20:53,330 - pretrain - INFO - [Epoch 43/300][Batch 321/327] BatchTime = 0.798 (s) DataTime = 0.002 (s) Losses = ['2.5552'] lr = 0.000952
+2024-04-16 00:20:58,325 - pretrain - INFO - [Training] EPOCH: 43 EpochTime = 267.976 (s) Losses = ['2.4093'] lr = 0.000950
+2024-04-16 00:20:58,325 - pretrain - INFO - [VALIDATION] Start validating epoch 43
+2024-04-16 00:21:49,795 - pretrain - INFO - [Validation] EPOCH: 43  acc = 0.9019
+2024-04-16 00:21:51,884 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-best.pth
+2024-04-16 00:21:54,014 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-16 00:21:55,851 - pretrain - INFO - [Epoch 44/300][Batch 1/327] BatchTime = 1.834 (s) DataTime = 0.981 (s) Losses = ['2.4875'] lr = 0.000950
+2024-04-16 00:22:11,775 - pretrain - INFO - [Epoch 44/300][Batch 21/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['2.5800'] lr = 0.000950
+2024-04-16 00:22:27,981 - pretrain - INFO - [Epoch 44/300][Batch 41/327] BatchTime = 0.791 (s) DataTime = 0.003 (s) Losses = ['2.3748'] lr = 0.000950
+2024-04-16 00:22:43,924 - pretrain - INFO - [Epoch 44/300][Batch 61/327] BatchTime = 0.852 (s) DataTime = 0.003 (s) Losses = ['2.3439'] lr = 0.000950
+2024-04-16 00:23:00,344 - pretrain - INFO - [Epoch 44/300][Batch 81/327] BatchTime = 0.773 (s) DataTime = 0.002 (s) Losses = ['2.1772'] lr = 0.000950
+2024-04-16 00:23:16,310 - pretrain - INFO - [Epoch 44/300][Batch 101/327] BatchTime = 0.819 (s) DataTime = 0.002 (s) Losses = ['2.4712'] lr = 0.000950
+2024-04-16 00:23:32,377 - pretrain - INFO - [Epoch 44/300][Batch 121/327] BatchTime = 0.794 (s) DataTime = 0.002 (s) Losses = ['2.1843'] lr = 0.000950
+2024-04-16 00:23:48,570 - pretrain - INFO - [Epoch 44/300][Batch 141/327] BatchTime = 0.842 (s) DataTime = 0.002 (s) Losses = ['2.5895'] lr = 0.000950
+2024-04-16 00:24:05,060 - pretrain - INFO - [Epoch 44/300][Batch 161/327] BatchTime = 0.849 (s) DataTime = 0.002 (s) Losses = ['2.2900'] lr = 0.000950
+2024-04-16 00:24:21,303 - pretrain - INFO - [Epoch 44/300][Batch 181/327] BatchTime = 0.805 (s) DataTime = 0.002 (s) Losses = ['2.3011'] lr = 0.000950
+2024-04-16 00:24:38,176 - pretrain - INFO - [Epoch 44/300][Batch 201/327] BatchTime = 0.844 (s) DataTime = 0.002 (s) Losses = ['2.2069'] lr = 0.000950
+2024-04-16 00:24:54,930 - pretrain - INFO - [Epoch 44/300][Batch 221/327] BatchTime = 0.821 (s) DataTime = 0.003 (s) Losses = ['2.3740'] lr = 0.000950
+2024-04-16 00:25:11,467 - pretrain - INFO - [Epoch 44/300][Batch 241/327] BatchTime = 0.899 (s) DataTime = 0.002 (s) Losses = ['2.9966'] lr = 0.000950
+2024-04-16 00:25:27,739 - pretrain - INFO - [Epoch 44/300][Batch 261/327] BatchTime = 0.827 (s) DataTime = 0.002 (s) Losses = ['2.0827'] lr = 0.000950
+2024-04-16 00:25:43,987 - pretrain - INFO - [Epoch 44/300][Batch 281/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['2.3053'] lr = 0.000950
+2024-04-16 00:26:00,542 - pretrain - INFO - [Epoch 44/300][Batch 301/327] BatchTime = 0.856 (s) DataTime = 0.002 (s) Losses = ['2.5156'] lr = 0.000950
+2024-04-16 00:26:16,663 - pretrain - INFO - [Epoch 44/300][Batch 321/327] BatchTime = 0.845 (s) DataTime = 0.002 (s) Losses = ['2.6478'] lr = 0.000950
+2024-04-16 00:26:21,692 - pretrain - INFO - [Training] EPOCH: 44 EpochTime = 267.674 (s) Losses = ['2.3672'] lr = 0.000948
+2024-04-16 00:26:21,692 - pretrain - INFO - [VALIDATION] Start validating epoch 44
+2024-04-16 00:27:13,384 - pretrain - INFO - [Validation] EPOCH: 44  acc = 0.9015
+2024-04-16 00:27:15,347 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-16 00:27:17,235 - pretrain - INFO - [Epoch 45/300][Batch 1/327] BatchTime = 1.886 (s) DataTime = 1.025 (s) Losses = ['2.4437'] lr = 0.000948
+2024-04-16 00:27:34,201 - pretrain - INFO - [Epoch 45/300][Batch 21/327] BatchTime = 0.878 (s) DataTime = 0.002 (s) Losses = ['2.3070'] lr = 0.000948
+2024-04-16 00:27:50,490 - pretrain - INFO - [Epoch 45/300][Batch 41/327] BatchTime = 0.813 (s) DataTime = 0.002 (s) Losses = ['2.3312'] lr = 0.000948
+2024-04-16 00:28:06,726 - pretrain - INFO - [Epoch 45/300][Batch 61/327] BatchTime = 0.803 (s) DataTime = 0.002 (s) Losses = ['2.3542'] lr = 0.000948
+2024-04-16 00:28:23,126 - pretrain - INFO - [Epoch 45/300][Batch 81/327] BatchTime = 0.839 (s) DataTime = 0.002 (s) Losses = ['2.5943'] lr = 0.000948
+2024-04-16 00:28:39,395 - pretrain - INFO - [Epoch 45/300][Batch 101/327] BatchTime = 0.774 (s) DataTime = 0.002 (s) Losses = ['2.5370'] lr = 0.000948
+2024-04-16 00:28:55,993 - pretrain - INFO - [Epoch 45/300][Batch 121/327] BatchTime = 0.843 (s) DataTime = 0.002 (s) Losses = ['2.3249'] lr = 0.000948
+2024-04-16 00:29:12,017 - pretrain - INFO - [Epoch 45/300][Batch 141/327] BatchTime = 0.778 (s) DataTime = 0.002 (s) Losses = ['2.1627'] lr = 0.000948
+2024-04-16 00:29:28,439 - pretrain - INFO - [Epoch 45/300][Batch 161/327] BatchTime = 0.797 (s) DataTime = 0.002 (s) Losses = ['2.0175'] lr = 0.000948
+2024-04-16 00:29:44,760 - pretrain - INFO - [Epoch 45/300][Batch 181/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['2.3638'] lr = 0.000948
+2024-04-16 00:30:00,772 - pretrain - INFO - [Epoch 45/300][Batch 201/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['2.0770'] lr = 0.000948
+2024-04-16 00:30:17,189 - pretrain - INFO - [Epoch 45/300][Batch 221/327] BatchTime = 0.811 (s) DataTime = 0.003 (s) Losses = ['2.3528'] lr = 0.000948
+2024-04-16 00:30:33,715 - pretrain - INFO - [Epoch 45/300][Batch 241/327] BatchTime = 0.842 (s) DataTime = 0.014 (s) Losses = ['2.3204'] lr = 0.000948
+2024-04-16 00:30:50,064 - pretrain - INFO - [Epoch 45/300][Batch 261/327] BatchTime = 0.843 (s) DataTime = 0.002 (s) Losses = ['2.6098'] lr = 0.000948
+2024-04-16 00:31:06,635 - pretrain - INFO - [Epoch 45/300][Batch 281/327] BatchTime = 0.803 (s) DataTime = 0.002 (s) Losses = ['2.2997'] lr = 0.000948
+2024-04-16 00:31:23,157 - pretrain - INFO - [Epoch 45/300][Batch 301/327] BatchTime = 0.842 (s) DataTime = 0.002 (s) Losses = ['2.3415'] lr = 0.000948
+2024-04-16 00:31:39,278 - pretrain - INFO - [Epoch 45/300][Batch 321/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['2.1979'] lr = 0.000948
+2024-04-16 00:31:44,487 - pretrain - INFO - [Training] EPOCH: 45 EpochTime = 269.137 (s) Losses = ['2.3732'] lr = 0.000946
+2024-04-16 00:31:44,488 - pretrain - INFO - [VALIDATION] Start validating epoch 45
+2024-04-16 00:32:34,649 - pretrain - INFO - [Validation] EPOCH: 45  acc = 0.9011
+2024-04-16 00:32:36,714 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-16 00:32:38,607 - pretrain - INFO - [Epoch 46/300][Batch 1/327] BatchTime = 1.890 (s) DataTime = 1.018 (s) Losses = ['2.3029'] lr = 0.000946
+2024-04-16 00:32:54,497 - pretrain - INFO - [Epoch 46/300][Batch 21/327] BatchTime = 0.789 (s) DataTime = 0.002 (s) Losses = ['2.7111'] lr = 0.000946
+2024-04-16 00:33:10,759 - pretrain - INFO - [Epoch 46/300][Batch 41/327] BatchTime = 0.838 (s) DataTime = 0.002 (s) Losses = ['2.0893'] lr = 0.000946
+2024-04-16 00:33:27,240 - pretrain - INFO - [Epoch 46/300][Batch 61/327] BatchTime = 0.802 (s) DataTime = 0.002 (s) Losses = ['2.2710'] lr = 0.000946
+2024-04-16 00:33:43,356 - pretrain - INFO - [Epoch 46/300][Batch 81/327] BatchTime = 0.868 (s) DataTime = 0.002 (s) Losses = ['2.2042'] lr = 0.000946
+2024-04-16 00:33:59,859 - pretrain - INFO - [Epoch 46/300][Batch 101/327] BatchTime = 0.861 (s) DataTime = 0.002 (s) Losses = ['2.3116'] lr = 0.000946
+2024-04-16 00:34:16,502 - pretrain - INFO - [Epoch 46/300][Batch 121/327] BatchTime = 0.791 (s) DataTime = 0.002 (s) Losses = ['2.2972'] lr = 0.000946
+2024-04-16 00:34:32,455 - pretrain - INFO - [Epoch 46/300][Batch 141/327] BatchTime = 0.776 (s) DataTime = 0.002 (s) Losses = ['2.3469'] lr = 0.000946
+2024-04-16 00:34:49,114 - pretrain - INFO - [Epoch 46/300][Batch 161/327] BatchTime = 0.851 (s) DataTime = 0.002 (s) Losses = ['2.4232'] lr = 0.000946
+2024-04-16 00:35:05,132 - pretrain - INFO - [Epoch 46/300][Batch 181/327] BatchTime = 0.776 (s) DataTime = 0.002 (s) Losses = ['2.5176'] lr = 0.000946
+2024-04-16 00:35:21,184 - pretrain - INFO - [Epoch 46/300][Batch 201/327] BatchTime = 0.791 (s) DataTime = 0.002 (s) Losses = ['2.3531'] lr = 0.000946
+2024-04-16 00:35:37,391 - pretrain - INFO - [Epoch 46/300][Batch 221/327] BatchTime = 0.848 (s) DataTime = 0.002 (s) Losses = ['2.1864'] lr = 0.000946
+2024-04-16 00:35:53,960 - pretrain - INFO - [Epoch 46/300][Batch 241/327] BatchTime = 0.820 (s) DataTime = 0.002 (s) Losses = ['2.7910'] lr = 0.000946
+2024-04-16 00:36:10,112 - pretrain - INFO - [Epoch 46/300][Batch 261/327] BatchTime = 0.798 (s) DataTime = 0.002 (s) Losses = ['2.4515'] lr = 0.000946
+2024-04-16 00:36:26,631 - pretrain - INFO - [Epoch 46/300][Batch 281/327] BatchTime = 0.865 (s) DataTime = 0.002 (s) Losses = ['2.2548'] lr = 0.000946
+2024-04-16 00:36:43,163 - pretrain - INFO - [Epoch 46/300][Batch 301/327] BatchTime = 0.870 (s) DataTime = 0.002 (s) Losses = ['2.3270'] lr = 0.000946
+2024-04-16 00:36:59,307 - pretrain - INFO - [Epoch 46/300][Batch 321/327] BatchTime = 0.795 (s) DataTime = 0.002 (s) Losses = ['2.6636'] lr = 0.000946
+2024-04-16 00:37:04,243 - pretrain - INFO - [Training] EPOCH: 46 EpochTime = 267.526 (s) Losses = ['2.3437'] lr = 0.000943
+2024-04-16 00:37:04,244 - pretrain - INFO - [VALIDATION] Start validating epoch 46
+2024-04-16 00:37:54,855 - pretrain - INFO - [Validation] EPOCH: 46  acc = 0.8995
+2024-04-16 00:37:57,007 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-16 00:37:58,893 - pretrain - INFO - [Epoch 47/300][Batch 1/327] BatchTime = 1.882 (s) DataTime = 1.039 (s) Losses = ['2.4296'] lr = 0.000943
+2024-04-16 00:38:15,242 - pretrain - INFO - [Epoch 47/300][Batch 21/327] BatchTime = 0.785 (s) DataTime = 0.001 (s) Losses = ['2.5259'] lr = 0.000943
+2024-04-16 00:38:32,393 - pretrain - INFO - [Epoch 47/300][Batch 41/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['2.5110'] lr = 0.000943
+2024-04-16 00:38:48,399 - pretrain - INFO - [Epoch 47/300][Batch 61/327] BatchTime = 0.788 (s) DataTime = 0.002 (s) Losses = ['2.1547'] lr = 0.000943
+2024-04-16 00:39:05,117 - pretrain - INFO - [Epoch 47/300][Batch 81/327] BatchTime = 0.825 (s) DataTime = 0.003 (s) Losses = ['2.1989'] lr = 0.000943
+2024-04-16 00:39:21,806 - pretrain - INFO - [Epoch 47/300][Batch 101/327] BatchTime = 0.989 (s) DataTime = 0.003 (s) Losses = ['2.1313'] lr = 0.000943
+2024-04-16 00:39:37,795 - pretrain - INFO - [Epoch 47/300][Batch 121/327] BatchTime = 0.797 (s) DataTime = 0.002 (s) Losses = ['2.1587'] lr = 0.000943
+2024-04-16 00:39:54,058 - pretrain - INFO - [Epoch 47/300][Batch 141/327] BatchTime = 0.810 (s) DataTime = 0.002 (s) Losses = ['2.3036'] lr = 0.000943
+2024-04-16 00:40:10,270 - pretrain - INFO - [Epoch 47/300][Batch 161/327] BatchTime = 0.857 (s) DataTime = 0.002 (s) Losses = ['2.2617'] lr = 0.000943
+2024-04-16 00:40:26,383 - pretrain - INFO - [Epoch 47/300][Batch 181/327] BatchTime = 0.868 (s) DataTime = 0.002 (s) Losses = ['2.3622'] lr = 0.000943
+2024-04-16 00:40:42,761 - pretrain - INFO - [Epoch 47/300][Batch 201/327] BatchTime = 0.794 (s) DataTime = 0.002 (s) Losses = ['2.3441'] lr = 0.000943
+2024-04-16 00:40:59,307 - pretrain - INFO - [Epoch 47/300][Batch 221/327] BatchTime = 0.802 (s) DataTime = 0.002 (s) Losses = ['2.5353'] lr = 0.000943
+2024-04-16 00:41:15,682 - pretrain - INFO - [Epoch 47/300][Batch 241/327] BatchTime = 0.868 (s) DataTime = 0.002 (s) Losses = ['2.4751'] lr = 0.000943
+2024-04-16 00:41:31,977 - pretrain - INFO - [Epoch 47/300][Batch 261/327] BatchTime = 0.896 (s) DataTime = 0.002 (s) Losses = ['2.3763'] lr = 0.000943
+2024-04-16 00:41:48,381 - pretrain - INFO - [Epoch 47/300][Batch 281/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['2.2906'] lr = 0.000943
+2024-04-16 00:42:04,583 - pretrain - INFO - [Epoch 47/300][Batch 301/327] BatchTime = 0.794 (s) DataTime = 0.002 (s) Losses = ['1.9982'] lr = 0.000943
+2024-04-16 00:42:20,977 - pretrain - INFO - [Epoch 47/300][Batch 321/327] BatchTime = 0.801 (s) DataTime = 0.002 (s) Losses = ['1.9929'] lr = 0.000943
+2024-04-16 00:42:25,979 - pretrain - INFO - [Training] EPOCH: 47 EpochTime = 268.968 (s) Losses = ['2.3044'] lr = 0.000941
+2024-04-16 00:42:25,979 - pretrain - INFO - [VALIDATION] Start validating epoch 47
+2024-04-16 00:43:16,988 - pretrain - INFO - [Validation] EPOCH: 47  acc = 0.8979
+2024-04-16 00:43:19,065 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-16 00:43:20,996 - pretrain - INFO - [Epoch 48/300][Batch 1/327] BatchTime = 1.928 (s) DataTime = 1.062 (s) Losses = ['2.5066'] lr = 0.000941
+2024-04-16 00:43:37,138 - pretrain - INFO - [Epoch 48/300][Batch 21/327] BatchTime = 0.768 (s) DataTime = 0.002 (s) Losses = ['2.1339'] lr = 0.000941
+2024-04-16 00:43:53,436 - pretrain - INFO - [Epoch 48/300][Batch 41/327] BatchTime = 0.793 (s) DataTime = 0.003 (s) Losses = ['2.1541'] lr = 0.000941
+2024-04-16 00:44:09,993 - pretrain - INFO - [Epoch 48/300][Batch 61/327] BatchTime = 0.795 (s) DataTime = 0.002 (s) Losses = ['2.3910'] lr = 0.000941
+2024-04-16 00:44:25,952 - pretrain - INFO - [Epoch 48/300][Batch 81/327] BatchTime = 0.775 (s) DataTime = 0.002 (s) Losses = ['2.3621'] lr = 0.000941
+2024-04-16 00:44:42,410 - pretrain - INFO - [Epoch 48/300][Batch 101/327] BatchTime = 0.897 (s) DataTime = 0.002 (s) Losses = ['2.2871'] lr = 0.000941
+2024-04-16 00:44:59,197 - pretrain - INFO - [Epoch 48/300][Batch 121/327] BatchTime = 0.795 (s) DataTime = 0.002 (s) Losses = ['2.4243'] lr = 0.000941
+2024-04-16 00:45:15,227 - pretrain - INFO - [Epoch 48/300][Batch 141/327] BatchTime = 0.800 (s) DataTime = 0.003 (s) Losses = ['2.2069'] lr = 0.000941
+2024-04-16 00:45:31,879 - pretrain - INFO - [Epoch 48/300][Batch 161/327] BatchTime = 0.859 (s) DataTime = 0.002 (s) Losses = ['2.4735'] lr = 0.000941
+2024-04-16 00:45:48,087 - pretrain - INFO - [Epoch 48/300][Batch 181/327] BatchTime = 0.787 (s) DataTime = 0.002 (s) Losses = ['2.1368'] lr = 0.000941
+2024-04-16 00:46:04,332 - pretrain - INFO - [Epoch 48/300][Batch 201/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['2.1464'] lr = 0.000941
+2024-04-16 00:46:20,757 - pretrain - INFO - [Epoch 48/300][Batch 221/327] BatchTime = 0.801 (s) DataTime = 0.003 (s) Losses = ['2.0661'] lr = 0.000941
+2024-04-16 00:46:37,420 - pretrain - INFO - [Epoch 48/300][Batch 241/327] BatchTime = 0.856 (s) DataTime = 0.002 (s) Losses = ['2.2198'] lr = 0.000941
+2024-04-16 00:46:53,791 - pretrain - INFO - [Epoch 48/300][Batch 261/327] BatchTime = 0.821 (s) DataTime = 0.004 (s) Losses = ['2.2964'] lr = 0.000941
+2024-04-16 00:47:10,512 - pretrain - INFO - [Epoch 48/300][Batch 281/327] BatchTime = 0.844 (s) DataTime = 0.002 (s) Losses = ['2.0351'] lr = 0.000941
+2024-04-16 00:47:26,857 - pretrain - INFO - [Epoch 48/300][Batch 301/327] BatchTime = 0.874 (s) DataTime = 0.002 (s) Losses = ['2.1427'] lr = 0.000941
+2024-04-16 00:47:43,440 - pretrain - INFO - [Epoch 48/300][Batch 321/327] BatchTime = 0.827 (s) DataTime = 0.002 (s) Losses = ['2.2807'] lr = 0.000941
+2024-04-16 00:47:48,535 - pretrain - INFO - [Training] EPOCH: 48 EpochTime = 269.467 (s) Losses = ['2.2721'] lr = 0.000938
+2024-04-16 00:47:48,536 - pretrain - INFO - [VALIDATION] Start validating epoch 48
+2024-04-16 00:48:40,898 - pretrain - INFO - [Validation] EPOCH: 48  acc = 0.9003
+2024-04-16 00:48:43,041 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-16 00:48:44,882 - pretrain - INFO - [Epoch 49/300][Batch 1/327] BatchTime = 1.838 (s) DataTime = 1.001 (s) Losses = ['2.3614'] lr = 0.000938
+2024-04-16 00:49:00,703 - pretrain - INFO - [Epoch 49/300][Batch 21/327] BatchTime = 0.772 (s) DataTime = 0.002 (s) Losses = ['2.0357'] lr = 0.000938
+2024-04-16 00:49:16,950 - pretrain - INFO - [Epoch 49/300][Batch 41/327] BatchTime = 0.832 (s) DataTime = 0.002 (s) Losses = ['2.2287'] lr = 0.000938
+2024-04-16 00:49:33,163 - pretrain - INFO - [Epoch 49/300][Batch 61/327] BatchTime = 0.823 (s) DataTime = 0.002 (s) Losses = ['2.1722'] lr = 0.000938
+2024-04-16 00:49:49,708 - pretrain - INFO - [Epoch 49/300][Batch 81/327] BatchTime = 0.808 (s) DataTime = 0.002 (s) Losses = ['2.0704'] lr = 0.000938
+2024-04-16 00:50:05,333 - pretrain - INFO - [Epoch 49/300][Batch 101/327] BatchTime = 0.874 (s) DataTime = 0.002 (s) Losses = ['2.0932'] lr = 0.000938
+2024-04-16 00:50:22,859 - pretrain - INFO - [Epoch 49/300][Batch 121/327] BatchTime = 0.826 (s) DataTime = 0.002 (s) Losses = ['2.2241'] lr = 0.000938
+2024-04-16 00:50:39,160 - pretrain - INFO - [Epoch 49/300][Batch 141/327] BatchTime = 0.851 (s) DataTime = 0.002 (s) Losses = ['2.3063'] lr = 0.000938
+2024-04-16 00:50:55,422 - pretrain - INFO - [Epoch 49/300][Batch 161/327] BatchTime = 0.811 (s) DataTime = 0.002 (s) Losses = ['2.1263'] lr = 0.000938
+2024-04-16 00:51:11,620 - pretrain - INFO - [Epoch 49/300][Batch 181/327] BatchTime = 0.848 (s) DataTime = 0.003 (s) Losses = ['2.0931'] lr = 0.000938
+2024-04-16 00:51:28,360 - pretrain - INFO - [Epoch 49/300][Batch 201/327] BatchTime = 0.799 (s) DataTime = 0.002 (s) Losses = ['2.5462'] lr = 0.000938
+2024-04-16 00:51:44,550 - pretrain - INFO - [Epoch 49/300][Batch 221/327] BatchTime = 0.829 (s) DataTime = 0.002 (s) Losses = ['2.0121'] lr = 0.000938
+2024-04-16 00:52:01,232 - pretrain - INFO - [Epoch 49/300][Batch 241/327] BatchTime = 0.808 (s) DataTime = 0.003 (s) Losses = ['2.2665'] lr = 0.000938
+2024-04-16 00:52:17,135 - pretrain - INFO - [Epoch 49/300][Batch 261/327] BatchTime = 0.839 (s) DataTime = 0.003 (s) Losses = ['2.2798'] lr = 0.000938
+2024-04-16 00:52:33,262 - pretrain - INFO - [Epoch 49/300][Batch 281/327] BatchTime = 0.823 (s) DataTime = 0.002 (s) Losses = ['2.1017'] lr = 0.000938
+2024-04-16 00:52:49,514 - pretrain - INFO - [Epoch 49/300][Batch 301/327] BatchTime = 0.812 (s) DataTime = 0.002 (s) Losses = ['2.3817'] lr = 0.000938
+2024-04-16 00:53:05,691 - pretrain - INFO - [Epoch 49/300][Batch 321/327] BatchTime = 0.865 (s) DataTime = 0.002 (s) Losses = ['2.0727'] lr = 0.000938
+2024-04-16 00:53:10,688 - pretrain - INFO - [Training] EPOCH: 49 EpochTime = 267.643 (s) Losses = ['2.2502'] lr = 0.000936
+2024-04-16 00:53:10,688 - pretrain - INFO - [VALIDATION] Start validating epoch 49
+2024-04-16 00:54:02,449 - pretrain - INFO - [Validation] EPOCH: 49  acc = 0.8979
+2024-04-16 00:54:04,528 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-16 00:54:06,404 - pretrain - INFO - [Epoch 50/300][Batch 1/327] BatchTime = 1.873 (s) DataTime = 0.972 (s) Losses = ['2.0851'] lr = 0.000936
+2024-04-16 00:54:22,222 - pretrain - INFO - [Epoch 50/300][Batch 21/327] BatchTime = 0.795 (s) DataTime = 0.002 (s) Losses = ['1.8428'] lr = 0.000936
+2024-04-16 00:54:38,564 - pretrain - INFO - [Epoch 50/300][Batch 41/327] BatchTime = 0.886 (s) DataTime = 0.011 (s) Losses = ['2.0882'] lr = 0.000936
+2024-04-16 00:54:54,472 - pretrain - INFO - [Epoch 50/300][Batch 61/327] BatchTime = 0.788 (s) DataTime = 0.002 (s) Losses = ['2.5265'] lr = 0.000936
+2024-04-16 00:55:11,177 - pretrain - INFO - [Epoch 50/300][Batch 81/327] BatchTime = 0.840 (s) DataTime = 0.002 (s) Losses = ['2.1278'] lr = 0.000936
+2024-04-16 00:55:27,020 - pretrain - INFO - [Epoch 50/300][Batch 101/327] BatchTime = 0.844 (s) DataTime = 0.011 (s) Losses = ['2.2479'] lr = 0.000936
+2024-04-16 00:55:43,815 - pretrain - INFO - [Epoch 50/300][Batch 121/327] BatchTime = 0.781 (s) DataTime = 0.002 (s) Losses = ['2.2211'] lr = 0.000936
+2024-04-16 00:55:59,995 - pretrain - INFO - [Epoch 50/300][Batch 141/327] BatchTime = 0.834 (s) DataTime = 0.002 (s) Losses = ['2.2243'] lr = 0.000936
+2024-04-16 00:56:16,196 - pretrain - INFO - [Epoch 50/300][Batch 161/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['2.5202'] lr = 0.000936
+2024-04-16 00:56:32,432 - pretrain - INFO - [Epoch 50/300][Batch 181/327] BatchTime = 0.848 (s) DataTime = 0.002 (s) Losses = ['2.0590'] lr = 0.000936
+2024-04-16 00:56:48,550 - pretrain - INFO - [Epoch 50/300][Batch 201/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['2.2930'] lr = 0.000936
+2024-04-16 00:57:05,280 - pretrain - INFO - [Epoch 50/300][Batch 221/327] BatchTime = 0.869 (s) DataTime = 0.002 (s) Losses = ['2.1491'] lr = 0.000936
+2024-04-16 00:57:21,272 - pretrain - INFO - [Epoch 50/300][Batch 241/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['2.2228'] lr = 0.000936
+2024-04-16 00:57:37,892 - pretrain - INFO - [Epoch 50/300][Batch 261/327] BatchTime = 0.788 (s) DataTime = 0.003 (s) Losses = ['2.2804'] lr = 0.000936
+2024-04-16 00:57:54,068 - pretrain - INFO - [Epoch 50/300][Batch 281/327] BatchTime = 0.791 (s) DataTime = 0.002 (s) Losses = ['2.3239'] lr = 0.000936
+2024-04-16 00:58:10,774 - pretrain - INFO - [Epoch 50/300][Batch 301/327] BatchTime = 0.778 (s) DataTime = 0.002 (s) Losses = ['2.2910'] lr = 0.000936
+2024-04-16 00:58:26,774 - pretrain - INFO - [Epoch 50/300][Batch 321/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['2.2177'] lr = 0.000936
+2024-04-16 00:58:31,627 - pretrain - INFO - [Training] EPOCH: 50 EpochTime = 267.096 (s) Losses = ['2.2547'] lr = 0.000933
+2024-04-16 00:58:31,628 - pretrain - INFO - [VALIDATION] Start validating epoch 50
+2024-04-16 00:59:20,953 - pretrain - INFO - [Validation] EPOCH: 50  acc = 0.8999
+2024-04-16 00:59:23,093 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-16 00:59:25,023 - pretrain - INFO - [Epoch 51/300][Batch 1/327] BatchTime = 1.927 (s) DataTime = 1.096 (s) Losses = ['2.4366'] lr = 0.000933
+2024-04-16 00:59:40,874 - pretrain - INFO - [Epoch 51/300][Batch 21/327] BatchTime = 0.803 (s) DataTime = 0.002 (s) Losses = ['2.2046'] lr = 0.000933
+2024-04-16 00:59:56,858 - pretrain - INFO - [Epoch 51/300][Batch 41/327] BatchTime = 0.788 (s) DataTime = 0.002 (s) Losses = ['2.0510'] lr = 0.000933
+2024-04-16 01:00:13,145 - pretrain - INFO - [Epoch 51/300][Batch 61/327] BatchTime = 0.844 (s) DataTime = 0.003 (s) Losses = ['2.0739'] lr = 0.000933
+2024-04-16 01:00:29,176 - pretrain - INFO - [Epoch 51/300][Batch 81/327] BatchTime = 0.789 (s) DataTime = 0.003 (s) Losses = ['1.9568'] lr = 0.000933
+2024-04-16 01:00:45,397 - pretrain - INFO - [Epoch 51/300][Batch 101/327] BatchTime = 0.836 (s) DataTime = 0.002 (s) Losses = ['2.4159'] lr = 0.000933
+2024-04-16 01:01:01,831 - pretrain - INFO - [Epoch 51/300][Batch 121/327] BatchTime = 0.833 (s) DataTime = 0.002 (s) Losses = ['2.2014'] lr = 0.000933
+2024-04-16 01:01:18,046 - pretrain - INFO - [Epoch 51/300][Batch 141/327] BatchTime = 0.837 (s) DataTime = 0.002 (s) Losses = ['2.1393'] lr = 0.000933
+2024-04-16 01:01:33,715 - pretrain - INFO - [Epoch 51/300][Batch 161/327] BatchTime = 0.772 (s) DataTime = 0.002 (s) Losses = ['2.4465'] lr = 0.000933
+2024-04-16 01:01:50,076 - pretrain - INFO - [Epoch 51/300][Batch 181/327] BatchTime = 0.797 (s) DataTime = 0.002 (s) Losses = ['2.0325'] lr = 0.000933
+2024-04-16 01:02:06,403 - pretrain - INFO - [Epoch 51/300][Batch 201/327] BatchTime = 0.837 (s) DataTime = 0.002 (s) Losses = ['2.3511'] lr = 0.000933
+2024-04-16 01:02:22,526 - pretrain - INFO - [Epoch 51/300][Batch 221/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['2.1987'] lr = 0.000933
+2024-04-16 01:02:38,606 - pretrain - INFO - [Epoch 51/300][Batch 241/327] BatchTime = 0.814 (s) DataTime = 0.004 (s) Losses = ['2.3001'] lr = 0.000933
+2024-04-16 01:02:54,763 - pretrain - INFO - [Epoch 51/300][Batch 261/327] BatchTime = 0.806 (s) DataTime = 0.003 (s) Losses = ['2.3083'] lr = 0.000933
+2024-04-16 01:03:10,998 - pretrain - INFO - [Epoch 51/300][Batch 281/327] BatchTime = 0.802 (s) DataTime = 0.002 (s) Losses = ['5.4105'] lr = 0.000933
+2024-04-16 01:03:26,912 - pretrain - INFO - [Epoch 51/300][Batch 301/327] BatchTime = 0.791 (s) DataTime = 0.002 (s) Losses = ['6.1832'] lr = 0.000933
+2024-04-16 01:03:43,161 - pretrain - INFO - [Epoch 51/300][Batch 321/327] BatchTime = 0.897 (s) DataTime = 0.022 (s) Losses = ['5.3436'] lr = 0.000933
+2024-04-16 01:03:48,197 - pretrain - INFO - [Training] EPOCH: 51 EpochTime = 265.101 (s) Losses = ['2.9214'] lr = 0.000930
+2024-04-16 01:03:48,198 - pretrain - INFO - [VALIDATION] Start validating epoch 51
+2024-04-16 01:04:56,466 - pretrain - INFO - [Validation] EPOCH: 51  acc = 0.1738
+2024-04-16 01:04:58,463 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-16 01:05:00,329 - pretrain - INFO - [Epoch 52/300][Batch 1/327] BatchTime = 1.862 (s) DataTime = 1.002 (s) Losses = ['6.6274'] lr = 0.000930
+2024-04-16 01:05:16,776 - pretrain - INFO - [Epoch 52/300][Batch 21/327] BatchTime = 0.825 (s) DataTime = 0.002 (s) Losses = ['6.3131'] lr = 0.000930
+2024-04-16 01:05:32,951 - pretrain - INFO - [Epoch 52/300][Batch 41/327] BatchTime = 0.785 (s) DataTime = 0.002 (s) Losses = ['5.1853'] lr = 0.000930
+2024-04-16 01:05:49,081 - pretrain - INFO - [Epoch 52/300][Batch 61/327] BatchTime = 0.769 (s) DataTime = 0.002 (s) Losses = ['6.0326'] lr = 0.000930
+2024-04-16 01:06:04,898 - pretrain - INFO - [Epoch 52/300][Batch 81/327] BatchTime = 0.807 (s) DataTime = 0.002 (s) Losses = ['5.5900'] lr = 0.000930
+2024-04-16 01:06:21,003 - pretrain - INFO - [Epoch 52/300][Batch 101/327] BatchTime = 0.787 (s) DataTime = 0.002 (s) Losses = ['5.1376'] lr = 0.000930
+2024-04-16 01:06:37,102 - pretrain - INFO - [Epoch 52/300][Batch 121/327] BatchTime = 0.852 (s) DataTime = 0.002 (s) Losses = ['4.9790'] lr = 0.000930
+2024-04-16 01:06:53,455 - pretrain - INFO - [Epoch 52/300][Batch 141/327] BatchTime = 0.834 (s) DataTime = 0.002 (s) Losses = ['5.8459'] lr = 0.000930
+2024-04-16 01:07:10,115 - pretrain - INFO - [Epoch 52/300][Batch 161/327] BatchTime = 0.802 (s) DataTime = 0.002 (s) Losses = ['5.6454'] lr = 0.000930
+2024-04-16 01:07:26,045 - pretrain - INFO - [Epoch 52/300][Batch 181/327] BatchTime = 0.816 (s) DataTime = 0.002 (s) Losses = ['4.8381'] lr = 0.000930
+2024-04-16 01:07:42,276 - pretrain - INFO - [Epoch 52/300][Batch 201/327] BatchTime = 0.815 (s) DataTime = 0.002 (s) Losses = ['5.1779'] lr = 0.000930
+2024-04-16 01:07:58,473 - pretrain - INFO - [Epoch 52/300][Batch 221/327] BatchTime = 0.851 (s) DataTime = 0.014 (s) Losses = ['5.0688'] lr = 0.000930
+2024-04-16 01:08:14,758 - pretrain - INFO - [Epoch 52/300][Batch 241/327] BatchTime = 0.862 (s) DataTime = 0.002 (s) Losses = ['4.1978'] lr = 0.000930
+2024-04-16 01:08:30,897 - pretrain - INFO - [Epoch 52/300][Batch 261/327] BatchTime = 0.834 (s) DataTime = 0.002 (s) Losses = ['5.5563'] lr = 0.000930
+2024-04-16 01:08:47,035 - pretrain - INFO - [Epoch 52/300][Batch 281/327] BatchTime = 0.774 (s) DataTime = 0.002 (s) Losses = ['5.5488'] lr = 0.000930
+2024-04-16 01:09:03,330 - pretrain - INFO - [Epoch 52/300][Batch 301/327] BatchTime = 0.793 (s) DataTime = 0.002 (s) Losses = ['4.5768'] lr = 0.000930
+2024-04-16 01:09:19,493 - pretrain - INFO - [Epoch 52/300][Batch 321/327] BatchTime = 0.882 (s) DataTime = 0.002 (s) Losses = ['4.6635'] lr = 0.000930
+2024-04-16 01:09:24,764 - pretrain - INFO - [Training] EPOCH: 52 EpochTime = 266.297 (s) Losses = ['5.2579'] lr = 0.000928
+2024-04-16 01:09:24,765 - pretrain - INFO - [VALIDATION] Start validating epoch 52
+2024-04-16 01:10:29,797 - pretrain - INFO - [Validation] EPOCH: 52  acc = 0.2472
+2024-04-16 01:10:31,887 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-16 01:10:33,701 - pretrain - INFO - [Epoch 53/300][Batch 1/327] BatchTime = 1.812 (s) DataTime = 0.991 (s) Losses = ['5.0047'] lr = 0.000928
+2024-04-16 01:10:49,783 - pretrain - INFO - [Epoch 53/300][Batch 21/327] BatchTime = 0.839 (s) DataTime = 0.002 (s) Losses = ['4.3023'] lr = 0.000928
+2024-04-16 01:11:05,720 - pretrain - INFO - [Epoch 53/300][Batch 41/327] BatchTime = 0.858 (s) DataTime = 0.004 (s) Losses = ['4.4063'] lr = 0.000928
+2024-04-16 01:11:22,352 - pretrain - INFO - [Epoch 53/300][Batch 61/327] BatchTime = 0.778 (s) DataTime = 0.002 (s) Losses = ['4.4502'] lr = 0.000928
+2024-04-16 01:11:38,532 - pretrain - INFO - [Epoch 53/300][Batch 81/327] BatchTime = 0.855 (s) DataTime = 0.002 (s) Losses = ['4.4878'] lr = 0.000928
+2024-04-16 01:11:54,906 - pretrain - INFO - [Epoch 53/300][Batch 101/327] BatchTime = 0.787 (s) DataTime = 0.002 (s) Losses = ['5.0734'] lr = 0.000928
+2024-04-16 01:12:11,104 - pretrain - INFO - [Epoch 53/300][Batch 121/327] BatchTime = 0.807 (s) DataTime = 0.002 (s) Losses = ['4.5691'] lr = 0.000928
+2024-04-16 01:12:27,112 - pretrain - INFO - [Epoch 53/300][Batch 141/327] BatchTime = 0.769 (s) DataTime = 0.003 (s) Losses = ['4.9871'] lr = 0.000928
+2024-04-16 01:12:43,313 - pretrain - INFO - [Epoch 53/300][Batch 161/327] BatchTime = 0.834 (s) DataTime = 0.002 (s) Losses = ['4.2790'] lr = 0.000928
+2024-04-16 01:12:59,470 - pretrain - INFO - [Epoch 53/300][Batch 181/327] BatchTime = 0.844 (s) DataTime = 0.002 (s) Losses = ['4.4135'] lr = 0.000928
+2024-04-16 01:13:16,096 - pretrain - INFO - [Epoch 53/300][Batch 201/327] BatchTime = 0.829 (s) DataTime = 0.003 (s) Losses = ['4.5438'] lr = 0.000928
+2024-04-16 01:13:32,085 - pretrain - INFO - [Epoch 53/300][Batch 221/327] BatchTime = 0.796 (s) DataTime = 0.002 (s) Losses = ['4.4057'] lr = 0.000928
+2024-04-16 01:13:48,566 - pretrain - INFO - [Epoch 53/300][Batch 241/327] BatchTime = 0.844 (s) DataTime = 0.002 (s) Losses = ['4.9004'] lr = 0.000928
+2024-04-16 01:14:05,229 - pretrain - INFO - [Epoch 53/300][Batch 261/327] BatchTime = 0.904 (s) DataTime = 0.018 (s) Losses = ['4.5301'] lr = 0.000928
+2024-04-16 01:14:21,285 - pretrain - INFO - [Epoch 53/300][Batch 281/327] BatchTime = 0.789 (s) DataTime = 0.002 (s) Losses = ['4.5427'] lr = 0.000928
+2024-04-16 01:14:37,336 - pretrain - INFO - [Epoch 53/300][Batch 301/327] BatchTime = 0.775 (s) DataTime = 0.002 (s) Losses = ['4.2496'] lr = 0.000928
+2024-04-16 01:14:53,892 - pretrain - INFO - [Epoch 53/300][Batch 321/327] BatchTime = 0.789 (s) DataTime = 0.002 (s) Losses = ['3.9713'] lr = 0.000928
+2024-04-16 01:14:58,820 - pretrain - INFO - [Training] EPOCH: 53 EpochTime = 266.930 (s) Losses = ['4.4531'] lr = 0.000925
+2024-04-16 01:14:58,820 - pretrain - INFO - [VALIDATION] Start validating epoch 53
+2024-04-16 01:16:03,669 - pretrain - INFO - [Validation] EPOCH: 53  acc = 0.3505
+2024-04-16 01:16:05,783 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-16 01:16:07,655 - pretrain - INFO - [Epoch 54/300][Batch 1/327] BatchTime = 1.869 (s) DataTime = 0.976 (s) Losses = ['3.9802'] lr = 0.000925
+2024-04-16 01:16:23,817 - pretrain - INFO - [Epoch 54/300][Batch 21/327] BatchTime = 0.803 (s) DataTime = 0.002 (s) Losses = ['3.8903'] lr = 0.000925
+2024-04-16 01:16:39,911 - pretrain - INFO - [Epoch 54/300][Batch 41/327] BatchTime = 0.792 (s) DataTime = 0.002 (s) Losses = ['4.4889'] lr = 0.000925
+2024-04-16 01:16:55,891 - pretrain - INFO - [Epoch 54/300][Batch 61/327] BatchTime = 0.786 (s) DataTime = 0.002 (s) Losses = ['4.2307'] lr = 0.000925
+2024-04-16 01:17:12,737 - pretrain - INFO - [Epoch 54/300][Batch 81/327] BatchTime = 0.780 (s) DataTime = 0.002 (s) Losses = ['4.3713'] lr = 0.000925
+2024-04-16 01:17:28,763 - pretrain - INFO - [Epoch 54/300][Batch 101/327] BatchTime = 0.799 (s) DataTime = 0.002 (s) Losses = ['4.0171'] lr = 0.000925
+2024-04-16 01:17:44,973 - pretrain - INFO - [Epoch 54/300][Batch 121/327] BatchTime = 0.845 (s) DataTime = 0.002 (s) Losses = ['5.1163'] lr = 0.000925
+2024-04-16 01:18:01,624 - pretrain - INFO - [Epoch 54/300][Batch 141/327] BatchTime = 0.791 (s) DataTime = 0.003 (s) Losses = ['3.3076'] lr = 0.000925
+2024-04-16 01:18:17,612 - pretrain - INFO - [Epoch 54/300][Batch 161/327] BatchTime = 0.817 (s) DataTime = 0.002 (s) Losses = ['4.3686'] lr = 0.000925
+2024-04-16 01:18:34,294 - pretrain - INFO - [Epoch 54/300][Batch 181/327] BatchTime = 0.879 (s) DataTime = 0.007 (s) Losses = ['4.3674'] lr = 0.000925
+2024-04-16 01:18:50,470 - pretrain - INFO - [Epoch 54/300][Batch 201/327] BatchTime = 0.789 (s) DataTime = 0.002 (s) Losses = ['3.9911'] lr = 0.000925
+2024-04-16 01:19:07,033 - pretrain - INFO - [Epoch 54/300][Batch 221/327] BatchTime = 0.824 (s) DataTime = 0.002 (s) Losses = ['3.7701'] lr = 0.000925
+2024-04-16 01:19:23,359 - pretrain - INFO - [Epoch 54/300][Batch 241/327] BatchTime = 0.805 (s) DataTime = 0.002 (s) Losses = ['3.8732'] lr = 0.000925
+2024-04-16 01:19:39,641 - pretrain - INFO - [Epoch 54/300][Batch 261/327] BatchTime = 0.837 (s) DataTime = 0.002 (s) Losses = ['4.1248'] lr = 0.000925
+2024-04-16 01:19:55,998 - pretrain - INFO - [Epoch 54/300][Batch 281/327] BatchTime = 0.823 (s) DataTime = 0.002 (s) Losses = ['4.1160'] lr = 0.000925
+2024-04-16 01:20:12,208 - pretrain - INFO - [Epoch 54/300][Batch 301/327] BatchTime = 0.888 (s) DataTime = 0.002 (s) Losses = ['3.6879'] lr = 0.000925
+2024-04-16 01:20:28,988 - pretrain - INFO - [Epoch 54/300][Batch 321/327] BatchTime = 0.788 (s) DataTime = 0.002 (s) Losses = ['3.4406'] lr = 0.000925
+2024-04-16 01:20:34,132 - pretrain - INFO - [Training] EPOCH: 54 EpochTime = 268.346 (s) Losses = ['4.0302'] lr = 0.000922
+2024-04-16 01:20:34,133 - pretrain - INFO - [VALIDATION] Start validating epoch 54
+2024-04-16 01:21:34,876 - pretrain - INFO - [Validation] EPOCH: 54  acc = 0.4186
+2024-04-16 01:21:36,948 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-16 01:21:38,786 - pretrain - INFO - [Epoch 55/300][Batch 1/327] BatchTime = 1.835 (s) DataTime = 1.044 (s) Losses = ['3.7946'] lr = 0.000922
+2024-04-16 01:21:54,768 - pretrain - INFO - [Epoch 55/300][Batch 21/327] BatchTime = 0.811 (s) DataTime = 0.003 (s) Losses = ['3.5198'] lr = 0.000922
+2024-04-16 01:22:10,797 - pretrain - INFO - [Epoch 55/300][Batch 41/327] BatchTime = 0.798 (s) DataTime = 0.002 (s) Losses = ['3.9757'] lr = 0.000922
+2024-04-16 01:22:27,391 - pretrain - INFO - [Epoch 55/300][Batch 61/327] BatchTime = 0.842 (s) DataTime = 0.002 (s) Losses = ['3.5328'] lr = 0.000922
+2024-04-16 01:22:43,537 - pretrain - INFO - [Epoch 55/300][Batch 81/327] BatchTime = 0.853 (s) DataTime = 0.002 (s) Losses = ['3.7076'] lr = 0.000922
+2024-04-16 01:22:59,741 - pretrain - INFO - [Epoch 55/300][Batch 101/327] BatchTime = 0.790 (s) DataTime = 0.002 (s) Losses = ['3.6693'] lr = 0.000922
+2024-04-16 01:23:15,770 - pretrain - INFO - [Epoch 55/300][Batch 121/327] BatchTime = 0.860 (s) DataTime = 0.002 (s) Losses = ['3.7336'] lr = 0.000922
+2024-04-16 01:23:32,231 - pretrain - INFO - [Epoch 55/300][Batch 141/327] BatchTime = 0.845 (s) DataTime = 0.002 (s) Losses = ['3.6020'] lr = 0.000922
+2024-04-16 01:23:48,657 - pretrain - INFO - [Epoch 55/300][Batch 161/327] BatchTime = 0.781 (s) DataTime = 0.002 (s) Losses = ['3.3227'] lr = 0.000922
+2024-04-16 01:24:04,662 - pretrain - INFO - [Epoch 55/300][Batch 181/327] BatchTime = 0.779 (s) DataTime = 0.002 (s) Losses = ['4.1625'] lr = 0.000922
+2024-04-16 01:24:21,595 - pretrain - INFO - [Epoch 55/300][Batch 201/327] BatchTime = 0.777 (s) DataTime = 0.002 (s) Losses = ['4.0947'] lr = 0.000922
+2024-04-16 01:24:38,010 - pretrain - INFO - [Epoch 55/300][Batch 221/327] BatchTime = 0.809 (s) DataTime = 0.002 (s) Losses = ['3.3956'] lr = 0.000922
+2024-04-16 01:24:54,643 - pretrain - INFO - [Epoch 55/300][Batch 241/327] BatchTime = 0.845 (s) DataTime = 0.002 (s) Losses = ['3.1127'] lr = 0.000922
+2024-04-16 01:25:10,944 - pretrain - INFO - [Epoch 55/300][Batch 261/327] BatchTime = 0.844 (s) DataTime = 0.001 (s) Losses = ['3.9125'] lr = 0.000922
+2024-04-16 01:25:27,713 - pretrain - INFO - [Epoch 55/300][Batch 281/327] BatchTime = 0.822 (s) DataTime = 0.002 (s) Losses = ['3.6872'] lr = 0.000922
+2024-04-16 01:25:43,772 - pretrain - INFO - [Epoch 55/300][Batch 301/327] BatchTime = 0.791 (s) DataTime = 0.002 (s) Losses = ['3.9224'] lr = 0.000922
+2024-04-16 01:26:00,137 - pretrain - INFO - [Epoch 55/300][Batch 321/327] BatchTime = 0.787 (s) DataTime = 0.003 (s) Losses = ['3.5073'] lr = 0.000922
+2024-04-16 01:26:05,131 - pretrain - INFO - [Training] EPOCH: 55 EpochTime = 268.179 (s) Losses = ['3.7113'] lr = 0.000919
+2024-04-16 01:26:05,131 - pretrain - INFO - [VALIDATION] Start validating epoch 55
+2024-04-16 01:27:09,310 - pretrain - INFO - [Validation] EPOCH: 55  acc = 0.4275
+2024-04-16 01:27:11,464 - pretrain - INFO - Save checkpoint at ./experiments_15_April/pretrain/cfgs/metod_k_top_eigenvectors_seperate_learnable_tokens__reverse_True__knn_graph_20__k_small_eigenvectors_4__lr_1e3_Pretrain/ckpt-last.pth
+2024-04-16 01:27:13,288 - pretrain - INFO - [Epoch 56/300][Batch 1/327] BatchTime = 1.821 (s) DataTime = 1.012 (s) Losses = ['3.6912'] lr = 0.000919
+2024-04-16 01:27:30,817 - pretrain - INFO - [Epoch 56/300][Batch 21/327] BatchTime = 0.807 (s) DataTime = 0.003 (s) Losses = ['3.3238'] lr = 0.000919
