@@ -142,7 +142,7 @@ Download: Please download the data from [here](https://shapenet.cs.stanford.edu/
 | Classification | ScanObjectNN | [finetune_scan_objbg.yaml](./cfgs/finetune_scan_objbg.yaml) | 94.32% | [ckpt](https://drive.google.com/file/d/1VAgTp-Re6jAbGthoMmEHeY3xoJBeCmEl/view?usp=sharing) / [log](https://github.com/AliBahri94/SI-Mamba/blob/main/logs/finetuned_objbg.log) |
 | Classification | ScanObjectNN | [finetune_scan_objonly.yaml](./cfgs/finetune_scan_objonly.yaml) | 91.73% | [ckpt](https://drive.google.com/file/d/19hTSXp7lr5omEpmZX4dwHJTrQrCD6w67/view?usp=sharing) / [log](https://github.com/AliBahri94/SI-Mamba/blob/main/logs/finetuned_objonly.log)   |
 | Classification | ScanObjectNN | [finetune_scan_hardest.yaml](./cfgs/finetune_scan_hardest.yaml) | 89.10% | [ckpt](https://drive.google.com/file/d/1rg1WfyQHU9Nd75sRyxhDgEzIlWxNPLpW/view?usp=sharing) / [log](https://github.com/AliBahri94/SI-Mamba/blob/main/logs/finetuned_hardest.log)  |
-| Segmentation | ShapeNet-Part | [finetune_scan_hardest.yaml](./cfgs/finetune_scan_hardest.yaml) | 86.10% | [ckpt](https://drive.google.com/file/d/1epvd1N--3j6O0inR-py5NK2gsMS8THV-/view?usp=sharing) / [log](https://github.com/AliBahri94/SI-Mamba/blob/main/logs/finetuned_hardest.log)  |
+| Segmentation | ShapeNet-Part | [finetune_segmentation.yaml](./part_segmentation/cfgs/config.yaml) | 86.10% | [ckpt](https://drive.google.com/file/d/1epvd1N--3j6O0inR-py5NK2gsMS8THV-/view?usp=sharing) / [log](https://github.com/AliBahri94/SI-Mamba/blob/main/logs/segmentation.txt)  |
 
 
 
