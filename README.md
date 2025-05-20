@@ -1,4 +1,4 @@
-<h1>SI-Mamba - CVPR2025</h1>
+<h1>SI-Mamba - CVPR 2025</h1>
 <h3>Spectral Informed Mamba for Robust Point Cloud Processing</h3>
 
 📄 [Paper Link on arXiv](https://arxiv.org/pdf/2503.04953)
@@ -11,7 +11,7 @@ State Space Models (SSMs) have shown significant promise in Natural Language Pro
 ## Overview
 
 <div  align="center">    
- <img src="./figures/method_CVPR2025_v2.pdf" width = "888"  align=center />
+ <img src="./figures/method_CVPR2025_v2.png" width = "888"  align=center />
 </div>
 
 
