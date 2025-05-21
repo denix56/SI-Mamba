@@ -656,8 +656,6 @@ class PointMamba(nn.Module):
     def calc_top_k_eigenvalues_eigenvectors(self, adj_matrices, k, smallest):   
         
         B, N, _ = adj_matrices.shape
-        # top_k_eigenvalues = torch.zeros((B, k+1)).cuda()
-        # top_k_eigenvectors = torch.zeros((B, N, k+1)).cuda()
         top_k_eigenvalues = torch.zeros((B, k)).cuda()
         top_k_eigenvectors = torch.zeros((B, N, k)).cuda()          
         eigenvalues_l = torch.zeros((B, N)).cuda()
@@ -677,14 +675,10 @@ class PointMamba(nn.Module):
             D_inv = torch.diag(1.0 / (torch.diag(D) + 1e-6))   
 
             # Perform Random-walk normalization: D^-1 * A
-            ####normalized_A = torch.matmul(D_inv, A)
             I = torch.eye(N).cuda()    
             normalized_A = I - torch.matmul(D_inv, A)             
 
-            eigenvalues, eigenvectors = torch.linalg.eigh(normalized_A)
-            # eigenvalues, eigenvectors = torch.linalg.eig(normalized_A)        
-            # eigenvalues = eigenvalues.real
-            # eigenvectors = eigenvectors.real     
+            eigenvalues, eigenvectors = torch.linalg.eigh(normalized_A)    
 
             # Select the top k eigenvalues and corresponding eigenvectors
             if (smallest == False):
@@ -703,41 +697,8 @@ class PointMamba(nn.Module):
             eigenvalues_l[i] = eigenvalues
             eigenvectors_l[i, :, :] = eigenvectors            
 
-        # return top_k_eigenvalues[:, 1:], top_k_eigenvectors[:, :, 1:], eigenvalues_l, eigenvectors_l       
         return top_k_eigenvalues, top_k_eigenvectors, eigenvalues_l, eigenvectors_l     
 
-    def calc_top_k_eigenvalues_eigenvectors_parallel(self, adj_matrices, k, smallest):
-        B, N, _ = adj_matrices.shape
-
-        # Compute degree matrix D for the entire batch
-        D = torch.diag_embed(torch.sum(adj_matrices, dim=2))  # Shape: (B, N, N)
-
-        # Compute D^-1 safely by adding a small epsilon to avoid division by zero
-        D_inv = torch.diag_embed(1.0 / (torch.diagonal(D, dim1=1, dim2=2) + 1e-6))  # Shape: (B, N, N)
-
-        # Identity matrix for the entire batch
-        I = torch.eye(N, device=adj_matrices.device).unsqueeze(0).expand(B, N, N)   
-
-        # Perform random-walk normalization: I - D^-1 * A
-        normalized_A = I - torch.bmm(D_inv, adj_matrices)  # Batch matrix multiply
-
-        # Compute eigenvalues and eigenvectors for the batch
-        eigenvalues, eigenvectors = torch.linalg.eig(normalized_A)
-        eigenvalues = eigenvalues.real  # Take real part
-        eigenvectors = eigenvectors.real  # Take real part
-
-        # Select the top k+1 eigenvalues and corresponding eigenvectors in parallel
-        if not smallest:
-            top_vals, top_indices = torch.topk(eigenvalues, k+1, largest=True, sorted=True, dim=1)
-        else:
-            top_vals, top_indices = torch.topk(eigenvalues, k+1, largest=False, sorted=True, dim=1)
-
-        # top_indices is of shape (B, k+1), but we need it to match (B, N, k+1) for gathering eigenvectors
-        # To gather along the third dimension (N), use top_indices with unsqueeze and expand appropriately
-        top_vecs = torch.gather(eigenvectors, 2, top_indices.unsqueeze(1).expand(B, N, k+1))
-
-        # Returning top k eigenvalues and eigenvectors, excluding the first one (index 0)
-        return top_vals[:, 1:], top_vecs[:, :, 1:], eigenvalues, eigenvectors
 
     def calc_top_k_eigenvalues_eigenvectors_symmetric(self, adj_matrices, k, smallest):   
         
@@ -1764,8 +1725,6 @@ class Point_MAE_Mamba(nn.Module):
     def calc_top_k_eigenvalues_eigenvectors(self, adj_matrices, k, smallest):   
         
         B, N, _ = adj_matrices.shape
-        # top_k_eigenvalues = torch.zeros((B, k+1)).cuda()
-        # top_k_eigenvectors = torch.zeros((B, N, k+1)).cuda()    
         top_k_eigenvalues = torch.zeros((B, k)).cuda()
         top_k_eigenvectors = torch.zeros((B, N, k)).cuda()
         eigenvalues_l = torch.zeros((B, N)).cuda()
@@ -1785,14 +1744,10 @@ class Point_MAE_Mamba(nn.Module):
             D_inv = torch.diag(1.0 / torch.diag(D))
 
             # Perform Random-walk normalization: D^-1 * A
-            ####normalized_A = torch.matmul(D_inv, A)
             I = torch.eye(N).cuda()    
             normalized_A = I - torch.matmul(D_inv, A)      
  
             eigenvalues, eigenvectors = torch.linalg.eigh(normalized_A)     
-            # eigenvalues, eigenvectors = torch.linalg.eig(normalized_A)        
-            # eigenvalues = eigenvalues.real
-            # eigenvectors = eigenvectors.real
 
             # Select the top k eigenvalues and corresponding eigenvectors
             if (smallest == False):
@@ -1811,7 +1766,6 @@ class Point_MAE_Mamba(nn.Module):
             eigenvalues_l[i] = eigenvalues
             eigenvectors_l[i, :, :] = eigenvectors         
 
-        # return top_k_eigenvalues[:, 1:], top_k_eigenvectors[:, :, 1:], eigenvalues_l, eigenvectors_l  
         return top_k_eigenvalues, top_k_eigenvectors, eigenvalues_l, eigenvectors_l  
 
     def forward(self, pts, noaug = False, vis=False, **kwargs):
