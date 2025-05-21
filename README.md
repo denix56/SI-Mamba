@@ -192,7 +192,7 @@ CUDA_VISIBLE_DEVICES=<GPU> python main.py --config cfgs/config.yaml --ckpts <pat
 
 For inference, use
 ```shell
-CUDA_VISIBLE_DEVICES=<GPU> python test.py --config cfgs/finetune_scan_objbg.yaml  --ckpts <path/to/pretrained/model> --test_source
+CUDA_VISIBLE_DEVICES=<GPU> python main.py --config cfgs/finetune_scan_objbg.yaml  --ckpts <path/to/pretrained/model> --test
 ```
 
 ## Acknowledgement

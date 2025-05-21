@@ -33,10 +33,10 @@ model : {
   drop_path: 0.1,  
   drop_out: 0.,
   ############ config for our method  
-  method: SAST,               #k_top_eigenvectors, MAMBA                                   
-  reverse: True,    
-  reverse_2: False,      
-  reverse_3: False,      
+  method: SAST,               #SAST, MAMBA                                   
+  reverse: True,              
+  reverse_2: False,           #always False
+  reverse_3: False,           #always False
   knn_graph: 20,       
   k_top_eigenvectors: 4,                                  
   alpha : 10.,            

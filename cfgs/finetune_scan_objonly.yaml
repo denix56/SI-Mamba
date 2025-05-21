@@ -1,9 +1,9 @@
 optimizer: {
   type: AdamW,
   kwargs: {
-    # lr: 0.0001,
+    lr: 0.0001,
     # lr: 0.0005,
-    lr: 0.0002,  
+    # lr: 0.0002,  
     weight_decay: 0.05          
   } }
 
@@ -34,10 +34,10 @@ model: {
   drop_path: 0.1,
   drop_out: 0.,  
   ############ config for our method  
-  method: SAST,               #k_top_eigenvectors, MAMBA                              
+  method: SAST,               #SAST, MAMBA                              
   reverse: True,    
-  reverse_2: False,      
-  reverse_3: False,   
+  reverse_2: False,           #always False
+  reverse_3: False,           #always False
   knn_graph: 20,       
   k_top_eigenvectors: 4,               
   alpha : 10.0,           
@@ -46,7 +46,7 @@ model: {
   self_loop : True,                                  
   binary : False,
   matrix : "laplacian",  
-  add_after_layer : False,              
+  add_after_layer : False,                
   rotation : True                         
 }
 

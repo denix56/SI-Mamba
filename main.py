@@ -13,8 +13,8 @@ print("Start ...")
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "3" 
 
-directory_path = "/export/livia/home/vision/Abahri/projects/SST_Mamba/SST_Mamba/"
-os.chdir(directory_path)
+# directory_path = "/export/livia/home/vision/Abahri/projects/SST_Mamba/SST_Mamba/"
+# os.chdir(directory_path)
 
 def main():
     # args

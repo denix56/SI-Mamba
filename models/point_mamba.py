@@ -661,7 +661,7 @@ class PointMamba(nn.Module):
         top_k_eigenvalues = torch.zeros((B, k)).cuda()
         top_k_eigenvectors = torch.zeros((B, N, k)).cuda()          
         eigenvalues_l = torch.zeros((B, N)).cuda()
-        eigenvectors_l = torch.zeros((B, N, N)).cuda()
+        eigenvectors_l = torch.zeros((B, N, N)).cuda()  
 
         for i in range(B):
             # Extract the i-th adjacency matrix
