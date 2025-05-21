@@ -97,20 +97,9 @@ def get_args():
         args.exp_name = 'test_' + args.exp_name
     if args.mode is not None:
         args.exp_name = args.exp_name + '_' +args.mode     
-    # args.experiment_path = os.path.join('./19_March/pretrain/with_first_eigenvector_symmetric_in_code', Path(args.config).stem, Path(args.config).parent.stem, args.exp_name)
-    # args.tfboard_path = os.path.join('./19_March/pretrain/with_first_eigenvector_symmetric_in_code', Path(args.config).stem, Path(args.config).parent.stem, 'TFBoard' ,args.exp_name)   
-
-    # args.experiment_path = os.path.join('./19_March/finetune/without_first_eigenvector_symmetric_in_code_seting_6_with_batch_norm', Path(args.config).stem, Path(args.config).parent.stem, args.exp_name)
-    # args.tfboard_path = os.path.join('./19_March/finetune/without_first_eigenvector_symmetric_in_code_seting_6_with_batch_norm', Path(args.config).stem, Path(args.config).parent.stem, 'TFBoard' ,args.exp_name) 
+    args.experiment_path = os.path.join('./pretrain', Path(args.config).stem, Path(args.config).parent.stem, args.exp_name)
+    args.tfboard_path = os.path.join('./pretrain', Path(args.config).stem, Path(args.config).parent.stem, 'TFBoard' ,args.exp_name)   
     
-    # args.experiment_path = os.path.join('./19_March/finetune/without_TAR_without_symmetric_code_in_fine_tune', Path(args.config).stem, Path(args.config).parent.stem, args.exp_name)
-    # args.tfboard_path = os.path.join('./19_March/finetune/without_TAR_without_symmetric_code_in_fine_tune', Path(args.config).stem, Path(args.config).parent.stem, 'TFBoard' ,args.exp_name)
-        
-
-    args.experiment_path = os.path.join('./10_May/ablation/without_TAR', Path(args.config).stem, Path(args.config).parent.stem, args.exp_name)   
-    args.tfboard_path = os.path.join('./10_May/ablation/without_TAR', Path(args.config).stem, Path(args.config).parent.stem, 'TFBoard' ,args.exp_name)
-    # args.experiment_path = os.path.join('./19_March/ablation/finetune_with_otation/with_TAR', Path(args.config).stem, Path(args.config).parent.stem, args.exp_name)
-    # args.tfboard_path = os.path.join('./19_March/ablation/finetune_with_otation/with_TAR', Path(args.config).stem, Path(args.config).parent.stem, 'TFBoard' ,args.exp_name)
     args.log_name = Path(args.config).stem        
     create_experiment_dir(args)  
     return args
