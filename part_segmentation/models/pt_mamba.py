@@ -548,8 +548,6 @@ class get_model(nn.Module):
     def calc_top_k_eigenvalues_eigenvectors(self, adj_matrices, k, smallest):   
             
             B, N, _ = adj_matrices.shape
-            # top_k_eigenvalues = torch.zeros((B, k+1)).cuda()
-            # top_k_eigenvectors = torch.zeros((B, N, k+1)).cuda()
             top_k_eigenvalues = torch.zeros((B, k)).cuda()
             top_k_eigenvectors = torch.zeros((B, N, k)).cuda()          
             eigenvalues_l = torch.zeros((B, N)).cuda()
@@ -573,10 +571,7 @@ class get_model(nn.Module):
                 I = torch.eye(N).cuda()    
                 normalized_A = I - torch.matmul(D_inv, A)             
 
-                eigenvalues, eigenvectors = torch.linalg.eigh(normalized_A)        
-                # eigenvalues, eigenvectors = torch.linalg.eig(normalized_A)        
-                # eigenvalues = eigenvalues.real
-                # eigenvectors = eigenvectors.real     
+                eigenvalues, eigenvectors = torch.linalg.eigh(normalized_A)          
 
                 # Select the top k eigenvalues and corresponding eigenvectors
                 if (smallest == False):
@@ -595,7 +590,6 @@ class get_model(nn.Module):
                 eigenvalues_l[i] = eigenvalues
                 eigenvectors_l[i, :, :] = eigenvectors               
 
-            # return top_k_eigenvalues[:, 1:], top_k_eigenvectors[:, :, 1:], eigenvalues_l, eigenvectors_l       
             return top_k_eigenvalues, top_k_eigenvectors, eigenvalues_l, eigenvectors_l     
 
     def multilevel_travers(self, eigen_vectors, level):
