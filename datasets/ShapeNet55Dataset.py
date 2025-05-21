@@ -5,8 +5,6 @@ import torch.utils.data as data
 from .io import IO
 from .build import DATASETS
 from utils.logger import *
-import numpy as np
-import open3d as o3d
 
 
 @DATASETS.register_module()
