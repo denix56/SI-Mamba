@@ -150,6 +150,8 @@ Download: Please download the data from [here](https://shapenet.cs.stanford.edu/
 
 ## Pre-train
 
+Note: During pretraining, the number of points (N_POINTS) is set to 1024, following the original Point-Mamba code. According to the ShapeNet55Dataset.py implementation, only the first 1024 points from each point cloud are selected, which may result in partial loss of object geometry. The results reported here are based on 1024 points to ensure a fair comparison with Point-Mamba. However, you are free to increase N_POINTS to 8096 if desired — this may have no effect or could improve performance.
+
 ```shell
 CUDA_VISIBLE_DEVICES=<GPU> python main.py --config cfgs/pretrain.yaml --exp_name <name>
 ```
