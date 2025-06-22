@@ -26,6 +26,7 @@ This codebase was tested with the following environment configurations. It may w
 - CUDA 11.7
 - Python 3.9
 - PyTorch 1.13.1 + cu117
+- Pytorch3D
 
 ## Installation
 
@@ -40,14 +41,14 @@ $ conda activate SSTmamba
 # Install basic required packages
 (SSTmamba) $ pip install -r requirements.txt
 
-# Chamfer Distance & emd
+# Chamfer Distance & emd (if you install pytorch3d, you don't need to install this)
 (SSTmamba) $ cd ./extensions/chamfer_dist && python setup.py install --user
 (SSTmamba) $ cd ./extensions/emd && python setup.py install --user
 
 # PointNet++
 (SSTmamba) $ pip install "git+https://github.com/erikwijmans/Pointnet2_PyTorch.git#egg=pointnet2_ops&subdirectory=pointnet2_ops_lib"
 
-# GPU kNN
+# GPU kNN (if you install pytorch3d, you don't need to install this)
 (SSTmamba) $ pip install --upgrade https://github.com/unlimblue/KNN_CUDA/releases/download/0.2/KNN_CUDA-0.2-py3-none-any.whl
 
 # Mamba
