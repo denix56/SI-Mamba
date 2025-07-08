@@ -1,5 +1,5 @@
 NAME: ModelNet40SVM
-DATA_PATH: /export/gauss/vision/Abahri/projects/Point-MAE/Point-MAE/data/
+DATA_PATH: /raid/work/senkin/SI-Mamba/data
 N_POINTS: 8192
 NUM_CATEGORY: 40
 USE_NORMALS: FALSE

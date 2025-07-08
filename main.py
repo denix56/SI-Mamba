@@ -6,12 +6,31 @@ from utils.logger import *
 from utils.config import *
 import time
 import os
+import tarfile
+from pathlib import Path
+
 import torch
-from tensorboardX import SummaryWriter
+from torch.utils.tensorboard import SummaryWriter
 
-print("Start ...")  
+print("Start ...")
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "3" 
+def archive_project_files_tar(output_dir, archive_name="project_backup.tar.gz"):
+    project_dir = Path(__file__).parent.resolve()
+    project_dir = Path(project_dir).resolve()
+    output_dir = Path(output_dir).resolve()
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    archive_path = output_dir / archive_name
+
+    with tarfile.open(archive_path, "w:gz") as tar:
+        for path in project_dir.rglob("*"):
+            if path.suffix in [".py", ".yaml", ".yml"] and path.is_file():
+                relative_path = path.relative_to(project_dir)
+                tar.add(path, arcname=relative_path)
+
+    print(f"Archive created at: {archive_path}")
+
+#os.environ["CUDA_VISIBLE_DEVICES"] = "3"
 
 # directory_path = "/export/livia/home/vision/Abahri/projects/SST_Mamba/SST_Mamba/"
 # os.chdir(directory_path)
@@ -19,6 +38,9 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "3"
 def main():
     # args
     args = parser.get_args()
+
+    archive_project_files_tar(args.experiment_path)
+
     # CUDA
     args.use_gpu = torch.cuda.is_available()
     if args.use_gpu:

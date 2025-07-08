@@ -1,5 +1,5 @@
 NAME: ModelNet
-DATA_PATH: /export/gauss/vision/Abahri/projects/Point-MAE/Point-MAE-org/Point-MAE/data/ModelNet/modelnet40_normal_resampled
+DATA_PATH: /raid/work/senkin/SI-Mamba/data/ModelNet/modelnet40_normal_resampled
 N_POINTS: 8192
 NUM_CATEGORY: 40
 USE_NORMALS: FALSE

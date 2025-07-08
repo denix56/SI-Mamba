@@ -1,3 +1,3 @@
 NAME: ScanObjectNN
-ROOT: /export/gauss/vision/Abahri/projects/Point-MAE/Point-MAE-org/Point-MAE/data/ScanObjectNN/main_split
+ROOT: /raid/work/senkin/SI-Mamba/data/ScanObjectNN/main_split
 # ROOT: /export/gauss/vision/Abahri/projects/Point-MAE/ORIGINAL/Point-MAE/data/ScanObjectNN/main_split

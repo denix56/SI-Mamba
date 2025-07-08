@@ -1,4 +1,5 @@
 import os
+import math
 
 import torch
 import torch.nn as nn
@@ -71,6 +72,19 @@ class Acc_Metric:
         return _dict
 
 
+def tau_schedule(epoch, start_tau, max_tau, warmup_epochs, total_epochs):
+    if epoch < warmup_epochs:
+        # Linear warmup
+        progress = epoch / warmup_epochs
+        return start_tau + (max_tau - start_tau) * progress
+    elif epoch <= total_epochs:
+        # Cosine annealing: from max_tau to 0
+        anneal_progress = (epoch - warmup_epochs) / (total_epochs - warmup_epochs)
+        return max_tau * 0.5 * (1 + math.cos(math.pi * anneal_progress))
+    else:
+        return 0.0
+
+
 def run_net(args, config, train_writer=None, val_writer=None):
 
     rotation = config.model.rotation
@@ -122,7 +136,14 @@ def run_net(args, config, train_writer=None, val_writer=None):
     # trainval
     # training
     base_model.zero_grad()
-    misc.summary_parameters(base_model, logger=logger)  
+    misc.summary_parameters(base_model, logger=logger)
+
+    start_tau = 0.0
+    tau_start_epoch = 0
+    tau_warmup_epochs = 10
+    max_tau = 0.5
+
+    baseline = None
 
     for epoch in range(start_epoch, config.max_epoch + 1):
         if args.distributed:
@@ -137,6 +158,8 @@ def run_net(args, config, train_writer=None, val_writer=None):
         num_iter = 0
         base_model.train()  # set model to training mode
         n_batches = len(train_dataloader)
+        tau = tau_schedule(epoch - tau_start_epoch, start_tau, max_tau, tau_warmup_epochs,
+                           config.max_epoch - tau_start_epoch)
 
         # from calflops import calculate_flops
         # flops, macs, params = calculate_flops(base_model, input_shape=(1, 2048, 3))
@@ -172,16 +195,35 @@ def run_net(args, config, train_writer=None, val_writer=None):
             if 'scan' in args.config and rotation == True:
                 points = train_transforms(points)    
             else:
-                points = train_transforms_raw(points)  
-            ret = base_model(points)
+                points = train_transforms_raw(points)
+
+            batch_size = points.size(0)
+            ret = base_model(points, gt=None, tau=None, use_wavelets=True)
+            #policy_old = policy_old.detach()
             loss, acc = base_model.module.get_loss_acc(ret, label)
+            loss = loss.mean()
+            # if baseline is None:
+            #     baseline = -loss.detach().mean()
+            #
+            # K_epochs = 4
+            # beta = 0.99
+            # for k in range(K_epochs):
+            #     ret, policy = base_model(points, gt=label, tau=tau)
+            #     loss, acc = base_model.module.get_loss_acc(ret, label)
+            #     reward = -loss.detach()
+            #     ratio = torch.exp(torch.clamp(policy - policy_old, max=3))
+            #     baseline = beta*baseline + (1-beta)*reward.mean()
+            #     advantage = reward - baseline
+            #     advantage = (advantage - advantage.mean()) / (advantage.std() + 1e-5)
+            #     policy_loss = -torch.minimum(ratio * advantage, torch.clamp(ratio, 1.0 - 0.2, 1.0 + 0.2) * advantage).mean()
+            #     loss = policy_loss
             _loss = loss
             _loss.backward()
             # forward
             if num_iter == config.step_per_update:
+                num_iter = 0
                 if config.get('grad_norm_clip') is not None:
                     torch.nn.utils.clip_grad_norm_(base_model.parameters(), config.grad_norm_clip, norm_type=2)
-                num_iter = 0
                 optimizer.step()
                 base_model.zero_grad()
 
@@ -268,8 +310,11 @@ def validate(base_model, test_dataloader, epoch, val_writer, args, config, logge
             label = data[1].cuda()
 
             points = misc.fps(points, npoints)
-
-            logits = base_model(points)
+            save_dir_path = None
+            if idx == 0:
+                save_dir_path = os.path.join('examples', args.exp_name)
+                os.makedirs(save_dir_path, exist_ok=True)
+            logits = base_model(points, tau=None, use_wavelets=True, save_pts_dir=save_dir_path, epoch=epoch)
             target = label.view(-1)
 
             pred = logits.argmax(-1).view(-1)

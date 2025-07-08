@@ -12,6 +12,8 @@ from utils.misc import *
 from timm.scheduler import CosineLRScheduler
 from torch.utils.data import DataLoader
 
+from utils.checkpoint import get_missing_parameters_message, get_unexpected_parameters_message
+
 
 
 def dataset_builder(args, config):  
@@ -36,8 +38,8 @@ def dataset_builder(args, config):
 
 
 def dataset_builder_svm(config):
-    train_val_loader = DataLoader(build_dataset_from_cfg(config.train._base_, config.train.others), num_workers=8, batch_size=128, shuffle=True)
-    test_val_loader = DataLoader(build_dataset_from_cfg(config.test._base_, config.test.others), num_workers=8, batch_size=128, shuffle=True)
+    train_val_loader = DataLoader(build_dataset_from_cfg(config.train._base_, config.train.others), num_workers=8, batch_size=64, shuffle=True)
+    test_val_loader = DataLoader(build_dataset_from_cfg(config.test._base_, config.test.others), num_workers=8, batch_size=64, shuffle=False)
     return train_val_loader, test_val_loader
 
 
@@ -80,9 +82,9 @@ def build_opti_sche(base_model, config):
     elif sche_config.type == 'CosLR':
         scheduler = CosineLRScheduler(optimizer,
                                       t_initial=sche_config.kwargs.epochs,
-                                      t_mul=1,
+                                      cycle_mul=1,
                                       lr_min=1e-6,
-                                      decay_rate=0.1,
+                                      cycle_decay=0.1,
                                       warmup_lr_init=1e-6,
                                       warmup_t=sche_config.kwargs.initial_epochs,
                                       cycle_limit=1,
@@ -113,7 +115,7 @@ def resume_model(base_model, args, logger=None):
 
     # load state dict
     map_location = {'cuda:%d' % 0: 'cuda:%d' % args.local_rank}
-    state_dict = torch.load(ckpt_path, map_location=map_location)
+    state_dict = torch.load(ckpt_path, map_location=map_location, weights_only=False)
     # parameter resume of base model
     # if args.local_rank == 0:
     base_ckpt = {k.replace("module.", ""): v for k, v in state_dict['base_model'].items()}
@@ -139,7 +141,7 @@ def resume_optimizer(optimizer, args, logger=None):
         return 0, 0, 0
     print_log(f'[RESUME INFO] Loading optimizer from {ckpt_path}...', logger=logger) 
     # load state dict
-    state_dict = torch.load(ckpt_path, map_location='cpu')
+    state_dict = torch.load(ckpt_path, map_location='cpu', weights_only=False)
     # optimizer
     optimizer.load_state_dict(state_dict['optimizer'])
 
@@ -162,7 +164,7 @@ def load_model(base_model, ckpt_path, logger=None):
     print_log(f'Loading weights from {ckpt_path}...', logger=logger)
 
     # load state dict
-    state_dict = torch.load(ckpt_path, map_location='cpu')
+    state_dict = torch.load(ckpt_path, map_location='cpu', weights_only=False)
     # parameter resume of base model
     if state_dict.get('model') is not None:
         base_ckpt = {k.replace("module.", ""): v for k, v in state_dict['model'].items()}
@@ -170,7 +172,21 @@ def load_model(base_model, ckpt_path, logger=None):
         base_ckpt = {k.replace("module.", ""): v for k, v in state_dict['base_model'].items()}
     else:
         raise RuntimeError('mismatch of ckpt weight')
-    base_model.load_state_dict(base_ckpt, strict=True)
+
+    incompatible = base_model.load_state_dict(base_ckpt, strict=False)
+
+    if incompatible.missing_keys:
+        print_log('missing_keys', logger='Mamba')
+        print_log(
+            get_missing_parameters_message(incompatible.missing_keys),
+            logger='Mamba'
+        )
+    if incompatible.unexpected_keys:
+        print_log('unexpected_keys', logger='Mamba')
+        print_log(
+            get_unexpected_parameters_message(incompatible.unexpected_keys),
+            logger='Mamba'
+        )
 
     epoch = -1
     if state_dict.get('epoch') is not None:

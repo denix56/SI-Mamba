@@ -1,5 +1,5 @@
 NAME: ShapeNet
-DATA_PATH: /export/gauss/vision/Abahri/projects/Point-MAE/Point-MAE-org/Point-MAE/data/ShapeNet55-34/ShapeNet-55
+DATA_PATH: /raid/work/senkin/SI-Mamba/data/ShapeNet55-34/ShapeNet-55
 N_POINTS: 1024
 # N_POINTS: 8192
-PC_PATH: /export/gauss/vision/Abahri/projects/Point-MAE/Point-MAE-org/Point-MAE/data/ShapeNet55-34/shapenet_pc
+PC_PATH: /raid/work/senkin/SI-Mamba/data/ShapeNet55-34/shapenet_pc

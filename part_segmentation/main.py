@@ -203,9 +203,9 @@ def main(args):
 
     scheduler = CosineLRScheduler(optimizer,
                                   t_initial=args.epoch,
-                                  t_mul=1,
+                                  cycle_mul=1,
                                   lr_min=1e-6,
-                                  decay_rate=0.1,
+                                  cycle_decay=0.1,
                                   warmup_lr_init=1e-6,
                                   warmup_t=args.warmup_epoch,
                                   cycle_limit=1,

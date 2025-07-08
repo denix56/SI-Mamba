@@ -1,3 +1,4 @@
+import math
 import torch
 import torch.nn as nn
 import os
@@ -14,6 +15,8 @@ import numpy as np
 from torchvision import transforms
 from datasets import data_transforms
 from pointnet2_ops import pointnet2_utils
+import itertools
+import random
 
 train_transforms = transforms.Compose(
     [
@@ -26,6 +29,19 @@ train_transforms = transforms.Compose(
         data_transforms.PointcloudScaleAndTranslate(),
     ]
 )
+
+
+def tau_schedule(epoch, start_tau, max_tau, warmup_epochs, total_epochs):
+    if epoch < warmup_epochs:
+        # Linear warmup
+        progress = epoch / warmup_epochs
+        return start_tau + (max_tau - start_tau) * progress
+    elif epoch <= total_epochs:
+        # Cosine annealing: from max_tau to 0
+        anneal_progress = (epoch - warmup_epochs) / (total_epochs - warmup_epochs)
+        return max_tau * 0.5 * (1 + math.cos(math.pi * anneal_progress))
+    else:
+        return 0.0
 
 
 class Acc_Metric:
@@ -68,7 +84,7 @@ def run_net(args, config, train_writer=None, val_writer=None):
         builder.dataset_builder(args, config.dataset.val)
     # (_, extra_train_dataloader), (_, extra_test_dataloader),  = builder.dataset_builder(args, config.dataset.extra_train_svm), \
     #                                                             builder.dataset_builder(args, config.dataset.extra_test_svm)
-    
+
     extra_train_dataloader, extra_test_dataloader = builder.dataset_builder_svm(config.dataset.svm)
     # build model
     base_model = builder.model_builder(config.model)
@@ -111,6 +127,14 @@ def run_net(args, config, train_writer=None, val_writer=None):
     # trainval
     # training
     base_model.zero_grad()
+    start_tau = 0.01
+    tau_start_epoch = 0
+    tau_warmup_epochs = 20
+    max_tau = 1.0
+    beta = 0.99
+
+    baseline = None
+
     for epoch in range(start_epoch, config.max_epoch + 1):
         if args.distributed:
             train_sampler.set_epoch(epoch)
@@ -123,9 +147,80 @@ def run_net(args, config, train_writer=None, val_writer=None):
         losses = AverageMeter(['Loss'])
 
         num_iter = 0
+        tau = tau_schedule(epoch - tau_start_epoch, start_tau, max_tau, tau_warmup_epochs,
+                           config.max_epoch - tau_start_epoch)
 
         base_model.train()  # set model to training mode
         n_batches = len(train_dataloader)
+        # batch_iter = itertools.cycle(train_dataloader)
+        # BATCHES_PER_ROLLOUT = 8
+        # K_epochs = 4
+        # eps = 0.2
+
+        # losses_all = []
+
+        # for idx in range(n_batches):
+        #     num_iter += 1
+        #     n_itr = epoch * n_batches + idx
+        #
+        #     data_time.update(time.time() - batch_start_time)
+        #     # import ipdb; ipdb.set_trace()
+        #     # npoints = config.dataset.train._base_.N_POINTS
+        #     npoints = config.npoints
+        #     dataset_name = config.dataset.train._base_.NAME
+        #
+        #     points_batch = []
+        #     losses_batch = []
+        #     policy_batch = []
+        #
+        #     for b in range(BATCHES_PER_ROLLOUT):
+        #         taxonomy_ids, model_ids, data = next(batch_iter)
+        #
+        #         if dataset_name == 'ShapeNet':
+        #             points = data.cuda()
+        #         elif dataset_name == 'ModelNet':
+        #             points = data[0].cuda()
+        #             points = misc.fps(points, npoints)
+        #         else:
+        #             raise NotImplementedError(f'Train phase do not support {dataset_name}')
+        #
+        #         assert points.size(1) == npoints
+        #         points = train_transforms(points)
+        #         loss, policy = base_model(points, tau=  # None
+        #         tau if epoch >= tau_start_epoch else None, ret_policy=True
+        #                                   )
+        #         points_batch.append(points)
+        #         losses_batch.append(loss.view(points.shape[0], -1).mean(1).detach())
+        #         policy_batch.append(policy.detach())
+        #
+        #     losses_batch = torch.stack(losses_batch, 0)
+        #     #policy_batch = torch.stack(policy_batch, 0)
+        #     if baseline is None:
+        #         baseline = -losses_batch.mean()
+        #
+        #     reward = -losses_batch
+        #     baseline = beta * baseline + (1 - beta) * reward.mean()
+        #     advantage = reward - baseline
+        #     advantage = (advantage - advantage.mean()) / (advantage.std() + 1e-5)
+        #
+        #     for k in range(K_epochs):
+        #         pairs = list(zip(points_batch, policy_batch))
+        #         random.shuffle(pairs)
+        #         points_batch, policy_batch = zip(*pairs)
+        #
+        #         for points, policy_old in zip(points_batch, policy_batch):
+        #             policy = base_model(points, tau=tau if epoch >= tau_start_epoch else None, ret_policy=True, ret_only_policy=True)
+        #             ratio = torch.exp(torch.clamp(policy - policy_old, max=6))
+        #             policy_loss = torch.minimum(ratio * advantage, torch.clamp(ratio, min=1-eps, max=1+eps)*advantage)
+        #             policy_loss = -policy_loss.mean()
+        #             policy_loss.backward()
+        #             optimizer.step()
+        #             base_model.zero_grad()
+        #             losses_all.append(policy_loss.item())
+        #     loss = torch.tensor(sum(losses_all) / len(losses_all))
+
+
+
         for idx, (taxonomy_ids, model_ids, data) in enumerate(train_dataloader):
             num_iter += 1
             n_itr = epoch * n_batches + idx
@@ -145,7 +240,9 @@ def run_net(args, config, train_writer=None, val_writer=None):
 
             assert points.size(1) == npoints
             points = train_transforms(points)
-            loss = base_model(points)
+            loss = base_model(points, tau=tau,
+                                      ret_policy=False, use_wavelets=True)
+
             try:
                 loss.backward()
                 # print("Using one GPU")
@@ -157,6 +254,8 @@ def run_net(args, config, train_writer=None, val_writer=None):
             # forward
             if num_iter == config.step_per_update:
                 num_iter = 0
+                if config.get('grad_norm_clip') is not None:
+                    torch.nn.utils.clip_grad_norm_(base_model.parameters(), config.grad_norm_clip, norm_type=2)
                 optimizer.step()
                 base_model.zero_grad()
 
@@ -180,7 +279,7 @@ def run_net(args, config, train_writer=None, val_writer=None):
                 print_log('[Epoch %d/%d][Batch %d/%d] BatchTime = %.3f (s) DataTime = %.3f (s) Losses = %s lr = %.6f' %
                           (epoch, config.max_epoch, idx + 1, n_batches, batch_time.val(), data_time.val(),
                            ['%.4f' % l for l in losses.val()], optimizer.param_groups[0]['lr']), logger=logger)
-                
+
             # break    
         if isinstance(scheduler, list):
             for item in scheduler:
@@ -196,13 +295,15 @@ def run_net(args, config, train_writer=None, val_writer=None):
                    optimizer.param_groups[0]['lr']), logger=logger)
 
         if epoch % args.val_freq == 0:
-        #     # Validate the current model
-            metrics = validate(base_model, extra_train_dataloader, extra_test_dataloader, epoch, val_writer, args, config, logger=logger)
-        #
-        #     # Save ckeckpoints
+            #     # Validate the current model
+            metrics = validate(base_model, extra_train_dataloader, extra_test_dataloader, epoch, val_writer, args,
+                               config, logger=logger)
+            #
+            #     # Save ckeckpoints
             if metrics.better_than(best_metrics):
-                 best_metrics = metrics
-                 builder.save_checkpoint(base_model, optimizer, epoch, metrics, best_metrics, 'ckpt-best', args, logger = logger)
+                best_metrics = metrics
+                builder.save_checkpoint(base_model, optimizer, epoch, metrics, best_metrics, 'ckpt-best', args,
+                                        logger=logger)
         builder.save_checkpoint(base_model, optimizer, epoch, metrics, best_metrics, 'ckpt-last', args, logger=logger)
         if epoch % 25 == 0 and epoch >= 250:
             builder.save_checkpoint(base_model, optimizer, epoch, metrics, best_metrics, f'ckpt-epoch-{epoch:03d}',
@@ -238,11 +339,15 @@ def validate(base_model, extra_train_dataloader, test_dataloader, epoch, val_wri
             points = misc.fps(points, npoints)
 
             assert points.size(1) == npoints
-            feature = base_model(points, noaug=True)
+            if idx == 0:
+                save_dir_path = os.path.join('examples', args.exp_name)
+                os.makedirs(save_dir_path, exist_ok=True)
+            feature = base_model(points, noaug=True, tau=None,
+                                 use_wavelets=True, save_pts_dir=save_dir_path, epoch=epoch)
             target = label.view(-1)
 
-            train_features.append(feature.detach())
-            train_label.append(target.detach())
+            train_features.append(feature.detach().cpu())
+            train_label.append(target.detach().cpu())
 
         # for idx, (taxonomy_ids, model_ids, data) in enumerate(test_dataloader):
         for idx, (points, label) in enumerate(extra_train_dataloader):
@@ -254,11 +359,12 @@ def validate(base_model, extra_train_dataloader, test_dataloader, epoch, val_wri
 
             points = misc.fps(points, npoints)
             assert points.size(1) == npoints
-            feature = base_model(points, noaug=True)
+            feature = base_model(points, noaug=True, tau=None,
+                                 use_wavelets=True)
             target = label.view(-1)
 
-            test_features.append(feature.detach())
-            test_label.append(target.detach())
+            test_features.append(feature.detach().cpu())
+            test_label.append(target.detach().cpu())
 
         train_features = torch.cat(train_features, dim=0)
         train_label = torch.cat(train_label, dim=0)

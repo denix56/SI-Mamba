@@ -17,7 +17,7 @@ warnings.filterwarnings('ignore')
 
 def load_modelnet_data(partition):
     # BASE_DIR = './'
-    BASE_DIR = "/export/gauss/vision/Abahri/projects/Point-MAE/Point-MAE/"
+    BASE_DIR = "/raid/work/senkin/SI-Mamba"
     DATA_DIR = os.path.join(BASE_DIR, 'data')
     all_data = []
     all_label = []
