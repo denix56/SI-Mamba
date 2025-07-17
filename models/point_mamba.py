@@ -1624,7 +1624,7 @@ def sinkhorn_sort(X, epsilon=0.01, max_iter=100, stop_thresh=1e-3, use_hungarian
     P_hat = torch.diag_embed(u) @ K_matrix @ torch.diag_embed(v)  # (B, K, N, N)
 
     if use_hungarian:
-        P_ = P_hat.clone().detach().flatten(0, 1).cpu().numpy()
+        P_ = P_hat.clone().detach().flatten(0, 1).float().cpu().numpy()
         P_hard = torch.zeros_like(P_hat).flatten(0, 1)
         for b in range(P_.shape[0]):
             row, col = linear_sum_assignment(-P_[b])
@@ -1643,7 +1643,7 @@ def sinkhorn_sort(X, epsilon=0.01, max_iter=100, stop_thresh=1e-3, use_hungarian
 
     P = P_hard + (P_hat - P_hat.detach())
 
-    return P
+    return P, P_hat
 
 
 def neural_sort(s: torch.Tensor, tau: float = 1.0) -> torch.Tensor:
@@ -1708,7 +1708,8 @@ def traversal_order_from_coeffs_perm(
     strategy: str = "coarsest_k",
     use_diff_sort: bool = False,
     sort_tau: float = 1.0,
-    eps: float = 1e-9
+    eps: float = 1e-9,
+    return_soft_perm: bool = False,
 ) -> Union[
     torch.Tensor,
     Tuple[torch.Tensor, List[torch.Tensor]],
@@ -1771,12 +1772,13 @@ def traversal_order_from_coeffs_perm(
     score = score.gather(dim=2, index=scale_ids)
 
     if use_diff_sort:
-        P = sinkhorn_sort(score, epsilon=0.05, max_iter=40, use_hungarian=True)
+        P, P_hat = sinkhorn_sort(score, epsilon=0.05, max_iter=40, use_hungarian=True)
+        if return_soft_perm:
+            return P, P_hat
     else:
         ord = torch.argsort(score.transpose(1, 2), dim=2, descending=False)
         P = F.one_hot(ord, num_classes=N).to(coeffs.dtype)  # (B, N, N)
-
-    return P
+    return P, None
 
 
     # orders = torch.stack(orders, dim=1)  # (B, k, N)
@@ -1909,7 +1911,7 @@ class DiffusionWavelets:
             C = M.transpose(1, 2) @ M  # (B, r, r)
 
             # 2) eigh returns ascending
-            evals, V = torch.linalg.eigh(C)  # evals[:, 0] is smallest
+            evals, V = torch.linalg.eigh(C.float())  # evals[:, 0] is smallest
 
             # 3) get top-k via slicing
             V_k = V[:, :, -k:].flip(-1)  # (B, r, k)
@@ -1935,10 +1937,10 @@ class DiffusionWavelets:
             Wj = Vj - P
             # batched QR
             Qj, _ = torch.linalg.qr(Wj)  # (B,N,r_j)
-            W.append(Qj)
+            W.append(Qj.to(L.dtype))
 
         # Final scaling basis V_J
-        VJ = V_bases[-1]  # (B,N,r_J)
+        VJ = V_bases[-1].to(L.dtype)  # (B,N,r_J)
         return W, VJ
 
 # Example usage:
@@ -1975,6 +1977,7 @@ class DiffusionWaveletSGWT(torch.nn.Module):
         self,
         t: float = 1.0,
         J: int = 3,
+        num_group: int = 1,
         in_features: int = 3,
         lam_max: float = 2.0,
         lam_cutoff: float = None,
@@ -1990,11 +1993,20 @@ class DiffusionWaveletSGWT(torch.nn.Module):
         self.tol = tol
         self.dw = DiffusionWavelets(t, J, lam_max=self.lam_max)
 
+        self.norm = nn.LayerNorm(num_group)
+
+       #  self.mixer = nn.Sequential(
+       #     nn.Linear(in_features*(self.J + 1), self.J + 1),
+       # )
+
         self.mixer = nn.Sequential(
-            nn.Linear(in_features*(self.J + 1), (self.J + 1), bias=False),
-            # nn.LayerNorm(128),
-            # nn.GELU(),
-            # nn.Linear(128, in_features * (self.J + 1), bias=False),
+            nn.Linear(in_features * (self.J + 1), 128),
+            nn.LayerNorm(128),
+            nn.GELU(),
+            nn.Linear(128, 128),
+            nn.LayerNorm(128),
+            nn.GELU(),
+            nn.Linear(128, self.J + 1),
         )
 
     def forward(self, x: Tensor, L: Tensor, tau: float = 0.5) -> Tensor:
@@ -2041,9 +2053,14 @@ class DiffusionWaveletSGWT(torch.nn.Module):
         #     Pj = torch.matmul(Wj, Wj.transpose(1, 2))  # (B,N,N)
         #     coeffs[..., j+1] = torch.matmul(Pj, x)
 
-        coeffs /= torch.sqrt((coeffs ** 2).mean(dim=(1, 2), keepdim=True) + 1e-6)
+        coeffs = self.norm(coeffs.permute(0, 2, 3, 1)).permute(0, 3, 1, 2)
 
-        coeffs = self.mixer(coeffs.flatten(2)).view(B, N, 1, -1)
+        # coeffs = self.norm(coeffs)
+        #rms = torch.sqrt((coeffs ** 2).mean(dim=(0, 1), keepdim=True) + 1e-6)
+        #coeffs = coeffs / rms  # keeps node-to-node energy differences
+
+        coeffs = coeffs.mean(dim=2, keepdim=True) + self.mixer(coeffs.flatten(2)).view(B, N, 1, -1)
+        #return coeffs
 
         if self.training:
             g = -torch.log(-torch.log(torch.rand_like(coeffs) + 1e-6) + 1e-6)
@@ -2278,8 +2295,8 @@ class MaskMamba_2(nn.Module):
         reg = 0.5 * (logits * theta_L).sum(dim=(1, 2)).mean()
         return reg
 
-    def forward(self, neighborhood, center, top_k_eigenvalues, top_k_eigenvectors, k_top_eigenvectors, reverse,
-                noaug=False, tau:bool=None, orders=None, ret_only_policy=False):
+    def forward(self, neighborhood, center, top_k_eigenvalues, top_k_eigenvectors, k_top_eigenvectors,
+                reverse, noaug=False, tau:bool=None, orders=None, orders_soft=None, ret_only_policy=False):
         # generate mask
         if self.mask_type == 'rand':
             bool_masked_pos = self._mask_center_rand(center, noaug=noaug).cuda()  # B G
@@ -2416,7 +2433,11 @@ class MaskMamba_2(nn.Module):
             #         return None, None, None, None, None, None, None, policy
 
         if orders is not None:
-            P = orders
+            P_hard = orders.detach()
+            if self.training:
+                P = orders_soft
+            else:
+                P = P_hard
             # sorted_bool_masked_pos = bool_masked_pos.unsqueeze(1).expand(-1, orders.size(1), -1)
             # sorted_bool_masked_pos = sorted_bool_masked_pos.gather(dim=2, index=orders)
             #
@@ -2444,7 +2465,7 @@ class MaskMamba_2(nn.Module):
 
             # 1) build the full [B,N,N] mask for every (head,tail)‐pair
             #    first reorder the 1D mask by P → [B, N], then broadcast out to [B,N,N]
-            sorted_bool_masked_pos = torch.matmul(P, bool_masked_pos.unsqueeze(1).unsqueeze(-1).float()).squeeze(-1).bool()  # [B, N]
+            sorted_bool_masked_pos = torch.matmul(P_hard, bool_masked_pos.unsqueeze(1).unsqueeze(-1).float()).squeeze(-1).bool()  # [B, N]
             #sorted_bool_masked_pos = sorted_tail_mask.unsqueeze(1).expand(-1, N, -1)  # [B, N, N]
 
             # 2) head‐tokens repeated over tails
@@ -2474,8 +2495,6 @@ class MaskMamba_2(nn.Module):
 
             # 6) if you still need a python list of per‐head masks:
             sorted_bool_masked_pos_list = list(torch.unbind(sorted_bool_masked_pos, dim=1))
-
-
 
         if (reverse == True):
             sorted_group_input_tokens_t_reverse = sorted_group_input_tokens_t.flip(1)
@@ -2896,7 +2915,7 @@ class Point_MAE_Mamba(nn.Module):
         #self.sgwt = GraphWaveletTransform(scales=scales, K=25, tight_frame=True, J=4)
         #self.sgwt = ComplexMeyerSGWT(J=4, K=25, use_complex=True, use_delta=False)
         #sgwt = ComplexMeyerSGWT(J=4, K=30, use_complex=True, use_delta=False, jackson=False).cuda()
-        self.diff_sgwt = DiffusionWaveletSGWT(J=3, in_features=3)
+        self.diff_sgwt = DiffusionWaveletSGWT(J=3, in_features=3, num_group=self.num_group)
         #self.scatt = GraphScattering(diff_sgwt, act='abs')
 
         #self.sgwt = WaveGCSGWT(scales=scales, K=25)
@@ -3063,7 +3082,9 @@ class Point_MAE_Mamba(nn.Module):
                 laplacian = build_rw_laplacian(adjacency_matrix)
                 #coeffs = self.sgwt(center, laplacian)
                 coeffs = self.diff_sgwt(center, laplacian, tau=tau)
-                orders = traversal_order_from_coeffs_perm(coeffs, use_diff_sort=True)
+                orders, orders_soft = traversal_order_from_coeffs_perm(coeffs, use_diff_sort=True, return_soft_perm=False)
+                if orders_soft is None:
+                    orders_soft = orders
 
                 if save_pts_dir is not None:
                     sorted_neighborhood = torch.einsum('bhij,bjkl->bhikl', orders, neighborhood)  # [B, N(heads), N, D]
@@ -3092,7 +3113,7 @@ class Point_MAE_Mamba(nn.Module):
             (x_vis, sorted_bool_masked_pos_list, sorted_pos_mask, sorted_pos_full, sorted_bool_masked_pos_tensor,
              sorted_neighborhood, mask_ratio, policy) = self.MAE_encoder(neighborhood, center, top_k_eigenvalues, top_k_eigenvectors,
                                                                          self.k_top_eigenvectors, self.reverse, noaug, tau=None, orders=orders,
-                                                                         ret_only_policy=ret_only_policy)
+                                                                         orders_soft=orders_soft, ret_only_policy=ret_only_policy)
             # if use_wavelets:
             #     policy = sum([plackett_luce_dist(sig_i) for sig_i in sig])
             if ret_only_policy:
@@ -3161,7 +3182,7 @@ class Point_MAE_Mamba(nn.Module):
             rebuild_points = self.increase_dim(x_rec.transpose(1, 2)).transpose(1, 2).reshape(B * M, -1, 3)  # B M 1024
 
             gt_points = sorted_neighborhood[sorted_bool_masked_pos_tensor_final].reshape(B * M, -1, 3)
-            loss1 = self.loss_func(rebuild_points, gt_points, batch_reduction=None)
+            loss1 = self.loss_func(rebuild_points.float(), gt_points.float(), batch_reduction=None)
             loss = loss1[0]
 
             #if tau is not None:

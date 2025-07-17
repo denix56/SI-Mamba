@@ -26,14 +26,18 @@ def dataset_builder(args, config):
                                                  num_workers=int(args.num_workers),
                                                  drop_last=config.others.subset == 'train',
                                                  worker_init_fn=worker_init_fn,
-                                                 sampler=sampler)
+                                                 sampler=sampler,
+                                                 persistent_workers=int(args.num_workers) > 1,
+                                                 pin_memory=True)
     else:
         sampler = None
         dataloader = torch.utils.data.DataLoader(dataset, batch_size=config.others.bs,
                                                  shuffle=shuffle,
                                                  drop_last=config.others.subset == 'train',
                                                  num_workers=int(args.num_workers),
-                                                 worker_init_fn=worker_init_fn)
+                                                 worker_init_fn=worker_init_fn,
+                                                 persistent_workers=int(args.num_workers) > 1,
+                                                 pin_memory=True)
     return sampler, dataloader
 
 
