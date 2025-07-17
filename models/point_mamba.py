@@ -1993,21 +1993,34 @@ class DiffusionWaveletSGWT(torch.nn.Module):
         self.tol = tol
         self.dw = DiffusionWavelets(t, J, lam_max=self.lam_max)
 
-        self.norm = nn.LayerNorm(num_group)
+        hidden_dim = 64
+
+        self.pos_embed = nn.Sequential(
+            nn.Linear(in_features, hidden_dim),
+            nn.GELU(),
+            nn.Linear(hidden_dim, hidden_dim),
+        )
 
        #  self.mixer = nn.Sequential(
        #     nn.Linear(in_features*(self.J + 1), self.J + 1),
        # )
 
         self.mixer = nn.Sequential(
-            nn.Linear(in_features * (self.J + 1), 128),
-            nn.LayerNorm(128),
+            nn.Linear(hidden_dim * (self.J + 1), 2*hidden_dim),
+            nn.LayerNorm(2*hidden_dim),
             nn.GELU(),
-            nn.Linear(128, 128),
-            nn.LayerNorm(128),
+            nn.Linear(2*hidden_dim, hidden_dim),
+            nn.LayerNorm(hidden_dim),
             nn.GELU(),
-            nn.Linear(128, self.J + 1),
+            nn.Linear(hidden_dim, hidden_dim * (self.J + 1)),
         )
+
+        def ortho(m):
+            if isinstance(m, torch.nn.Linear):
+                torch.nn.init.orthogonal_(m.weight)
+                if m.bias is not None:
+                    torch.nn.init.zeros_(m.bias)
+        self.mixer.apply(ortho)
 
     def forward(self, x: Tensor, L: Tensor, tau: float = 0.5) -> Tensor:
         """
@@ -2035,6 +2048,8 @@ class DiffusionWaveletSGWT(torch.nn.Module):
             tol=self.tol
         )  # W_list: list of (B,N,r_j), VJ: (B,N,r_J)
 
+        x = self.pos_embed(x)
+
         PJ = [torch.matmul(VJ, VJ.transpose(1, 2))] + [torch.matmul(Wj, Wj.transpose(1, 2)) for Wj in W_list]
         PJ = torch.stack(PJ, dim=1)
         coeffs = torch.matmul(PJ, x.unsqueeze(1)).permute(0, 2, 3, 1)
@@ -2053,17 +2068,20 @@ class DiffusionWaveletSGWT(torch.nn.Module):
         #     Pj = torch.matmul(Wj, Wj.transpose(1, 2))  # (B,N,N)
         #     coeffs[..., j+1] = torch.matmul(Pj, x)
 
-        coeffs = self.norm(coeffs.permute(0, 2, 3, 1)).permute(0, 3, 1, 2)
+        #coeffs = self.norm(coeffs.permute(0, 2, 3, 1)).permute(0, 3, 1, 2)
 
         # coeffs = self.norm(coeffs)
-        #rms = torch.sqrt((coeffs ** 2).mean(dim=(0, 1), keepdim=True) + 1e-6)
-        #coeffs = coeffs / rms  # keeps node-to-node energy differences
+        eps = torch.finfo(coeffs.dtype).eps
 
-        coeffs = coeffs.mean(dim=2, keepdim=True) + self.mixer(coeffs.flatten(2)).view(B, N, 1, -1)
+        rms = torch.sqrt((coeffs ** 2).mean(dim=(0, 1), keepdim=True) + eps)
+        coeffs = coeffs / rms.clamp_min(1e-2)  # keeps node-to-node energy differences
+
+        coeffs = coeffs + self.mixer(coeffs.flatten(2)).view_as(coeffs)
+        coeffs = torch.sqrt((coeffs ** 2).sum(dim=2, keepdim=True)) / coeffs.shape[2]
         #return coeffs
 
         if self.training:
-            g = -torch.log(-torch.log(torch.rand_like(coeffs) + 1e-6) + 1e-6)
+            g = -torch.log(-torch.log(torch.rand_like(coeffs) + eps) + eps)
             coeffs = coeffs + tau*g
 
         return coeffs
@@ -2141,30 +2159,30 @@ class MaskMamba_2(nn.Module):
                                  n_layer=self.depth,
                                  rms_norm=self.config.rms_norm)
 
-        self.eigen_embed = nn.Sequential(
-            nn.Linear(2, 128),
-            nn.GELU(),
-            nn.Linear(128, self.trans_dim)
-        )
+        # self.eigen_embed = nn.Sequential(
+        #     nn.Linear(2, 128),
+        #     nn.GELU(),
+        #     nn.Linear(128, self.trans_dim)
+        # )
 
-        self.logit_blocks = MixerModel2(d_model=self.trans_dim,
-                                        n_layer=3,
-                                        rms_norm=self.config.rms_norm)
-
-        self.logit_norm = nn.LayerNorm(self.trans_dim)
+        # self.logit_blocks = MixerModel2(d_model=self.trans_dim,
+        #                                 n_layer=3,
+        #                                 rms_norm=self.config.rms_norm)
         #
-        head_dim = (self.trans_dim)
-        assert self.trans_dim >= self.k_top_eigenvectors
-        self.logit_head = nn.Sequential(nn.Linear(head_dim, self.trans_dim),
-                                        nn.LayerNorm(self.trans_dim),
-                                        nn.GELU(),
-                                        nn.Linear(self.trans_dim, 1))
-        self.logit_head2 = nn.Sequential(nn.Linear(head_dim, self.trans_dim),
-                                         nn.LayerNorm(self.trans_dim),
-                                         nn.GELU(),
-                                         nn.Linear(self.trans_dim, 1))
-
-        self.permuter = StochasticNeuralSortPermuter()
+        # self.logit_norm = nn.LayerNorm(self.trans_dim)
+        #
+        # head_dim = (self.trans_dim)
+        # assert self.trans_dim >= self.k_top_eigenvectors
+        # self.logit_head = nn.Sequential(nn.Linear(head_dim, self.trans_dim),
+        #                                 nn.LayerNorm(self.trans_dim),
+        #                                 nn.GELU(),
+        #                                 nn.Linear(self.trans_dim, 1))
+        # self.logit_head2 = nn.Sequential(nn.Linear(head_dim, self.trans_dim),
+        #                                  nn.LayerNorm(self.trans_dim),
+        #                                  nn.GELU(),
+        #                                  nn.Linear(self.trans_dim, 1))
+        #
+        # self.permuter = StochasticNeuralSortPermuter()
 
         self.norm = nn.LayerNorm(self.trans_dim)
         self.apply(self._init_weights)
