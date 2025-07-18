@@ -240,9 +240,8 @@ def run_net(args, config, train_writer=None, val_writer=None):
 
             assert points.size(1) == npoints
             points = train_transforms(points)
-            with torch.amp.autocast(device_type='cuda', dtype=torch.bfloat16):
-                loss = base_model(points, tau=tau,
-                                          ret_policy=False, use_wavelets=True)
+            with torch.amp.autocast(device_type='cuda', dtype=torch.bfloat16, enabled=torch.cuda.is_bf16_supported(False)):
+                loss = base_model(points, tau=tau, ret_policy=False, use_wavelets=True)
 
             try:
                 loss.backward()
